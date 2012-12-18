@@ -1,3 +1,10 @@
+" Windows 版 gvim のメニュー文字化け対策
+if has('win32') || has('win64')
+    source $VIMRUNTIME/delmenu.vim
+    set langmenu=ja_jp.utf-8
+    source $VIMRUNTIME/menu.vim
+endif
+
 set visualbell
 set vb t_vb=
 
