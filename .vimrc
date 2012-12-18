@@ -14,6 +14,8 @@ set ignorecase
 set incsearch
 set number
 set hidden
+set noswapfile
+set backupdir=~/.vim/backup
 
 """ include confs
 source ~/.vim/neocomplcache.conf
