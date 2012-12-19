@@ -1,4 +1,5 @@
 """ MyCustom
+lcd ~
 syntax on
 set tabstop=4
 set cindent
