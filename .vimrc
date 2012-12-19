@@ -58,12 +58,15 @@ noremap <Space>cn <Esc>:cn<Enter>
 noremap <Space>cp <Esc>:cp<Enter>
 
 """ VimFiler
-noremap <Space>vf <Esc>:VimFiler<Enter>
 noremap <Space>f <Esc>:VimFiler<Enter>
+noremap <Space>vf <Esc>:VimFilerSplit<Enter>
 
 """ VimShell
-noremap <Space>vs <Esc>:VimShell<Enter>
 noremap <Space>s <Esc>:VimShell<Enter>
+
+""" split
+noremap <Space>sp <Esc>:split<Enter>
+noremap <Space>vs <Esc>:vsplit<Enter>
 
 call unite#custom_default_action("vimshell/history", "insert")
 call unite#custom_default_action("vimshell/external_history", "insert")
