@@ -29,6 +29,9 @@ augroup grlcd
    autocmd BufEnter * lcd %:p:h
 augroup END
 
+""" カーソル位置記憶
+au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
+
 """ clipboard
 set clipboard=unnamed,autoselect
 vnoremap <silent> p "0p<Enter>
