@@ -32,6 +32,12 @@ augroup END
 """ カーソル位置記憶
 au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
 
+""" undo 設定
+if has('persistent_undo')
+	set undodir=~/.vim/undo
+	set undofile
+endif
+
 """ clipboard
 set clipboard=unnamed,autoselect
 vnoremap <silent> p "0p<Enter>
