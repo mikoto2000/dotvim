@@ -29,6 +29,11 @@ augroup grlcd
    autocmd BufEnter * lcd %:p:h
 augroup END
 
+""" clipboard
+set clipboard=unnamed,autoselect
+nnoremap <silent> p "0p<Enter>
+vnoremap <silent> p "0p<Enter>
+
 """ 開いているファイルが格納されているディレクトリをカレントディレクトリとする
 command! CDPWD :exec ":lcd " . expand("%:p:h")
 
