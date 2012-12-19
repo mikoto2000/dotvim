@@ -69,6 +69,10 @@ noremap <Space>s <Esc>:VimShell<Enter>
 noremap <Space>sp <Esc>:split<Enter>
 noremap <Space>vs <Esc>:vsplit<Enter>
 
+""" diff
+noremap <Space>da <Esc>:diffthis<Enter>
+noremap <Space>dd <Esc>:diffoff<Enter>
+
 call unite#custom_default_action("vimshell/history", "insert")
 call unite#custom_default_action("vimshell/external_history", "insert")
 
