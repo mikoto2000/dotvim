@@ -101,7 +101,7 @@ set fileformat=unix
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
 """ statusline
-set statusline=%<%f%h%m%r%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
+set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
 """ tabline
 source ~/.vim/tabconf.vim
