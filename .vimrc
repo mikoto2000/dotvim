@@ -29,6 +29,9 @@ augroup grlcd
    autocmd BufEnter * lcd %:p:h
 augroup END
 
+""" <ESC> 連打で検索ハイライト削除
+nnoremap <Esc> :nohlsearch<Enter>
+
 """ カーソル位置記憶
 au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
 
