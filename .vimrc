@@ -43,7 +43,7 @@ endif
 
 """ clipboard
 set clipboard=unnamed,autoselect
-vnoremap <silent> p "0p<Enter>
+vnoremap <silent> p "0p
 
 """ 開いているファイルが格納されているディレクトリをカレントディレクトリとする
 command! CDPWD :exec ":lcd " . expand("%:p:h")
@@ -88,6 +88,7 @@ noremap <Space>vs <Esc>:vsplit<Enter>
 """ diff
 noremap <Space>ds <Esc>:windo diffthis<Enter>
 noremap <Space>dd <Esc>:windo diffoff<Enter>
+noremap <Space>du <Esc>:windo diffupdate<Enter>
 
 call unite#custom_default_action("vimshell/history", "insert")
 call unite#custom_default_action("vimshell/external_history", "insert")
