@@ -19,8 +19,9 @@ set noswapfile
 set backupdir=~/.vim/backup
 
 """ include confs
-source ~/.vim/neocomplcache.conf
 source ~/.vim/neobundle.conf
+source ~/.vim/singleton.conf
+source ~/.vim/neocomplcache.conf
 source ~/.vim/quickrun.conf
 
 """ change current directory
@@ -76,7 +77,6 @@ noremap <Space>cp <Esc>:cp<Enter>
 
 """ VimFiler
 noremap <Space>f <Esc>:VimFiler<Enter>
-noremap <Space>vf <Esc>:VimFilerSplit<Enter>
 
 """ VimShell
 noremap <Space>s <Esc>:VimShell<Enter>
