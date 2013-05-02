@@ -30,6 +30,10 @@ augroup grlcd
    autocmd BufEnter * lcd %:p:h
 augroup END
 
+""" <C-@> 誤爆防止。ついでに <C-[> として使ってしまえ
+inoremap <C-@> <ESC>
+noremap <C-@> :nohlsearch<Enter>
+
 """ <ESC> 連打で検索ハイライト削除
 nnoremap <Esc> :nohlsearch<Enter>
 
