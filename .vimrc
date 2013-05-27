@@ -19,10 +19,10 @@ set noswapfile
 set backupdir=~/.vim/backup
 
 """ include confs
-source ~/.vim/neobundle.conf
-source ~/.vim/singleton.conf
-source ~/.vim/neocomplcache.conf
-source ~/.vim/quickrun.conf
+source ~/.vim/neobundle.vimrc
+source ~/.vim/singleton.vimrc
+source ~/.vim/neocomplcache.vimrc
+source ~/.vim/quickrun.vimrc
 
 """ change current directory
 augroup grlcd
@@ -112,4 +112,4 @@ call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
 """ tabline
-source ~/.vim/tabconf.vim
+source ~/.vim/tabconf.vimrc
