@@ -35,7 +35,7 @@ inoremap <C-@> <ESC>
 noremap <C-@> :nohlsearch<Enter>
 
 """ <ESC> 連打で検索ハイライト削除
-nnoremap <Esc> :nohlsearch<Enter>
+nnoremap <Esc><Esc> :nohlsearch<Return>
 
 """ カーソル位置記憶
 au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
