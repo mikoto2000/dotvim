@@ -24,6 +24,10 @@ source ~/.vim/singleton.vimrc
 source ~/.vim/neocomplcache.vimrc
 source ~/.vim/quickrun.vimrc
 
+""" restart setting
+let g:restart_sessionoptions
+    \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+
 """ change current directory
 augroup grlcd
    autocmd!
@@ -48,7 +52,7 @@ endif
 
 """ clipboard
 set clipboard=unnamed,autoselect
-vnoremap <silent> p "0p
+
 
 """ 開いているファイルが格納されているディレクトリをカレントディレクトリとする
 command! CDPWD :exec ":lcd " . expand("%:p:h")
@@ -113,3 +117,6 @@ set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
 """ tabline
 source ~/.vim/tabconf.vimrc
+
+""" PATH
+let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-linux-x86_64-20130522/eclipse/'

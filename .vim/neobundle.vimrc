@@ -22,7 +22,11 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-scripts/Processing'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'cocoa.vim'
+
+""" 
+NeoBundle 'tyru/restart.vim'
 
 """ for twitter
 NeoBundle 'vim-scripts/TwitVim'
