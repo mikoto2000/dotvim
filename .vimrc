@@ -63,8 +63,11 @@ let $TODAY = strftime('%Y%m%d')
 inoremap <silent> <Space>td <C-R>=strftime('%Y%m%d')<CR>
 
 """ 作業ファイル作成・編集
-noremap <Space>wwl <Esc>:w ~/worklog/<C-R>=strftime('%Y%m%d')<CR>.txt<Enter>
-noremap <Space>ewl <Esc>:e ~/worklog/<C-R>=strftime('%Y%m%d')<CR>.txt<Enter>
+command! Tmp :e ~/worklog/tmp/$TODAY.txt
+
+""" rc 系を開く
+command! Vimrc :e ~/.vimrc
+command! Gvimrc :e ~/.gvimrc
 
 """ UniteResume
 noremap <Space>u <Esc>:UniteResume<Enter>
