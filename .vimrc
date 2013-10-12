@@ -18,11 +18,13 @@ set number
 set hidden
 set noswapfile
 set backupdir=~/.vim/backup
+set foldenable
+set foldmethod=marker
 
 """ include confs
 source ~/.vim/neobundle.vimrc
 source ~/.vim/singleton.vimrc
-source ~/.vim/neocomplcache.vimrc
+source ~/.vim/neocomplete.vimrc
 source ~/.vim/quickrun.vimrc
 
 """ restart setting
@@ -130,9 +132,14 @@ set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 source ~/.vim/tabconf.vimrc
 """ }}} infomation lines
 
-""" for markdown
+""" {{{ for markdown
 """ disable underbar highlight
 autocmd! FileType markdown hi! def link markdownItalic NONE
+
+""" re-open, set filetype markdown
+noremap <Space>fm <Esc>:set filetype=markdown<Enter>
+
+""" }}} for markdown
 
 """ {{{ highlight white spaces
 set list
