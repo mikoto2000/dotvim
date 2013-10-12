@@ -2,6 +2,7 @@
 lcd ~
 syntax on
 set tabstop=4
+set nrformats=
 set cindent
 set smartindent
 set autoindent
@@ -53,6 +54,9 @@ endif
 """ clipboard
 set clipboard=unnamed,autoselect
 
+""" comment toggle
+vnoremap <Space>cc :normal i//<Return>
+vnoremap <Space>uc :s/^\/\///<Return>
 
 """ 開いているファイルが格納されているディレクトリをカレントディレクトリとする
 command! CDPWD :exec ":lcd " . expand("%:p:h")
@@ -68,6 +72,7 @@ command! Tmp :e ~/worklog/tmp/$TODAY.txt
 """ rc 系を開く
 command! Vimrc :e ~/.vimrc
 command! Gvimrc :e ~/.gvimrc
+command! Bundle :e ~/.vim/neobundle.vimrc
 
 """ UniteResume
 noremap <Space>u <Esc>:UniteResume<Enter>
@@ -121,5 +126,38 @@ set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 """ tabline
 source ~/.vim/tabconf.vimrc
 
+""" for markdown
+autocmd! FileType markdown hi! def link markdownItalic LineNr
+
+""" highlight white spaces
+set list
+set listchars=tab:>-,eol:$,trail:-
+
+function! SpaceHilight()
+    syntax match Space "^\s\+" display containedin=ALL
+    highlight Space ctermbg=LightCyan guibg=grey25
+endf
+
+if has("syntax")
+    syntax on
+        augroup invisible
+        autocmd! invisible
+        autocmd BufNew,BufRead * call SpaceHilight()
+    augroup END
+endif
+
+""" for golang
+filetype off
+filetype plugin off
+set rtp+=~/develop/go/misc/vim
+set rtp+=~/develop/gopath/src/github.com/nsf/gocode/vim
+set rtp+=~/develop/gopath/src/github.com/golang/lint/misc/vim/
+autocmd BufWritePre *.go execute 'Fmt' | cwindow
+autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+au FileType go setlocal sw=4 ts=4 sts=4 noet
+au FileType go setlocal makeprg=go\ build errorformat=%f:%l:\ %m
+filetype plugin on
+
 """ PATH
 let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-linux-x86_64-20130522/eclipse/'
+

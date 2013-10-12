@@ -23,6 +23,8 @@ NeoBundle 'vim-scripts/Processing'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'mattn/sonictemplate-vim'
 " NeoBundle 'cocoa.vim'
 
 """ 

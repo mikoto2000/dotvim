@@ -21,3 +21,9 @@ let g:neocomplcache_min_keyword_length = 3
 imap <expr><C-l>
 \ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
+
+""" for golang
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
