@@ -4,30 +4,26 @@ filetype off
 set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-" www.vim.org
-NeoBundle 'git.zip'
-
 """ for develop
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
 NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'mattn/sonictemplate-vim'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-openbuf'
+NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-singleton'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-scripts/Processing'
 NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'mattn/sonictemplate-vim'
-" NeoBundle 'cocoa.vim'
 
-""" 
+""" for vim setting
 NeoBundle 'tyru/restart.vim'
 
 """ for twitter
