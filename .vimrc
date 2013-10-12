@@ -27,12 +27,12 @@ source ~/.vim/quickrun.vimrc
 
 """ restart setting
 let g:restart_sessionoptions
-    \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+            \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
 """ change current directory
 augroup grlcd
-   autocmd!
-   autocmd BufEnter * lcd %:p:h
+    autocmd!
+    autocmd BufEnter * lcd %:p:h
 augroup END
 
 """ <C-@> 誤爆防止。ついでに <C-[> として使ってしまえ
@@ -47,8 +47,8 @@ au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g
 
 """ undo 設定
 if has('persistent_undo')
-	set undodir=~/.vim/undo
-	set undofile
+    set undodir=~/.vim/undo
+    set undofile
 endif
 
 """ clipboard
@@ -69,19 +69,18 @@ inoremap <silent> <Space>td <C-R>=strftime('%Y%m%d')<CR>
 """ 作業ファイル作成・編集
 command! Tmp :e ~/worklog/tmp/$TODAY.txt
 
-""" rc 系を開く
+""" {{{ rc 系を開く
 command! Vimrc :e ~/.vimrc
 command! Gvimrc :e ~/.gvimrc
 command! Bundle :e ~/.vim/neobundle.vimrc
+""" }}} rc 系を開く
 
 """ UniteResume
 noremap <Space>u <Esc>:UniteResume<Enter>
 
-""" about buffer
+""" {{{ about buffer
 noremap <Space>l <Esc>:Unite buffer<Enter>
-
 noremap <Space>uf <Esc>:Unite file<Enter>
-
 noremap <Space>b <Esc>:Unite bookmark<Enter>
 
 """ 直前のバッファに戻る
@@ -90,6 +89,7 @@ noremap <Space>bb <Esc>:b#<Enter>
 """ cNext, cPrev
 noremap <Space>cn <Esc>:cn<Enter>
 noremap <Space>cp <Esc>:cp<Enter>
+""" }}} about buffer about buffer
 
 """ VimFiler
 noremap <Space>f <Esc>:VimFiler<Enter>
@@ -101,10 +101,11 @@ noremap <Space>s <Esc>:VimShell<Enter>
 noremap <Space>sp <Esc>:split<Enter>
 noremap <Space>vs <Esc>:vsplit<Enter>
 
-""" diff
+""" {{{ diff
 noremap <Space>ds <Esc>:windo diffthis<Enter>
 noremap <Space>dd <Esc>:windo diffoff<Enter>
 noremap <Space>du <Esc>:windo diffupdate<Enter>
+"" "}}} diff
 
 call unite#custom_default_action("vimshell/history", "insert")
 call unite#custom_default_action("vimshell/external_history", "insert")
@@ -112,24 +113,27 @@ call unite#custom_default_action("vimshell/external_history", "insert")
 """ utf8 で再読み込み
 noremap <Space>cu <Esc>:e ++enc=utf8<Enter>
 
-""" encoding
+""" {{{ encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 set fileformat=unix
+""" }}} encoding
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
+""" {{{ infomation lines
 """ statusline
 set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
 """ tabline
 source ~/.vim/tabconf.vimrc
+""" }}} infomation lines
 
 """ for markdown
 autocmd! FileType markdown hi! def link markdownItalic LineNr
 
-""" highlight white spaces
+""" {{{ highlight white spaces
 set list
 set listchars=tab:>-,eol:$,trail:-
 
@@ -140,13 +144,14 @@ endf
 
 if has("syntax")
     syntax on
-        augroup invisible
+    augroup invisible
         autocmd! invisible
         autocmd BufNew,BufRead * call SpaceHilight()
     augroup END
 endif
+""" }}} highlight white spaces
 
-""" for golang
+""" {{{ for golang
 filetype off
 filetype plugin off
 set rtp+=~/develop/go/misc/vim
@@ -157,6 +162,7 @@ autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 au FileType go setlocal sw=4 ts=4 sts=4 noet
 au FileType go setlocal makeprg=go\ build errorformat=%f:%l:\ %m
 filetype plugin on
+""" }}} for golang
 
 """ PATH
 let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-linux-x86_64-20130522/eclipse/'
