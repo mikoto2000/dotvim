@@ -131,7 +131,8 @@ source ~/.vim/tabconf.vimrc
 """ }}} infomation lines
 
 """ for markdown
-autocmd! FileType markdown hi! def link markdownItalic LineNr
+""" disable underbar highlight
+autocmd! FileType markdown hi! def link markdownItalic NONE
 
 """ {{{ highlight white spaces
 set list
