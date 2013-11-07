@@ -172,6 +172,10 @@ au FileType go setlocal makeprg=go\ build errorformat=%f:%l:\ %m
 filetype plugin on
 """ }}} for golang
 
+""" {{{ for sonicktemplate-vim
+let g:sonictemplate_vim_template_dir = '~/.vim/template'
+""" }}} for sonicktemplate-vim
+
 """ PATH
 let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-linux-x86_64-20130522/eclipse/'
 

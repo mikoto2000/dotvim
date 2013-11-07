@@ -1,0 +1,8 @@
+---
+format: markdown
+categories: {{_cursor_}}<`1:CATEGORIES`>
+toc: yes
+title: <`2:TITLE`>
+...
+
+<`3:CONTENT`>
