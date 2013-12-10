@@ -5,7 +5,9 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 """ for develop
-NeoBundle 'Shougo/neocomplete'
+if (has('lua'))
+    NeoBundle 'Shougo/neocomplete'
+endif
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
@@ -16,7 +18,9 @@ NeoBundle 'mattn/sonictemplate-vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-singleton'
+if (has('clientserver'))
+    NeoBundle 'thinca/vim-singleton'
+endif
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tyru/open-browser.vim'
