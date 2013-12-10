@@ -9,4 +9,10 @@ let g:quickrun_config['markdown'] = {
             \ 'outputter': 'browser'
             \ }
 
+let g:quickrun_config['page'] = {
+            \ 'type': 'markdown/pandoc',
+            \ 'cmdopt': '-s --toc',
+            \ 'outputter': 'browser'
+            \ }
+
 map <Space>qm <Esc>:QuickRun markdown<Enter>

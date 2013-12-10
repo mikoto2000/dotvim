@@ -69,7 +69,7 @@ let $TODAY = strftime('%Y%m%d')
 inoremap <silent> <Space>td <C-R>=strftime('%Y%m%d')<CR>
 
 """ 作業ファイル作成・編集
-command! Tmp :e ~/worklog/tmp/$TODAY.txt
+command! Tmp :e ~/worklog/tmp/$TODAY.txt | :set filetype=page
 
 """ {{{ rc 系を開く
 command! Vimrc :e ~/.vimrc
@@ -179,3 +179,20 @@ let g:sonictemplate_vim_template_dir = '~/.vim/template'
 """ PATH
 let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-linux-x86_64-20130522/eclipse/'
 
+:au Syntax page   source $VIMRUNTIME/syntax/markdown.vim
+
+""" {{{ for todo
+abbreviate [] [ ] :
+nnoremap <Space><Space> :call ToggleCheckbox()<Return>
+vnoremap <Space><Space> :call ToggleCheckbox()<Return>
+
+" 選択行のチェックボックスを切り替える
+function! ToggleCheckbox()
+  let l:line = getline('.')
+  if l:line =~ '\[ \] : '
+    :s/\[ \] : /[x] : /g
+  elseif l:line =~ '\[x\] : '
+    :s/\[x\] : /[ ] : /g
+  end
+endfunction
+""" }}} for todo
