@@ -23,8 +23,15 @@ set foldmethod=marker
 
 """ include confs
 source ~/.vim/neobundle.vimrc
-source ~/.vim/singleton.vimrc
-source ~/.vim/neocomplete.vimrc
+
+if (has('clientserver'))
+    source ~/.vim/singleton.vimrc
+endif
+
+if (has('lua'))
+    source ~/.vim/neocomplete.vimrc
+endif
+
 source ~/.vim/quickrun.vimrc
 
 """ restart setting
