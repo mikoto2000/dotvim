@@ -8,9 +8,6 @@ endif
 """ メニュー設定
 set guioptions=m
 
-""" カラースキーマ指定
-colorscheme desert
-
 set visualbell
 set vb t_vb=
 

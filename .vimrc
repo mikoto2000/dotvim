@@ -1,4 +1,4 @@
-""" MyCustom
+""" Common Custom
 lcd ~
 syntax on
 set tabstop=4
@@ -20,6 +20,8 @@ set noswapfile
 set backupdir=~/.vim/backup
 set foldenable
 set foldmethod=marker
+set cursorcolumn
+colorscheme desert
 
 """ include confs
 source ~/.vim/neobundle.vimrc
