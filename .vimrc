@@ -205,3 +205,7 @@ function! ToggleCheckbox()
   end
 endfunction
 """ }}} for todo
+
+""" {{{ for iPad
+inoremap b/ \
+""" }}} for iPad
