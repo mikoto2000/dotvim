@@ -33,4 +33,10 @@ NeoBundle 'tyru/restart.vim'
 """ for twitter
 NeoBundle 'vim-scripts/TwitVim'
 
+""" colorscheme
+NeoBundle 'twerth/ir_black'
+
+""" qml
+NeoBundle 'peterhoeg/vim-qml'
+
 filetype plugin indent on

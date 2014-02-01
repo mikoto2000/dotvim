@@ -13,6 +13,7 @@ set softtabstop=4
 set nocompatible
 set pastetoggle=<f11>
 set ignorecase
+set hlsearch
 set incsearch
 set number
 set hidden
@@ -21,10 +22,11 @@ set backupdir=~/.vim/backup
 set foldenable
 set foldmethod=marker
 set cursorcolumn
-colorscheme desert
 
 """ include confs
 source ~/.vim/neobundle.vimrc
+
+colorscheme ir_black
 
 if (has('clientserver'))
     source ~/.vim/singleton.vimrc
@@ -135,6 +137,7 @@ call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
 """ {{{ infomation lines
 """ statusline
+set laststatus=2
 set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
 """ tabline
@@ -156,7 +159,7 @@ set listchars=tab:>-,eol:$,trail:-
 
 function! SpaceHilight()
     syntax match Space "^\s\+" display containedin=ALL
-    highlight Space ctermbg=LightCyan guibg=grey25
+    highlight Space ctermbg=DarkGray guibg=gray15
 endf
 
 if has("syntax")
@@ -205,3 +208,20 @@ function! ToggleCheckbox()
   end
 endfunction
 """ }}} for todo
+
+""" {{{ for QML
+""" QML 用にファイルタイプを設定
+augroup QML
+    autocmd!
+    autocmd BufNewFile,BufRead * setfiletype qml
+augroup END
+
+""" QML 用の QuickRun 設定
+let g:quickrun_config['qml/qmlscene'] = {
+\   'command' : 'qmlscene'
+\   ,'exec'    : '%c %s:p'
+\   ,'runner'  : 'vimproc'
+\   ,'outputter'  : 'null'
+\ }
+let g:quickrun_config['qml'] = g:quickrun_config['qml/qmlscene']
+""" }}} for QML

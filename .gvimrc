@@ -6,7 +6,7 @@ if has('win32') || has('win64')
 endif
 
 """ メニュー設定
-set guioptions=m
+set guioptions=
 
 set visualbell
 set vb t_vb=
@@ -14,3 +14,20 @@ set vb t_vb=
 """ 行列の数
 set lines=50
 set columns=120
+
+""" フォント設定
+set guifont=Ricty\ 17
+
+""" {{{ transset
+""" from [Linux の gVim の透過度を設定する](https://gist.github.com/anekos/6241052)
+function! s:Transset(opacity)
+    call system('transset --id ' . v:windowid . ' ' . a:opacity)
+endfunction
+command! -nargs=1 Transset call <SID>Transset(<q-args>)
+""" GUI 起動時に透過コマンドを実行する
+augroup myTrans
+    autocmd!
+    autocmd GUIEnter * Transset 0.85
+augroup END
+""" }}} transset
+
