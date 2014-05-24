@@ -193,22 +193,6 @@ let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-
 
 :au Syntax page   source $VIMRUNTIME/syntax/markdown.vim
 
-""" {{{ for todo
-abbreviate [] [ ] :
-nnoremap <Space><Space> :call ToggleCheckbox()<Return>
-vnoremap <Space><Space> :call ToggleCheckbox()<Return>
-
-" 選択行のチェックボックスを切り替える
-function! ToggleCheckbox()
-  let l:line = getline('.')
-  if l:line =~ '\[ \] : '
-    :s/\[ \] : /[x] : /g
-  elseif l:line =~ '\[x\] : '
-    :s/\[x\] : /[ ] : /g
-  end
-endfunction
-""" }}} for todo
-
 """ {{{ for QML
 """ QML 用にファイルタイプを設定
 augroup QML
@@ -225,3 +209,7 @@ let g:quickrun_config['qml/qmlscene'] = {
 \ }
 let g:quickrun_config['qml'] = g:quickrun_config['qml/qmlscene']
 """ }}} for QML
+
+""" {{{ for iPad
+inoremap b/ \
+""" }}} for iPad
