@@ -22,11 +22,12 @@ set backupdir=~/.vim/backup
 set foldenable
 set foldmethod=marker
 set cursorcolumn
+set ambiwidth=double
 
 """ include confs
 source ~/.vim/neobundle.vimrc
 
-colorscheme ir_black
+colorscheme desert
 
 if (has('clientserver'))
     source ~/.vim/singleton.vimrc
@@ -70,6 +71,13 @@ set clipboard=unnamed,autoselect
 """ comment toggle
 vnoremap <Space>cc :normal i//<Return>
 vnoremap <Space>uc :s/^\/\///<Return>
+
+""" auto comment off
+augroup auto_comment_off
+    autocmd!
+    autocmd BufEnter * setlocal formatoptions-=r
+    autocmd BufEnter * setlocal formatoptions-=o
+augroup END
 
 """ 開いているファイルが格納されているディレクトリをカレントディレクトリとする
 command! CDPWD :exec ":lcd " . expand("%:p:h")
@@ -177,8 +185,8 @@ filetype plugin off
 set rtp+=~/develop/go/misc/vim
 set rtp+=~/develop/gopath/src/github.com/nsf/gocode/vim
 set rtp+=~/develop/gopath/src/github.com/golang/lint/misc/vim/
-autocmd BufWritePre *.go execute 'Fmt' | cwindow
-autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+"autocmd BufWritePre *.go execute 'Fmt' | cwindow
+"autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 au FileType go setlocal sw=4 ts=4 sts=4 noet
 au FileType go setlocal makeprg=go\ build errorformat=%f:%l:\ %m
 filetype plugin on
@@ -189,7 +197,7 @@ let g:sonictemplate_vim_template_dir = '~/.vim/template'
 """ }}} for sonicktemplate-vim
 
 """ PATH
-let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-linux-x86_64-20130522/eclipse/'
+let $PATH = $PATH . ':~/develop/node-v0.8.25-linux-x64/bin:~/develop/adt-bundle-linux-x86_64-201400321/eclipse/'
 
 :au Syntax page   source $VIMRUNTIME/syntax/markdown.vim
 
@@ -210,6 +218,6 @@ let g:quickrun_config['qml/qmlscene'] = {
 let g:quickrun_config['qml'] = g:quickrun_config['qml/qmlscene']
 """ }}} for QML
 
-""" {{{ for iPad
-inoremap b/ \
-""" }}} for iPad
+"""" {{{ for iPad
+"inoremap b/ \
+"""" }}} for iPad

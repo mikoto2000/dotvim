@@ -15,4 +15,10 @@ let g:quickrun_config['page'] = {
             \ 'outputter': 'browser'
             \ }
 
+let g:quickrun_config['dot'] = {
+            \ 'type': 'graphviz/dot',
+            \ 'exec': 'dot -Tpng %s -o /tmp/tmp.png; ~/develop/libsixel/converters/img2sixel /tmp/tmp.png',
+            \ 'runner': 'shell',
+            \ }
+
 map <Space>qm <Esc>:QuickRun markdown<Enter>

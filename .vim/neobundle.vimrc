@@ -21,6 +21,8 @@ NeoBundle 'thinca/vim-quickrun'
 if (has('clientserver'))
     NeoBundle 'thinca/vim-singleton'
 endif
+"""NeoBundle 'rhysd/committia.vim'
+NeoBundle 'rhysd/vim-grammarous'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tyru/open-browser.vim'
@@ -38,5 +40,8 @@ NeoBundle 'twerth/ir_black'
 
 """ qml
 NeoBundle 'peterhoeg/vim-qml'
+
+""" go
+NeoBundle 'vim-jp/vim-go-extra'
 
 filetype plugin indent on
