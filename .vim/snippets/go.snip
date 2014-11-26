@@ -1,6 +1,61 @@
 snippet func
-abbr code
-options head
-    func ${1:NAME}(${2:ARG} ${3:ARG_TYPE}) ${4:RETURN_TYPE} {
-        ${5:CONTENT}
-    }
+abbr func
+options indent
+	func ${1:NAME}(${2:ARG}) ${3:RETURN_TYPE} {
+		${4:CONTENT}
+	}
+
+snippet funcm
+abbr func with method
+options indent
+	func (${1:RECEIVER}) ${2:NAME}(${3:ARG}) ${4:RETURN_TYPE} {
+		${5:CONTENT}
+	}
+
+snippet if
+abbr if
+options indent
+	if ${1:EXPR} {
+		${2:CONTENT}
+	}
+
+snippet forexpr
+abbr for with expr
+options indent
+	for ${1:EXPR} {
+		${2:CONTENT}
+	}
+
+snippet forrange
+abbr for with range
+options indent
+	for ${1:VALUE} := range ${2:COLLECTION} {
+		${4:CONTENT}
+	}
+
+snippet struct
+abbr struct
+alias types
+options indent
+	type ${1:NAME} struct {
+		${2:CONTENT}
+	}
+
+snippet interface
+abbr interface
+alias typei
+options indent
+	type ${1:NAME} interface {
+		${2:CONTENT}
+	}
+
+
+snippet fmtlnv
+abbr Println with value
+options indent
+	fmt.Println(${1:CONTENT}"${2})
+
+snippet fmtf
+abbr Printf
+options indent
+	fmt.Printf("${1:FORMAT}", ${2:VALUES})
