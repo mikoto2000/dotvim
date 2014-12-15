@@ -44,4 +44,7 @@ NeoBundle 'peterhoeg/vim-qml'
 """ go
 NeoBundle 'vim-jp/vim-go-extra'
 
+""" html
+NeoBundle 'mattn/emmet-vim'
+
 filetype plugin indent on
