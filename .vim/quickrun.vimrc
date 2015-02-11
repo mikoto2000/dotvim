@@ -21,4 +21,8 @@ let g:quickrun_config['dot'] = {
             \ 'runner': 'shell',
             \ }
 
+let g:quickrun_config['html'] = {
+            \ 'outputter': 'browser'}
+
+
 map <Space>qm <Esc>:QuickRun markdown<Enter>
