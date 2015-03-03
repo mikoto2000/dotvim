@@ -28,6 +28,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-scripts/Processing'
 NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'kamichidu/vim-javaclasspath'
 
 """ for vim setting
 NeoBundle 'tyru/restart.vim'

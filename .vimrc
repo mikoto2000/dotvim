@@ -49,6 +49,9 @@ augroup grlcd
     autocmd BufEnter * lcd %:p:h
 augroup END
 
+source ~/.vim/ozutil.vim
+source ~/.vim/ozjava.vim
+
 """ <C-@> 誤爆防止。ついでに <C-[> として使ってしまえ
 inoremap <C-@> <ESC>
 noremap <C-@> :nohlsearch<Enter>
