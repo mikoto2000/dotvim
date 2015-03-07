@@ -19,9 +19,16 @@ let g:neocomplete#min_keyword_length = 3
 """ スニペットのディレクトリ設定
 let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets'
 
-imap <expr><C-l>
-\ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
+"imap <expr><C-l>
+"\ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
+"" SuperTab like snippets behavior.
+imap <expr><C-l> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<C-l>"
+smap <expr><C-l> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<C-l>"
 """ }}} for neosnippet
 
 """ {{{ for golang
