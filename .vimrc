@@ -24,6 +24,12 @@ set foldmethod=marker
 set cursorcolumn
 set ambiwidth=double
 
+" 自動折り返しを無効化
+set textwidth=0
+
+" 80 文字目をハイライト
+set colorcolumn=80
+
 """ include confs
 source ~/.vim/neobundle.vimrc
 
