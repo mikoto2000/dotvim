@@ -1,5 +1,4 @@
 """ Common Custom
-lcd ~
 syntax on
 set tabstop=4
 set nrformats=
@@ -48,12 +47,6 @@ source ~/.vim/quickrun.vimrc
 """ restart setting
 let g:restart_sessionoptions
             \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
-
-""" change current directory
-augroup grlcd
-    autocmd!
-    autocmd BufEnter * lcd %:p:h
-augroup END
 
 source ~/.vim/ozjava.vim
 
