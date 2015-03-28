@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 """ for develop
+NeoBundle 'vim-jp/vital.vim'
 if (has('lua'))
     NeoBundle 'Shougo/neocomplete'
 endif
