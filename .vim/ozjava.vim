@@ -42,4 +42,3 @@ augroup syntastic_classpath_set
     autocmd BufEnter *.java let g:syntastic_java_javac_classpath=ozjava#get_project_classpath()
 augroup END
 
-nnoremap <Space>fj :Unite find<Enter><Enter>*.java<Enter>

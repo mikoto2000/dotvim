@@ -224,3 +224,28 @@ let g:quickrun_config['qml'] = g:quickrun_config['qml/qmlscene']
 """" {{{ for iPad
 "inoremap b/ \
 """" }}} for iPad
+
+""" submode
+let g:submode_timeout = 1
+let g:submode_timeoutlen = 5000
+
+""" window resize
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>-')
+call submode#map('winsize', 'n', '', '-', '<C-w>+')
+
+""" file find
+call submode#enter_with('filefind', 'n', '', '<Space>ff', '<Esc>')
+
+"" java
+call submode#map('filefind', 'n', '', 'j', ':Unite find<Enter><Enter>*.java<Enter>')
+
+"" c/c++
+call submode#map('filefind', 'n', '', 'c', ':Unite find<Enter><Enter><BS><BS><BS><BS><BS><BS>\( -name *.cpp -o -name *.c \)<Enter>')
+call submode#map('filefind', 'n', '', 'h', ':Unite find<Enter><Enter><BS><BS><BS><BS><BS><BS>\( -name *.hpp -o -name *.h \)<Enter>')
+

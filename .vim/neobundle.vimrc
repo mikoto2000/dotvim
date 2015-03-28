@@ -6,6 +6,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 """ for develop
 NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'kana/vim-submode'
 if (has('lua'))
     NeoBundle 'Shougo/neocomplete'
 endif
