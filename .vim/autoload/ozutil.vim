@@ -16,26 +16,18 @@ function! ozutil#is_root_directory(path)
     endif
 endfunc
 
-" dir とその親ディレクトリを巡っていって、 fileName を探す。
-" ルートディレクトリまで巡っても見つからなかったら諦める。
-" 見つかったら、そのファイルのパスを返却する。
+" dir とその親ディレクトリを巡っていって、
+" 各ディレクトリに対して isReturnDirectory で条件確認。
+" isReturnDirectory == true ならそのディレクトリパスを返却する。
 " TODO: windows 対応
-function! ozutil#find(dir, fileName)
-    return ozutil#findDir(a:dir, a:fileName) . "/" . a:fileName
-endfunc
-
-" dir とその親ディレクトリを巡っていって、 fileName を探す。
-" ルートディレクトリまで巡っても見つからなかったら諦める。
-" 見つかったら、そのファイルが存在するディレクトリのパスを返却する。
-" TODO: windows 対応
-function! ozutil#findDir(dir, fileName)
+function! ozutil#findParentDirectory(dir, isReturnDirectory)
     " ディレクトリ末尾にセパレータがあった場合、削除
     let l:absDir = substitute(ozutil#abs(a:dir), "/$", "", "g")
 
-    " ファイルの絶対パスを取得
-    let l:filePath = ozutil#abs(l:absDir . "/" . a:fileName)
+    " 返却条件を確認
+    let l:isReturnDirectory = call(a:isReturnDirectory, [l:absDir])
 
-    if filereadable(filePath) == 1
+    if l:isReturnDirectory == 1
         " ファイルが見つかったらファイルパスを返却する
         return l:absDir
     elseif ozutil#is_root_directory(a:dir) == 1
@@ -47,6 +39,7 @@ function! ozutil#findDir(dir, fileName)
         " ここがルートディレクトリ出ないならば、
         " 再帰的に親ディレクトリを探す。
         let l:parentDir = fnamemodify(l:absDir, ":h")
-        return ozutil#findDir(l:parentDir, a:fileName)
+        return ozutil#findParentDirectory(l:parentDir, a:isReturnDirectory)
     endif
 endfunc
+
