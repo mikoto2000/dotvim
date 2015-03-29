@@ -48,10 +48,6 @@ source ~/.vim/quickrun.vimrc
 let g:restart_sessionoptions
             \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
-source ~/.vim/ozutil.vim
-source ~/.vim/ozjava.vim
-source ~/.vim/ozc.vim
-
 """ <C-@> 誤爆防止。ついでに <C-[> として使ってしまえ
 inoremap <C-@> <ESC>
 noremap <C-@> :nohlsearch<Enter>
