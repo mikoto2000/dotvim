@@ -62,3 +62,18 @@ function! ozjava#isProjectDir(dir)
     endif
 endfunc
 
+function! ozjava#initJavaProject()
+    " make プログラムを gradle へ
+    setlocal makeprg=gradle
+
+    " プロジェクトルートっぽいところへ移動
+    call ozjava#goToProjectRoot()
+
+    " .classpath 確認・作成
+    if filereadable('.classpath') == 0
+        call vimproc#system_bg('gradle eclipseClasspath')
+    endif
+
+    " syntastic 設定
+    let g:syntastic_java_javac_classpath=ozjava#get_project_classpath()
+endfunc
