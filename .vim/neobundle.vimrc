@@ -34,6 +34,9 @@ NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'kamichidu/vim-javaclasspath'
 NeoBundle 'kamichidu/vim-unite-javaimport'
 
+""" notification
+NeoBundle 'supermomonga/Shaberu.vim'
+
 """ for vim setting
 NeoBundle 'tyru/restart.vim'
 

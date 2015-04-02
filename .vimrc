@@ -245,3 +245,10 @@ call submode#map('filefind', 'n', '', 'j', ':Unite find<Enter><Enter>*.java<Ente
 call submode#map('filefind', 'n', '', 'c', ':Unite find<Enter><Enter><BS><BS><BS><BS><BS><BS>\( -name *.cpp -o -name *.c \)<Enter>')
 call submode#map('filefind', 'n', '', 'h', ':Unite find<Enter><Enter><BS><BS><BS><BS><BS><BS>\( -name *.hpp -o -name *.h \)<Enter>')
 
+""" Shaberu 馬鹿にしか見えない行が 1 行あるけれど気にしないで...。
+let g:Base64 = vital#of('vital').import('Data.Base64')
+let g:shaberu_use_voicetext_api=1
+let g:shaberu_voicetext_apikey=Base64.decode('NDNjdzl3ZmEwNXR1cWVtZA==')
+let g:shaberu_user_define_say_command=' '
+let g:shaberu_voicetext_play_command='aplay'
+let g:shaberu_voicetext_speaker='hikari'
