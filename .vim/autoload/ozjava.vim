@@ -77,3 +77,23 @@ function! ozjava#initJavaProject()
     " syntastic 設定
     let g:syntastic_java_javac_classpath=ozjava#get_project_classpath()
 endfunc
+
+" gradle test を非同期実行
+function! ozjava#gradleTest()
+    " 非同期で 「gradle test」
+    let s:gradleTest = s:Reunions.process("gradle test")
+
+    " 実行したプロセスが終了したら呼ばれる
+    " 実行結果は output に渡される
+    function! s:gradleTest.then(output, ...)
+        echo a:output
+    endfunction
+endfunction
+
+" vital-reunion をインポート
+let s:Reunions = vital#of("vital").import("Reunions")
+
+augroup reunions-example
+    autocmd!
+    autocmd CursorHold * call s:Reunions.update_in_cursorhold(1)
+augroup END
