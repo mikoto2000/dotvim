@@ -76,6 +76,9 @@ function! ozjava#initJavaProject()
 
     " syntastic 設定
     let g:syntastic_java_javac_classpath=ozjava#get_project_classpath()
+
+    " 各種コマンド定義
+    command! Test call ozjava#gradleTest()
 endfunc
 
 " gradle test を非同期実行
@@ -86,7 +89,11 @@ function! ozjava#gradleTest()
     " 実行したプロセスが終了したら呼ばれる
     " 実行結果は output に渡される
     function! s:gradleTest.then(output, ...)
-        echo a:output
+        if stridx(a:output, 'test FAILED') > 0
+            exec 'ShaberuSay はい。テスト失敗です。修正を急げ！'
+        else "if stridx(a:output, 'BUILD SUCCESSFUL')
+            exec 'ShaberuSay はい。テストとおりました！おめでとう！'
+        endif
     endfunction
 endfunction
 
