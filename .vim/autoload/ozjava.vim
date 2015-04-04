@@ -95,9 +95,13 @@ function! ozjava#gradleTest()
             let l:message = 'はい。テストとおりました！おめでとう！'
         endif
         call shaberu#say(l:message)
-        call thingspast#add('test', 'Gradle', '', l:message, '', [])
+        call thingspast#add('test', 'Gradle', 'テスト完了', l:message, 'ozjava#openTestResult', [])
     endfunction
 endfunction
+
+function! ozjava#openTestResult()
+    call vimproc#system_bg('xdg-open ./build/reports/tests/index.html')
+endfunc
 
 " vital-reunion をインポート
 let s:Reunions = vital#of("vital").import("Reunions")
