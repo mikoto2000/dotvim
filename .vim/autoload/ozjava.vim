@@ -90,10 +90,12 @@ function! ozjava#gradleTest()
     " 実行結果は output に渡される
     function! s:gradleTest.then(output, ...)
         if stridx(a:output, 'test FAILED') > 0
-            exec 'ShaberuSay はい。テスト失敗です。修正を急げ！'
+            let l:message = 'はい。テスト失敗です。修正を急げ！'
         else "if stridx(a:output, 'BUILD SUCCESSFUL')
-            exec 'ShaberuSay はい。テストとおりました！おめでとう！'
+            let l:message = 'はい。テストとおりました！おめでとう！'
         endif
+        call shaberu#say(l:message)
+        call thingspast#add('test', 'Gradle', '', l:message, '', [])
     endfunction
 endfunction
 

@@ -35,6 +35,7 @@ NeoBundle 'kamichidu/vim-javaclasspath'
 NeoBundle 'kamichidu/vim-unite-javaimport'
 
 """ notification
+NeoBundle 'supermomonga/thingspast.vim'
 NeoBundle 'supermomonga/Shaberu.vim'
 
 """ for vim setting
