@@ -11,3 +11,19 @@ abbr namespace
 options head
 	namespace ${1:NAME} {
 	}
+
+snippet ->
+abbr relation
+options head
+	${1:FROM} -> ${2:TO};
+
+snippet -|>
+abbr extend
+options head
+	${1:FROM} -|> ${2:TO};
+
+snippet .|>
+abbr implement
+options head
+	${1:FROM} .|> ${2:TO};
+
