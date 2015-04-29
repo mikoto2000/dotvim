@@ -14,7 +14,7 @@ set pastetoggle=<f11>
 set ignorecase
 set hlsearch
 set incsearch
-set number
+set nonumber
 set hidden
 set noswapfile
 set backupdir=~/.vim/backup
@@ -38,8 +38,12 @@ if (has('clientserver'))
     source ~/.vim/singleton.vimrc
 endif
 
+" if_lua があれば neocomplete,
+" なければ neocomplcache を使用する
 if (has('lua'))
     source ~/.vim/neocomplete.vimrc
+else
+    source ~/.vim/neocomplcache.vimrc
 endif
 
 source ~/.vim/quickrun.vimrc
@@ -65,7 +69,7 @@ if has('persistent_undo')
 endif
 
 """ clipboard
-set clipboard=unnamed,autoselect
+"set clipboard=unnamed,autoselect
 
 """ comment toggle
 vnoremap <Space>cc :normal i//<Return>
@@ -245,6 +249,22 @@ call submode#map('filefind', 'n', '', 'j', ':Unite find<Enter><Enter>*.java<Ente
 call submode#map('filefind', 'n', '', 'c', ':Unite find<Enter><Enter><BS><BS><BS><BS><BS><BS>\( -name *.cpp -o -name *.c \)<Enter>')
 call submode#map('filefind', 'n', '', 'h', ':Unite find<Enter><Enter><BS><BS><BS><BS><BS><BS>\( -name *.hpp -o -name *.h \)<Enter>')
 
+""" {{{ for neosnippet
+""" スニペットのディレクトリ設定
+let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets'
+
+"imap <expr><C-l>
+"\ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
+"" SuperTab like snippets behavior.
+imap <expr><C-l> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<C-l>"
+smap <expr><C-l> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<C-l>"
+""" }}} for neosnippet
+
 """ Shaberu 馬鹿にしか見えない行が 1 行あるけれど気にしないで...。
 let g:Base64 = vital#of('vital').import('Data.Base64')
 let g:shaberu_use_voicetext_api=1
@@ -252,3 +272,28 @@ let g:shaberu_voicetext_apikey=Base64.decode('NDNjdzl3ZmEwNXR1cWVtZA==')
 let g:shaberu_user_define_say_command=' '
 let g:shaberu_voicetext_play_command='aplay'
 let g:shaberu_voicetext_speaker='hikari'
+
+"""" {{{ for Ultisnips
+"let g:UltiSnipsExpandTrigger="<C-l>"
+"let g:UltiSnipsJumpForwardTrigger="<C-l>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+"let g:UltiSnipsListSnippets="<c-e>"
+"
+"function! g:UltiSnips_Complete()
+"    call UltiSnips#ExpandSnippet()
+"    if g:ulti_expand_res == 0
+"        if pumvisible()
+"            return "\<C-n>"
+"        else
+"            call UltiSnips#JumpForwards()
+"            if g:ulti_jump_forwards_res == 0
+"               return "\<TAB>"
+"            endif
+"        endif
+"    endif
+"    return ""
+"endfunction
+"
+"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+""" }}} for Ultisnips
+

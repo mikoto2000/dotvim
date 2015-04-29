@@ -9,6 +9,8 @@ NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'kana/vim-submode'
 if (has('lua'))
     NeoBundle 'Shougo/neocomplete'
+else
+    NeoBundle 'Shougo/neocomplcache'
 endif
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'

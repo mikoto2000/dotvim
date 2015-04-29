@@ -15,22 +15,6 @@ let g:neocomplete#enable_underbar_completion = 1
 let g:neocomplete#min_syntax_length = 3
 let g:neocomplete#min_keyword_length = 3
 
-""" {{{ for neosnippet
-""" スニペットのディレクトリ設定
-let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets'
-
-"imap <expr><C-l>
-"\ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-"\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
-"" SuperTab like snippets behavior.
-imap <expr><C-l> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<C-l>"
-smap <expr><C-l> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<C-l>"
-""" }}} for neosnippet
-
 """ {{{ for golang
 if !exists('g:neocomplete#omni_patterns')
     let g:neocomplete#omni_patterns = {}
