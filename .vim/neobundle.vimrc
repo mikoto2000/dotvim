@@ -54,6 +54,7 @@ NeoBundle 'peterhoeg/vim-qml'
 
 """ go
 NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'rhysd/vim-go-impl'
 
 """ html
 NeoBundle 'mattn/emmet-vim'
