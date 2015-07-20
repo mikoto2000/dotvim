@@ -2,7 +2,14 @@
 " バッファーローカル変数に設定する
 " TODO: l:classpath が取得できなかった時の処理
 function! ozjava#set_project_classpath_for_javaclasspath(dir)
-    let l:classpathFile = ozjava#getProjectRoot() . '/.classpath'
+    let l:projectRoot = ozjava#getProjectRoot()
+
+    " Project root の取得に失敗していた場合何もしない
+    if projectRoot == 0
+        return
+    endif
+
+    let l:classpathFile = projectRoot . '/.classpath'
     let l:config = {'filename': l:classpathFile}
 
     " 定義済みのバッファローカル変数を削除
@@ -45,7 +52,12 @@ endfunc
 " バッファに開かれたファイルが所属する
 " Java プロジェクトルートのパスに移動する。
 function! ozjava#goToProjectRoot()
-    execute ":lcd" ozjava#getProjectRoot()
+    let l:projectRoot = ozjava#getProjectRoot()
+
+    " Project root の取得に成功したらそこに移動する。
+    if projectRoot != 0
+        execute ":lcd" ozjava#getProjectRoot()
+    endif
 endfunc
 
 " 指定されたディレクトリが Java プロジェクトの
