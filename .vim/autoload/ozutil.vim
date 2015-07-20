@@ -4,16 +4,28 @@ function! ozutil#abs(path)
 endfunc
 
 " path がルートディレクトリかどうかを判定する
-" TODO: windows 対応
 function! ozutil#is_root_directory(path)
     let l:target = fnamemodify(a:path, ":p")
     " 最後に '/' があるかないかで '/' or '/../' になるので、
     " どちらかだったらルートディレクトリと判断する。
-    if target == "/" || target == "/../"
-        return 1
+
+    if has("win32") || has("win64")
+        " windows のルート判定処理
+        if match(target, "[A-Za-z]:\\") >= 0
+            let l:is_root = 1
+        else
+            let l:is_root = 0
+        endif
     else
-        return 0
+        " unix のルート判定処理
+        if target == "/" || target == "/../"
+            let l:is_root = 1
+        else
+            let l:is_root = 0
+        endif
     endif
+
+    return is_root
 endfunc
 
 " dir とその親ディレクトリを巡っていって、
