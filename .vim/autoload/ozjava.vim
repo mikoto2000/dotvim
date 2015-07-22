@@ -56,7 +56,7 @@ function! ozjava#goToProjectRoot()
 
     " Project root の取得に成功したらそこに移動する。
     if projectRoot != 0
-        execute ":lcd" ozjava#getProjectRoot()
+        execute ":lcd " l:projectRoot
     endif
 endfunc
 
@@ -112,7 +112,13 @@ function! ozjava#gradleTest()
 endfunction
 
 function! ozjava#openTestResult()
-    call vimproc#system_bg('xdg-open ./build/reports/tests/index.html')
+    if has("win32") || has("win64")
+        let l:command = 'start'
+    else
+        let l:command = 'xdg-open'
+    endif
+
+    call vimproc#system_bg(l:command . ' ./build/reports/tests/index.html')
 endfunc
 
 " vital-reunion をインポート
