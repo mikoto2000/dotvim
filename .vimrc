@@ -266,12 +266,14 @@ smap <expr><C-l> neosnippet#expandable_or_jumpable() ?
 """ }}} for neosnippet
 
 """ Shaberu 馬鹿にしか見えない行が 1 行あるけれど気にしないで...。
-let g:Base64 = vital#of('vital').import('Data.Base64')
-let g:shaberu_use_voicetext_api=1
-let g:shaberu_voicetext_apikey=Base64.decode('NDNjdzl3ZmEwNXR1cWVtZA==')
-let g:shaberu_user_define_say_command=' '
-let g:shaberu_voicetext_play_command='aplay'
-let g:shaberu_voicetext_speaker='hikari'
+if !(has('win32') || has('win64'))
+    let g:Base64 = vital#of('vital').import('Data.Base64')
+    let g:shaberu_use_voicetext_api=1
+    let g:shaberu_voicetext_apikey=Base64.decode('NDNjdzl3ZmEwNXR1cWVtZA==')
+    let g:shaberu_user_define_say_command=' '
+    let g:shaberu_voicetext_play_command='aplay'
+    let g:shaberu_voicetext_speaker='hikari'
+endif
 
 """" {{{ for Ultisnips
 "let g:UltiSnipsExpandTrigger="<C-l>"
