@@ -106,8 +106,13 @@ function! ozjava#gradleTest()
         else "if stridx(a:output, 'BUILD SUCCESSFUL')
             let l:message = 'はい。テストとおりました！おめでとう！'
         endif
-        call shaberu#say(l:message)
-        call thingspast#add('test', 'Gradle', 'テスト完了', l:message, 'ozjava#openTestResult', [])
+        try
+            call shaberu#say(l:message)
+        catch
+            " しゃべれなくても無視して進める。
+        finally
+            call thingspast#add('test', 'Gradle', 'テスト完了', l:message, 'ozjava#openTestResult', [])
+        endtry
     endfunction
 endfunction
 
