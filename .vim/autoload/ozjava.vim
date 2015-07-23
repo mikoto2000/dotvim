@@ -5,7 +5,7 @@ function! ozjava#set_project_classpath_for_javaclasspath(dir)
     let l:projectRoot = ozjava#getProjectRoot()
 
     " Project root の取得に失敗していた場合何もしない
-    if projectRoot == 0
+    if projectRoot == ""
         return
     endif
 
@@ -55,7 +55,7 @@ function! ozjava#goToProjectRoot()
     let l:projectRoot = ozjava#getProjectRoot()
 
     " Project root の取得に成功したらそこに移動する。
-    if projectRoot != 0
+    if projectRoot != ""
         execute ":lcd " l:projectRoot
     endif
 endfunc

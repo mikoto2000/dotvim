@@ -41,8 +41,8 @@ function! ozutil#findParentDirectory(dir, isReturnDirectory)
         return l:absDir
     elseif ozutil#is_root_directory(l:absDir) == 1
         " ファイルが見つからない、かつ、
-        " ここがルートディレクトリならば 0 を返却する
-        return 0
+        " ここがルートディレクトリならば空文字を返却する
+        return ""
     else
         " ファイルが見つからない、かつ、
         " ここがルートディレクトリ出ないならば、
