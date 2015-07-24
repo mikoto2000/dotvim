@@ -33,3 +33,8 @@ augroup myTrans
 augroup END
 """ }}} transset
 
+" 引数なしで開いた場合にホームディレクトリに移動する
+augroup cdhome
+    autocmd VimEnter * nested if @% == '' | lcd ~/ | endif
+augroup END
+
