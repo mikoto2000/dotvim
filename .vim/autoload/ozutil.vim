@@ -63,3 +63,12 @@ function! ozutil#findParentDirectory(dir, isReturnDirectory)
     endif
 endfunc
 
+" 関連付けされたプログラムで開くためのコマンドを取得する。
+function! ozutil#getStartCommand()
+    if has("win32") || has("win64")
+        let l:command = 'start'
+    else
+        let l:command = 'xdg-open'
+    endif
+    return l:command
+endfunc

@@ -28,15 +28,22 @@ endfunc
 " TODO: windows 対応
 function! ozjava#get_project_classpath()
     call ozjava#set_project_classpath_for_javaclasspath(expand('%'))
-    let l:classpaths = javaclasspath#source_path() . ':' . javaclasspath#classpath()
-    let l:classpath_array = split(l:classpaths, ':')
+
+    if has("win32") || has("win64")
+        let l:splitChar = ';'
+    else
+        let l:splitChar = ':'
+    endif
+
+    let l:classpaths = javaclasspath#source_path() . l:splitChar . javaclasspath#classpath()
+    let l:classpath_array = split(l:classpaths, l:splitChar)
     let l:return_classpath_array = []
     for classpath in l:classpath_array
         " 取得したクラスパスを絶対パスにして追加
         call add(l:return_classpath_array, ozutil#abs(l:classpath))
     endfor
     " クラスパス文字列として返却する。
-    return join(l:return_classpath_array, ':')
+    return join(l:return_classpath_array, l:splitChar)
 endfunc
 
 " バッファに開かれたファイルが所属する
@@ -117,11 +124,7 @@ function! ozjava#gradleTest()
 endfunction
 
 function! ozjava#openTestResult()
-    if has("win32") || has("win64")
-        let l:command = 'start'
-    else
-        let l:command = 'xdg-open'
-    endif
+    let l:command = ozutil#getStartCommand()
 
     call vimproc#system_bg(l:command . ' ./build/reports/tests/index.html')
 endfunc
@@ -133,3 +136,21 @@ augroup reunions-example
     autocmd!
     autocmd CursorHold * call s:Reunions.update_in_cursorhold(1)
 augroup END
+
+" findbugs
+command! Fb call ozjava#openFindBugsReport()
+function! ozjava#openFindBugsReport()
+    let l:command = ozutil#getStartCommand()
+
+    " 非同期で 「gradle fbhtml」
+    let s:gradleTest = s:Reunions.process('gradle fbhtml; ' . l:command . ' ./build/reports/findbugs/main.html;' . l:command . ' ./build/reports/findbugs/test.html')
+endfunc
+
+" jacoco
+command! Jacoco call ozjava#openJacocoReport()
+function! ozjava#openJacocoReport()
+    let l:command = ozutil#getStartCommand()
+
+    call vimproc#system_bg('gradle jacocohtml;' . l:command . ' ./build/reports/jacoco/index.html')
+endfunc
+
