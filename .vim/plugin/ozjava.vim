@@ -8,6 +8,9 @@ augroup END
 " gradle プロジェクトのルートかを確認して、
 " ルートなら色々設定する
 function! ozjava#checkJavaProjectRoot()
+    if has("win32") || has("win64")
+        let g:syntastic_java_javac_options = '-Xlint -J-Dfile.encoding=UTF-8'
+    endif
     if filereadable('build.gradle') == 1
         call ozjava#initJavaProject()
     endif
