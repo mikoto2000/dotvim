@@ -1,0 +1,3 @@
+[submodule ".vim/pack/b/start/sonictemplate-vim"]
+	path = .vim/pack/b/start/sonictemplate-vim
+	url = https://github.com/mattn/sonictemplate-vim

@@ -130,3 +130,8 @@ set tags=./tags;
 " (l以外で始まる)QuickFixコマンドの実行が終わったらQuickFixウィンドウを開く
 autocmd QuickfixCmdPost [^l]* copen
 """ }}} for ctags
+
+""" {{{ for sonicktemplate-vim
+let g:sonictemplate_vim_template_dir = '~/.vim/template'
+""" }}} for sonicktemplate-vim
+
