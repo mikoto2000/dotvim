@@ -122,3 +122,11 @@ if has("syntax")
 endif
 """ }}} highlight white spaces
 
+""" {{{ for ctags
+" <C-]>でタグジャンプ時にタグが複数あったらリスト表示。カーソルがウィンドウの中心行になるようにジャンプ
+nnoremap <C-]> g<C-]>zz
+" タグファイルはカレントファイルのパスを基準に上向き検索
+set tags=./tags;
+" (l以外で始まる)QuickFixコマンドの実行が終わったらQuickFixウィンドウを開く
+autocmd QuickfixCmdPost [^l]* copen
+""" }}} for ctags
