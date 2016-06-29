@@ -1,17 +1,9 @@
-augroup syntastic_classpath_set
+augroup java
     autocmd!
-    autocmd BufEnter * call ozjava#checkJavaProjectRoot()
+    autocmd BufEnter *.java let g:syntastic_java_javac_options = '-Xlint -J-Dfile.encoding=UTF-8'
     autocmd BufEnter *.java call ozjava#initJavaProject()
     autocmd BufEnter *.gradle call ozjava#initJavaProject()
+"    autocmd BufEnter *.java let g:JavaComplete_SourcesPath = ozjava#getProjectRoot()
+"    autocmd BufEnter *.gradle let g:JavaComplete_SourcesPath = ozjava#getProjectRoot()
+    autocmd BufEnter *.java set omnifunc=javacomplete#Complete
 augroup END
-
-" gradle プロジェクトのルートかを確認して、
-" ルートなら色々設定する
-function! ozjava#checkJavaProjectRoot()
-    if has("win32") || has("win64")
-        let g:syntastic_java_javac_options = '-Xlint -J-Dfile.encoding=UTF-8'
-    endif
-    if filereadable('build.gradle') == 1
-        call ozjava#initJavaProject()
-    endif
-endfunc

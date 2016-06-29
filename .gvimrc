@@ -9,6 +9,7 @@ endif
 set guioptions=
 
 colorscheme desert
+highlight Error term=none ctermfg=15 ctermbg=124 gui=bold guifg=#ff5050 guibg=#343434
 
 set visualbell
 set vb t_vb=
