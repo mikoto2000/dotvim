@@ -176,3 +176,6 @@ let g:neocomplete#min_syntax_length = 3
 let g:neocomplete#min_keyword_length = 3
 """ }}} neocomplete
 
+packadd vim-singleton
+call singleton#enable()
+
