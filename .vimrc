@@ -176,6 +176,10 @@ let g:neocomplete#min_syntax_length = 3
 let g:neocomplete#min_keyword_length = 3
 """ }}} neocomplete
 
+""" restart setting
+let g:restart_sessionoptions
+    \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+
 packadd vim-singleton
 call singleton#enable()
 

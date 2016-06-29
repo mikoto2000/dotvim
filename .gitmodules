@@ -10,3 +10,6 @@
 [submodule ".vim/pack/b/opt/vim-singleton"]
 	path = .vim/pack/b/opt/vim-singleton
 	url = http://github.com/thinca/vim-singleton
+[submodule ".vim/pack/b/start/restart.vim"]
+	path = .vim/pack/b/start/restart.vim
+	url = https://github.com/tyru/restart.vim
