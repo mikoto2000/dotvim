@@ -74,6 +74,12 @@ command! Gvimrc :e ~/.gvimrc
 """ 直前のバッファに戻る
 noremap <Space>bb <Esc>:b#<Enter>
 
+""" バッファ一覧表示
+noremap <Space>l <Esc>:buffers<Enter>
+
+""" バッファ移動
+noremap <Space>b <Esc>:buffer 
+
 """ cNext, cPrev
 noremap <Space>cn <Esc>:cn<Enter>
 noremap <Space>cp <Esc>:cp<Enter>
@@ -156,6 +162,7 @@ imap <expr><C-l> neosnippet#expandable_or_jumpable() ?
 smap <expr><C-l> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<C-l>"
+
 """ }}} for neosnippet
 
 """ {{{ neocomplete
@@ -182,4 +189,13 @@ let g:restart_sessionoptions
 
 packadd vim-singleton
 call singleton#enable()
+
+""" {{{ for Netrw
+nnoremap <Space>f :Explore<Return>
+augroup netrw
+    autocmd!
+    autocmd FileType netrw map <buffer> l <Return>
+    autocmd FileType netrw map <buffer> h -
+augroup END
+""" }}} for Netrw
 
