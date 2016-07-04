@@ -187,8 +187,10 @@ let g:neocomplete#min_keyword_length = 3
 let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
-packadd vim-singleton
-call singleton#enable()
+if (has('clientserver'))
+    packadd vim-singleton
+    call singleton#enable()
+endif
 
 """ {{{ for Netrw
 nnoremap <Space>f :Explore<Return>
