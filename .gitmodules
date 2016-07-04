@@ -13,3 +13,6 @@
 [submodule ".vim/pack/b/start/restart.vim"]
 	path = .vim/pack/b/start/restart.vim
 	url = https://github.com/tyru/restart.vim
+[submodule ".vim/pack/golang/opt/vim-go-extra"]
+	path = .vim/pack/golang/opt/vim-go-extra
+	url = git://github.com/vim-jp/vim-go-extra

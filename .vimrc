@@ -201,3 +201,8 @@ augroup netrw
 augroup END
 """ }}} for Netrw
 
+filetype plugin indent off
+
+packadd! vim-go-extra
+
+filetype plugin indent on
