@@ -201,6 +201,14 @@ augroup netrw
 augroup END
 """ }}} for Netrw
 
+""" {{{ for golang
+augroup golang
+    autocmd!
+    " .go 編集時にタブをスペースに置き換えないようにする
+    autocmd BufEnter *.go setlocal noexpandtab
+augroup END
+""" }}} for golang
+
 filetype plugin indent off
 
 packadd! vim-go-extra
