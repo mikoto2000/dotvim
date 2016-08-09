@@ -210,8 +210,8 @@ augroup END
 """ }}} for golang
 
 """ {{{ for fold
-noremap fo :forldopen<Return>
-noremap fc :forldclose<Return>
+noremap <Space>fo :foldopen<Return>
+noremap <Space>fc :foldclose<Return>
 """ }}}
 
 filetype plugin indent off
