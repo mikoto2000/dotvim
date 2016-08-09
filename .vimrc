@@ -209,6 +209,11 @@ augroup golang
 augroup END
 """ }}} for golang
 
+""" {{{ for fold
+noremap fo :forldopen<Return>
+noremap fc :forldclose<Return>
+""" }}}
+
 filetype plugin indent off
 
 packadd! vim-go-extra
