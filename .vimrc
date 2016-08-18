@@ -214,6 +214,12 @@ nnoremap <Space>fo :foldopen<Return>
 nnoremap <Space>fc :foldclose<Return>
 """ }}}
 
+""" {{{ for grep
+nnoremap <Space><Space> viwy:grep <C-r>" ./<Left><Left><Left>
+nnoremap <Space>s viwy:grep <C-r>" ./<Left><Left><Left>
+set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.svn\ --exclude=tags
+""" }}} for grep
+
 filetype plugin indent off
 
 packadd! vim-go-extra
