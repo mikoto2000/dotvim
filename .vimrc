@@ -187,11 +187,6 @@ let g:neocomplete#min_keyword_length = 3
 let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
-if (has('clientserver'))
-    packadd vim-singleton
-    call singleton#enable()
-endif
-
 """ {{{ for Netrw
 nnoremap <Space>f :Explore<Return>
 augroup netrw
@@ -222,6 +217,34 @@ set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.s
 
 filetype plugin indent off
 
+if (has('clientserver'))
+    packadd! vim-singleton
+    call singleton#enable()
+endif
+
 packadd! vim-go-extra
 
 filetype plugin indent on
+
+""" {{{ for blog
+function! M2H()
+    " 一時ファイル名をもらう
+    let tempbuf_in = tempname()
+    let tempbuf_out = tempname()
+
+    " 入力用一時ファイルに現在のバッファの内容を保存
+    w `=tempbuf_in`
+
+    " pandoc で Markdown -> html 変換
+    " 出力先は出力用一時バッファ
+    call job_start("pandoc --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 --standalone --self-contained " . tempbuf_in, {'out_io': 'buffer', 'out_name': tempbuf_out})
+
+    " 出力用一時バッファを split して開く
+    new `=tempbuf_out`
+
+    " 先頭行の 'Reading from channel output...' を削除
+    1delete
+endfunction
+
+command! M2h call M2H()
+""" }}} for blog
