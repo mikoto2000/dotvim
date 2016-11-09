@@ -227,23 +227,26 @@ packadd! vim-go-extra
 filetype plugin indent on
 
 """ {{{ for blog
+function! M2H_CB(job, status)
+    call job_start("cmd /c " . s:m2h_tmp, {'out_io': 'null'})
+
+    " 出力用一時バッファを split して開く
+    new `=s:m2h_tmp`
+endfunction
+
 function! M2H()
+
     " 一時ファイル名をもらう
-    let tempbuf_in = tempname()
-    let tempbuf_out = tempname()
+    let tempfile_in = tempname()
+    let tempfile_out = fnamemodify(tempname().".html", ":p")
+    let s:m2h_tmp = tempfile_out
 
     " 入力用一時ファイルに現在のバッファの内容を保存
-    w `=tempbuf_in`
+    w `=tempfile_in`
 
     " pandoc で Markdown -> html 変換
     " 出力先は出力用一時バッファ
-    call job_start("pandoc --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 --standalone --self-contained " . tempbuf_in, {'out_io': 'buffer', 'out_name': tempbuf_out})
-
-    " 出力用一時バッファを split して開く
-    new `=tempbuf_out`
-
-    " 先頭行の 'Reading from channel output...' を削除
-    1delete
+    call job_start("pandoc --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 --standalone --self-contained " . tempfile_in, {'out_io': 'file', 'out_name': tempfile_out, 'exit_cb': function("M2H_CB")})
 endfunction
 
 command! M2h call M2H()
