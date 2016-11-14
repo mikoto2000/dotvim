@@ -240,3 +240,6 @@ command! Num2x execute "normal viwc<C-R>=printf(\"0x%04X\", <C-R>\")<Return><Esc
 command! Num2Mask0 execute "normal viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", pow(2, <C-R>\")))<Return><Esc>"
 command! Num2Mask1 execute "normal viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", pow(2, <C-R>\"-1)))<Return><Esc>"
 """ }}} radix conversion
+
+" 選択範囲の式を評価して置き換える(改行未対応)
+vnoremap <Space>= c<C-R>=eval("<C-R>"")<Return><Esc>
