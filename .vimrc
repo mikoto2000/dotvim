@@ -22,6 +22,8 @@ set foldenable
 set foldmethod=marker
 set cursorcolumn
 set ambiwidth=double
+set breakindent
+set breakindentopt=sbr
 
 " 自動折り返しを無効化
 set textwidth=0
@@ -113,6 +115,7 @@ autocmd! FileType markdown hi! def link markdownItalic NONE
 """ {{{ highlight white spaces
 set list
 set listchars=tab:>-,eol:$,trail:-
+set showbreak=>\ 
 
 function! SpaceHilight()
     syntax match Space "^\s\+" display containedin=ALL
