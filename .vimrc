@@ -25,6 +25,9 @@ set ambiwidth=double
 set breakindent
 set breakindentopt=sbr
 
+" Leader
+let mapleader = ' '
+
 " 自動折り返しを無効化
 set textwidth=0
 
@@ -63,7 +66,7 @@ augroup END
 """ 作業ファイル作成・編集
 """""" 今日の日付
 let $TODAY = strftime('%Y%m%d')
-inoremap <silent> <Space>td <C-R>=strftime('%Y%m%d')<CR>
+inoremap <silent> <Leader>td <C-R>=strftime('%Y%m%d')<CR>
 command! Tmp :e ~/worklog/$TODAY.mkd | :set filetype=markdown
 
 """ {{{ rc 系を開く
@@ -74,22 +77,22 @@ command! Gvimrc :e ~/.gvimrc
 """ {{{ about buffer
 
 """ 直前のバッファに戻る
-noremap <Space>bb <Esc>:b#<Enter>
+noremap <Leader>bb <Esc>:b#<Enter>
 
 """ バッファ一覧表示
-noremap <Space>l <Esc>:buffers<Enter>
+noremap <Leader>l <Esc>:buffers<Enter>
 
 """ バッファ移動
-noremap <Space>b <Esc>:buffer 
+noremap <Leader>b <Esc>:buffer 
 
 """ cNext, cPrev
-noremap <Space>cn <Esc>:cn<Enter>
-noremap <Space>cp <Esc>:cp<Enter>
+noremap <Leader>cn <Esc>:cn<Enter>
+noremap <Leader>cp <Esc>:cp<Enter>
 """ }}} about buffer about buffer
 
 """ split
-noremap <Space>sp <Esc>:split<Enter>
-noremap <Space>vs <Esc>:vsplit<Enter>
+noremap <Leader>sp <Esc>:split<Enter>
+noremap <Leader>vs <Esc>:vsplit<Enter>
 
 """ {{{ encoding
 set encoding=utf-8
@@ -191,7 +194,7 @@ let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
 """ {{{ for Netrw
-nnoremap <Space>f :Explore<Return>
+nnoremap <Leader>f :Explore<Return>
 augroup netrw
     autocmd!
     autocmd FileType netrw map <buffer> l <Return>
@@ -208,13 +211,13 @@ augroup END
 """ }}} for golang
 
 """ {{{ for fold
-nnoremap <Space>fo :foldopen<Return>
-nnoremap <Space>fc :foldclose<Return>
+nnoremap <Leader>fo :foldopen<Return>
+nnoremap <Leader>fc :foldclose<Return>
 """ }}}
 
 """ {{{ for grep
-nnoremap <Space><Space> viwy:grep <C-r>" ./<Left><Left><Left>
-nnoremap <Space>s viwy:grep <C-r>" ./<Left><Left><Left>
+nnoremap <Leader><Leader> viwy:grep <C-r>" ./<Left><Left><Left>
+nnoremap <Leader>s viwy:grep <C-r>" ./<Left><Left><Left>
 set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.svn\ --exclude=tags
 """ }}} for grep
 
@@ -245,4 +248,4 @@ command! Num2Mask1 execute "normal viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", 
 """ }}} radix conversion
 
 " 選択範囲の式を評価して置き換える(改行未対応)
-vnoremap <Space>= c<C-R>=eval("<C-R>"")<Return><Esc>
+vnoremap <Leader>= c<C-R>=eval("<C-R>"")<Return><Esc>
