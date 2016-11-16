@@ -23,7 +23,6 @@ set foldmethod=marker
 set cursorcolumn
 set ambiwidth=double
 set breakindent
-set breakindentopt=sbr
 
 " Leader
 let mapleader = ' '
@@ -118,7 +117,7 @@ autocmd! FileType markdown hi! def link markdownItalic NONE
 """ {{{ highlight white spaces
 set list
 set listchars=tab:>-,eol:$,trail:-
-set showbreak=>\ 
+set showbreak=\\\ 
 
 function! SpaceHilight()
     syntax match Space "^\s\+" display containedin=ALL
