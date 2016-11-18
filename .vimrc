@@ -35,6 +35,13 @@ set colorcolumn=80
 
 colorscheme desert
 
+""" for Windows {{{
+if has("win32")
+    set runtimepath+=$HOME/.vim,$HOME/.vim/after
+    set packpath+=$HOME/.vim,$HOME/.vim/after
+endif
+""" }}} for Windows
+
 """ restart setting
 let g:restart_sessionoptions
             \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
