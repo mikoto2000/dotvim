@@ -205,6 +205,7 @@ augroup netrw
     autocmd!
     autocmd FileType netrw map <buffer> l <Return>
     autocmd FileType netrw map <buffer> h -
+    autocmd FileType netrw map <buffer> <Space> mf
 augroup END
 """ }}} for Netrw
 
