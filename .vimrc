@@ -86,7 +86,7 @@ command! Gvimrc :e ~/.gvimrc
 noremap <Leader>bb <Esc>:b#<Enter>
 
 """ バッファ一覧表示
-noremap <Leader>l <Esc>:buffers<Enter>
+noremap <Leader>l <Esc>:call buffer_selector#OpenBufferSelector()<Enter>
 
 """ バッファ移動
 noremap <Leader>b <Esc>:buffer 
