@@ -39,6 +39,8 @@ colorscheme desert
 if has("win32")
     set runtimepath+=$HOME/.vim,$HOME/.vim/after
     set packpath+=$HOME/.vim,$HOME/.vim/after
+
+    command! Shell !start C:\msys64\msys2_shell.cmd -here
 endif
 """ }}} for Windows
 
