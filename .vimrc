@@ -83,7 +83,7 @@ command! Gvimrc :e ~/.gvimrc
 """ {{{ about buffer
 
 """ 直前のバッファに戻る
-noremap <Leader>bb <Esc>:b#<Enter>
+noremap <Leader>bb :b#<Enter>
 
 """ バッファ一覧表示
 noremap <Leader>l <Esc>:call buffer_selector#OpenBufferSelector()<Enter>
@@ -97,8 +97,8 @@ noremap <Leader>cp <Esc>:cp<Enter>
 """ }}} about buffer about buffer
 
 """ split
-noremap <Leader>sp <Esc>:split<Enter>
-noremap <Leader>vs <Esc>:vsplit<Enter>
+noremap <Leader>sp :split<Enter>
+noremap <Leader>vs :vsplit<Enter>
 
 """ {{{ encoding
 set encoding=utf-8
