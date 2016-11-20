@@ -236,6 +236,7 @@ if (has('clientserver'))
 endif
 
 packadd! vim-go-extra
+packadd! buffer_selector.vim
 
 filetype plugin indent on
 
