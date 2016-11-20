@@ -6,12 +6,12 @@ function buffer_selector#OpenBufferSelector()
     redir END
 
     """ 新しいバッファを作成
-    if bufexists(bufnr('__BUFFERLIST__'))
-        bwipeout! __BUFFERLIST__
+    if bufexists(bufnr('__BUFFER_SELECTOR_BUFFER_LIST__'))
+        bwipeout! __BUFFER_SELECTOR_BUFFER_LIST__
     endif
-    silent bo new __BUFFERLIST__
+    silent bo new __BUFFER_SELECTOR_BUFFER_LIST__
 
-    """ __BUFFERLIST__ に ``:ls`` の結果を表示
+    """ __BUFFER_SELECTOR_BUFFER_LIST__ に ``:ls`` の結果を表示
     silent put!=buffer_list
 
     """ 先頭と末尾が空行になるのでそれを削除
