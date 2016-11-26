@@ -19,3 +19,15 @@
 [submodule ".vim/pack/b/opt/buffer_selector.vim"]
 	path = .vim/pack/b/opt/buffer_selector.vim
 	url = https://github.com/mikoto2000/buffer_selector.vim
+[submodule ".vim/pack/test/opt/vital.vim"]
+	path = .vim/pack/test/opt/vital.vim
+	url = https://github.com/vim-jp/vital.vim
+[submodule ".vim/pack/test/opt/vital-vimlcompiler"]
+	path = .vim/pack/test/opt/vital-vimlcompiler
+	url = https://github.com/haya14busa/vital-vimlcompiler
+[submodule ".vim/pack/test/opt/vital-power-assert"]
+	path = .vim/pack/test/opt/vital-power-assert
+	url = https://github.com/haya14busa/vital-power-assert
+[submodule ".vim/pack/test/opt/vital-safe-string"]
+	path = .vim/pack/test/opt/vital-safe-string
+	url = https://github.com/haya14busa/vital-safe-string
