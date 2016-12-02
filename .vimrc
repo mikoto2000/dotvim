@@ -208,6 +208,7 @@ augroup netrw
     autocmd FileType netrw map <buffer> l <Return>
     autocmd FileType netrw map <buffer> h -
     autocmd FileType netrw map <buffer> <Space> mf
+    autocmd FileType netrw map <buffer> q :bd<Return>
 augroup END
 """ }}} for Netrw
 
