@@ -202,7 +202,7 @@ let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
 """ {{{ for Netrw
-nnoremap <Leader>f :Explore<Return>
+nnoremap <Leader>e :Explore<Return>
 augroup netrw
     autocmd!
     autocmd FileType netrw map <buffer> l <Return>
