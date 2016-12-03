@@ -96,6 +96,8 @@ noremap <Leader>b <Esc>:buffer
 """ cNext, cPrev
 noremap <Leader>cn <Esc>:cn<Enter>
 noremap <Leader>cp <Esc>:cp<Enter>
+
+noremap <Leader>f <Esc>:call file_selector#OpenFileSelector()<Enter>
 """ }}} about buffer about buffer
 
 """ split
@@ -240,6 +242,7 @@ endif
 
 packadd! vim-go-extra
 packadd! buffer_selector.vim
+packadd! file_selector.vim
 
 filetype plugin indent on
 
