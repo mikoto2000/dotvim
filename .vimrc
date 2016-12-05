@@ -23,6 +23,7 @@ set foldmethod=marker
 set cursorcolumn
 set ambiwidth=double
 set breakindent
+set cmdheight=2
 
 " Leader
 let mapleader = ' '
