@@ -28,6 +28,9 @@ set cmdheight=2
 " Leader
 let mapleader = ' '
 
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 " 自動折り返しを無効化
 set textwidth=0
 
