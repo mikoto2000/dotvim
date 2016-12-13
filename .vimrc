@@ -102,6 +102,9 @@ noremap <Leader>cn <Esc>:cn<Enter>
 noremap <Leader>cp <Esc>:cp<Enter>
 
 noremap <Leader>f <Esc>:call file_selector#OpenFileSelector()<Enter>
+
+noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
+
 """ }}} about buffer about buffer
 
 """ split
@@ -247,6 +250,7 @@ endif
 packadd! vim-go-extra
 packadd! buffer_selector.vim
 packadd! file_selector.vim
+packadd! outline.vim
 
 filetype plugin indent on
 

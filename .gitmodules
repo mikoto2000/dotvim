@@ -37,3 +37,6 @@
 [submodule ".vim/pack/b/opt/file_selector.vim"]
 	path = .vim/pack/b/opt/file_selector.vim
 	url = http://github.com/mikoto2000/file_selector.vim
+[submodule ".vim/pack/b/opt/outline.vim"]
+	path = .vim/pack/b/opt/outline.vim
+	url = http://github.com/mikoto2000/outline.vim
