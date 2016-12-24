@@ -211,6 +211,7 @@ let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 
 """ {{{ for Netrw
+let g:netrw_banner = 0
 nnoremap <Leader>e :Explore<Return>
 augroup netrw
     autocmd!
