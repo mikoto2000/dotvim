@@ -272,3 +272,59 @@ command! Num2Mask1 execute "normal viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", 
 
 " 選択範囲の式を評価して置き換える(改行未対応)
 vnoremap <Leader>= c<C-R>=eval("<C-R>"")<Return><Esc>
+
+""" for hex edit
+command! StartHexEdit call StartHexEdit()
+command! SaveHexEdit call SaveHexEdit()
+command! EndHexEdit call EndHexEdit()
+
+""" 現在のバッファで hex 編集モードを開始する
+function! StartHexEdit()
+    " バイナリモードじゃなかったら
+    " バイナリモードに入ってファイルを開きなおす
+    if !&binary
+        setlocal binary
+        e! %
+    endif
+
+    " hex 編集モード (？) に切り替え
+    silent %!xxd
+
+    " :w でセーブできるようにマッピング追加
+    nnoremap <buffer> :w :call SaveHexEdit()<Return>
+endfunction
+
+""" hex 編集モードで編集した内容を保存する
+function! SaveHexEdit()
+
+    " binary がセットされていない場合、
+    " 多分間違って呼び出しちゃってるので何もしない
+    if !&binary
+        echo "This buffer is not binary mode."
+        return
+    endif
+
+    " hex 編集モードから戻って保存した後、
+    " また hex 編集モードに帰る
+    silent %!xxd -r
+    w
+    silent %!xxd
+endfunction
+
+""" 現在のバッファで hex 編集モードを終了する
+function! EndHexEdit()
+
+    " binary がセットされていない場合、
+    " 多分間違って呼び出しちゃってるので何もしない
+    if !&binary
+        echo "This buffer is not binary mode."
+        return
+    endif
+
+    " hex 編集モードから戻る
+    silent %!xxd -r
+
+    " バイナリモードをやめる
+    setlocal nobinary
+endfunction
+
