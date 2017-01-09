@@ -328,3 +328,6 @@ function! EndHexEdit()
     setlocal nobinary
 endfunction
 
+""" for c_previewer
+let g:c_previewer_toolchain = 'aarch64-linux-gnu-'
+let g:c_previewer_cflags = ' -I c:/Users/mikoto/project/raspberrypi_bare_metal/util/include '
