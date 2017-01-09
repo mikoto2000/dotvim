@@ -331,3 +331,8 @@ endfunction
 """ for c_previewer
 let g:c_previewer_toolchain = 'aarch64-linux-gnu-'
 let g:c_previewer_cflags = ' -I c:/Users/mikoto/project/raspberrypi_bare_metal/util/include '
+
+command! Cinit :call c_previewer#init()
+command! Cpp :call c_previewer#OpenPreprocessBuffer()
+command! Assemble :call c_previewer#OpenAssembleBuffer()
+
