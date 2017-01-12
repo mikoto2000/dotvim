@@ -251,6 +251,7 @@ endif
 packadd! vim-go-extra
 packadd! buffer_selector.vim
 packadd! file_selector.vim
+packadd! c_previewer.vim
 packadd! outline.vim
 
 filetype plugin indent on
@@ -332,7 +333,9 @@ endfunction
 let g:c_previewer_toolchain = 'aarch64-linux-gnu-'
 let g:c_previewer_cflags = ' -I c:/Users/mikoto/project/raspberrypi_bare_metal/util/include '
 
-command! Cinit :call c_previewer#init()
-command! Cpp :call c_previewer#OpenPreprocessBuffer()
-command! Assemble :call c_previewer#OpenAssembleBuffer()
+command! Assenble call c_previewer#OpenAssembleBuffer()
+command! Headers call c_previewer#OpenHeadersBuffer()
+command! Symbols call c_previewer#OpenSymbolsBuffer()
+command! Hex call c_previewer#OpenHexBuffer()
+command! Cpp call c_previewer#OpenPreprocessBuffer()
 

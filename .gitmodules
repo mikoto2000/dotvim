@@ -40,3 +40,6 @@
 [submodule ".vim/pack/b/opt/outline.vim"]
 	path = .vim/pack/b/opt/outline.vim
 	url = http://github.com/mikoto2000/outline.vim
+[submodule ".vim/pack/c/opt/c_previewer.vim"]
+	path = .vim/pack/c/opt/c_previewer.vim
+	url = https://github.com/mikoto2000/c_previewer.vim
