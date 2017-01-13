@@ -43,3 +43,6 @@
 [submodule ".vim/pack/c/opt/c_previewer.vim"]
 	path = .vim/pack/c/opt/c_previewer.vim
 	url = https://github.com/mikoto2000/c_previewer.vim
+[submodule ".vim/pack/c/opt/hex_edit.vim"]
+	path = .vim/pack/c/opt/hex_edit.vim
+	url = https://github.com/mikoto2000/hex_edit.vim
