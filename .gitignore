@@ -1,1 +1,4 @@
 !*.gitkeep
+.vim/eclim/
+.vim/plugin/
+
