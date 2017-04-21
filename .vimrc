@@ -102,6 +102,7 @@ noremap <Leader>cn <Esc>:cn<Enter>
 noremap <Leader>cp <Esc>:cp<Enter>
 
 noremap <Leader>f <Esc>:call file_selector#OpenFileSelector()<Enter>
+let g:file_selector_exclude_pattern = '\(bin\|build\|gradle\|config\)'
 
 noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 
