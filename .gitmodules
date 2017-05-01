@@ -46,3 +46,15 @@
 [submodule ".vim/pack/c/opt/hex_edit.vim"]
 	path = .vim/pack/c/opt/hex_edit.vim
 	url = https://github.com/mikoto2000/hex_edit.vim
+[submodule ".vim/pack/java/opt/unite-javaimport"]
+	path = .vim/pack/java/opt/unite-javaimport
+	url = https://github.com/kamichidu/unite-javaimport
+[submodule ".vim/pack/java/opt/unite.vim"]
+	path = .vim/pack/java/opt/unite.vim
+	url = https://github.com/Shougo/unite.vim
+[submodule ".vim/pack/java/opt/vim-javaclasspath"]
+	path = .vim/pack/java/opt/vim-javaclasspath
+	url = https://github.com/kamichidu/vim-javaclasspath
+[submodule ".vim/pack/java/opt/vim-unite-javaimport"]
+	path = .vim/pack/java/opt/vim-unite-javaimport
+	url = https://github.com/kamichidu/vim-unite-javaimport

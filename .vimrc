@@ -297,3 +297,23 @@ command! Symbols call c_previewer#OpenSymbolsBuffer()
 command! Hex call c_previewer#OpenHexBuffer()
 command! Cpp call c_previewer#OpenPreprocessBuffer()
 
+""" for java development
+command! Javad call StartJavaDevelopment()
+function! StartJavaDevelopment()
+    filetype plugin indent off
+    packadd unite.vim
+    packadd vim-javaclasspath
+    packadd vim-unite-javaimport
+    filetype plugin indent on
+
+    let g:javaimport_config.exclude_packages = ['com.oracle', 'cum.sun', 'sun', 'sunw', 'org.ietf', 'org.jcp', 'org.omg']
+
+    command! Import call QuickImport()
+    function! QuickImport()
+        normal viwy
+        let word = @"
+        Unite javaimport/class
+        call feedkeys('i' . word)
+    endfunction
+endfunction
+
