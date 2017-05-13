@@ -252,6 +252,7 @@ endif
 packadd! vim-go-extra
 packadd! buffer_selector.vim
 packadd! file_selector.vim
+packadd! ctags_selector.vim
 packadd! c_previewer.vim
 packadd! hex_edit.vim
 packadd! outline.vim
@@ -314,4 +315,7 @@ function! StartJavaDevelopment()
         call feedkeys('i' . word)
     endfunction
 endfunction
+
+""" for ctags
+nnoremap <C-]> :call ctags_selector#OpenTagSelector()<Enter>
 

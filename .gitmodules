@@ -58,3 +58,6 @@
 [submodule ".vim/pack/java/opt/vim-unite-javaimport"]
 	path = .vim/pack/java/opt/vim-unite-javaimport
 	url = https://github.com/kamichidu/vim-unite-javaimport
+[submodule ".vim/pack/b/opt/ctags_selector.vim"]
+	path = .vim/pack/b/opt/ctags_selector.vim
+	url = https://github.com/mikoto2000/ctags_selector.vim
