@@ -320,3 +320,20 @@ endfunction
 """ for ctags
 nnoremap <C-]> :call ctags_selector#OpenTagSelector()<Enter>
 
+""" for markdown
+" H1 見出し用の線を引く
+" 行の構成文字がすべて ascii だと 1 文字多くなっちゃう
+command! H1 call Heading('=')
+command! H2 call Heading('-')
+
+function! Heading(char)
+    " 末尾に移動
+    normal 2147483647l
+
+    " 末尾の見た目の列数を取得
+    let h1_char_num = getcurpos()[4] + 1
+
+    normal o
+
+    execute "normal " . h1_char_num . "i" . a:char
+endfunction
