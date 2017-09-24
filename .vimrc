@@ -337,3 +337,43 @@ function! Heading(char)
 
     execute "normal " . h1_char_num . "i" . a:char
 endfunction
+
+
+""" for sphinx {{{
+""" カーソル下のファイルパスを取得
+function! GetCursorPath()
+    let current_buffer = @"
+    normal BvEy
+    let ret = @"
+    let @" = current_buffer
+    return ret
+endfunction
+
+""" カーソル下のファイルパスを開く、ファイルが存在しなければ、ファイルとその親ディレクトリを自動作成する。
+function! CreateCursorPath()
+    let cursor_path = GetCursorPath()
+    let target_path = split(substitute(fnamemodify(expand("%:p:h") . "/" . cursor_path, ":p:h"), "\\", "/", "g"), "/")
+    let target_file = fnamemodify(cursor_path, ":t")
+
+    let current_path = target_path[0] . "/"
+    if len(glob(current_path)) == 0
+        call mkdir(current_path)
+    else
+        " do nothing
+    endif
+
+    for path in target_path[1:]
+        let current_path = current_path . path . "/"
+        if len(glob(current_path)) == 0
+            call mkdir(current_path)
+        else
+            " do nothing
+        endif
+    endfor
+
+    " ファイルを開く
+    echo "Open: " . current_path . "/" . target_file
+    execute "e " . current_path . "/" . target_file
+endfunction
+
+""" }}} for sphinx
