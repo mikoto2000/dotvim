@@ -340,6 +340,11 @@ endfunction
 
 
 """ for sphinx {{{
+augroup auto_sphinx_rst
+    autocmd!
+    autocmd FileType rst noremap <buffer> gf :call CreateCursorPath()<Enter>
+augroup END
+
 """ カーソル下のファイルパスを取得
 function! GetCursorPath()
     let current_buffer = @"
