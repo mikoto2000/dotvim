@@ -245,11 +245,6 @@ set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.s
 
 filetype plugin indent off
 
-if (has('clientserver'))
-    packadd! vim-singleton
-    call singleton#enable()
-endif
-
 packadd! vim-go-extra
 packadd! buffer_selector.vim
 packadd! file_selector.vim
