@@ -316,21 +316,29 @@ endfunction
 nnoremap <C-]> :call ctags_selector#OpenTagSelector()<Enter>
 
 """ for markdown
-" H1 見出し用の線を引く
-" 行の構成文字がすべて ascii だと 1 文字多くなっちゃう
+" 見出し用の線を引く
+nnoremap <Leader>h1 :call Heading('=')<Return>
+nnoremap <Leader>h2 :call Heading('-')<Return>
+
 command! H1 call Heading('=')
 command! H2 call Heading('-')
 
 function! Heading(char)
     " 末尾に移動
-    normal 2147483647l
+    normal $
 
     " 末尾の見た目の列数を取得
-    let h1_char_num = getcurpos()[4] + 1
+    let h1_char_num = virtcol('.')
 
+    " 直下に空行を挿入
     normal o
 
+    " 必要な数だけ文字を挿入
     execute "normal " . h1_char_num . "i" . a:char
+
+    " 行の先頭へ移動
+    normal 0
+
 endfunction
 
 
