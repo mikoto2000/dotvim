@@ -317,11 +317,11 @@ nnoremap <C-]> :call ctags_selector#OpenTagSelector()<Enter>
 
 """ for markdown
 " 見出し用の線を引く
-nnoremap <Leader>h1 :call Heading('=')<Return>
-nnoremap <Leader>h2 :call Heading('-')<Return>
-
-command! H1 call Heading('=')
-command! H2 call Heading('-')
+augroup auto_markdown
+    autocmd!
+    autocmd FileType markdown nnoremap <buffer> <Leader>h1 :call Heading('=')<Return>
+    autocmd FileType markdown nnoremap <buffer> <Leader>h2 :call Heading('-')<Return>
+augroup END
 
 function! Heading(char)
     " 末尾に移動
@@ -346,6 +346,10 @@ endfunction
 augroup auto_sphinx_rst
     autocmd!
     autocmd FileType rst noremap <buffer> gf :call CreateCursorPath()<Enter>
+    autocmd FileType rst nnoremap <buffer> <Leader>h1 :call Heading('=')<Return>yykP
+    autocmd FileType rst nnoremap <buffer> <Leader>h2 :call Heading('-')<Return>yykP
+    autocmd FileType rst nnoremap <buffer> <Leader>h3 :call Heading('-')<Return>
+    autocmd FileType rst nnoremap <buffer> <Leader>h4 :call Heading('^')<Return>
 augroup END
 
 """ カーソル下のファイルパスを取得
