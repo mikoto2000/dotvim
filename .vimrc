@@ -414,7 +414,8 @@ function! StartFileBrowser(path)
     if bufexists(bufnr('__FILE_BROWSER_FILE_LIST__'))
         bwipeout! __FILE_BROWSER_FILE_LIST__
     endif
-    silent bo new __FILE_BROWSER_FILE_LIST__
+    silent hide noswap enew
+    silent file `='__FILE_BROWSER_FILE_LIST__'`
 
     " ファイルリスト取得
     call UpdateBuffer('')
