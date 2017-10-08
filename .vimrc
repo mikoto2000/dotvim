@@ -214,7 +214,7 @@ let g:restart_sessionoptions
 
 """ {{{ for Netrw
 let g:netrw_banner = 0
-nnoremap <Leader>e :Explore<Return>
+"nnoremap <Leader>e :Explore<Return>
 augroup netrw
     autocmd!
     autocmd FileType netrw map <buffer> l <Return>
@@ -389,3 +389,86 @@ function! CreateCursorPath()
 endfunction
 
 """ }}} for sphinx
+
+
+""" {{{ Filer
+
+""" カレントディレクトリで FileBrowser を開く
+nnoremap <Leader>e :call StartFileBrowser(getcwd())<Enter>
+
+augroup file_browser
+    autocmd!
+    autocmd FileType filebrowser nnoremap <buffer> l :call OpenFileOrDirectory()<Enter>
+    autocmd FileType filebrowser nnoremap <buffer> <Enter> :call OpenFileOrDirectory()<Enter>
+    autocmd FileType filebrowser nnoremap <buffer> h :call MoveUpperDirectory()<Enter>
+    autocmd FileType filebrowser nnoremap <buffer> c :call LcdCurrent()<Enter>
+augroup END
+
+function! StartFileBrowser(path)
+    let g:file_browser_pwd = a:path
+
+    " 呼び出し元のウィンドウ ID を記憶
+    let g:caller_window_id = win_getid()
+
+    " 新しいバッファを作成
+    if bufexists(bufnr('__FILE_BROWSER_FILE_LIST__'))
+        bwipeout! __FILE_BROWSER_FILE_LIST__
+    endif
+    silent bo new __FILE_BROWSER_FILE_LIST__
+
+    " ファイルリスト取得
+    call UpdateBuffer('')
+
+    " リスト用バッファの設定
+    setlocal noshowcmd
+    setlocal noswapfile
+    setlocal buftype=nofile
+    setlocal nobuflisted
+    setlocal nomodifiable
+    setlocal wrap
+    setlocal nonumber
+    setlocal filetype=filebrowser
+endfunction
+
+function! UpdateBuffer(dir)
+    setlocal modifiable
+    silent normal ggVGd
+    if a:dir != ''
+        let g:file_browser_pwd = fnamemodify(g:file_browser_pwd . '\\' . a:dir, ':p')
+    endif
+    let fullpath_files = glob(g:file_browser_pwd . '/*')
+    let files = substitute(fullpath_files, substitute(g:file_browser_pwd . '\', '\\', '\\\\', 'g'), '', 'g')
+    silent put! = files
+    normal gg
+    setlocal nomodifiable
+endfunction
+
+function! MoveUpperDirectory()
+    call UpdateBuffer('..')
+endfunction
+
+function! OpenFileOrDirectory()
+    let target = getline('.')
+    if isdirectory(g:file_browser_pwd . '\\' . target)
+        call OpenDirectory(target)
+    else
+        call OpenFile(target)
+    endif
+endfunction
+
+function! OpenDirectory(target)
+    call UpdateBuffer(a:target)
+endfunction
+
+function! OpenFile(target)
+    execute 'e ' . g:file_browser_pwd . '/' . a:target
+endfunction
+
+function! GetPath()
+    return substitute(g:file_browser_pwd . getline('.'), '\\', '\\\\', 'g')
+endfunction
+
+function! LcdCurrent()
+    execute ":lcd " . g:file_browser_pwd
+endfunction
+""" }}} Filer
