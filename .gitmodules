@@ -61,3 +61,6 @@
 [submodule ".vim/pack/b/opt/ctags_selector.vim"]
 	path = .vim/pack/b/opt/ctags_selector.vim
 	url = https://github.com/mikoto2000/ctags_selector.vim
+[submodule ".vim/pack/b/start/file_explorer.vim"]
+	path = .vim/pack/b/start/file_explorer.vim
+	url = https://github.com/mikoto2000/file_explorer.vim
