@@ -394,6 +394,6 @@ endfunction
 """ {{{ for file_explorer
 
 """ カレントディレクトリで FileExplorer を開く
-nnoremap <Leader>e :call file_explorer#OpenFileExplorer(getcwd())<Enter>
+nnoremap <Leader>e :call file_explorer#OpenFileExplorer(expand("%:h:p"))<Enter>
 
 """ }}} for file_explorer
