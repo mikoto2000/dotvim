@@ -64,3 +64,6 @@
 [submodule ".vim/pack/b/start/file_explorer.vim"]
 	path = .vim/pack/b/start/file_explorer.vim
 	url = https://github.com/mikoto2000/file_explorer.vim
+[submodule ".vim/pack/html/opt/emmet-vim"]
+	path = .vim/pack/html/opt/emmet-vim
+	url = https://github.com/mattn/emmet-vim
