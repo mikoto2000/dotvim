@@ -162,6 +162,11 @@ set tags=./tags;
 autocmd QuickfixCmdPost [^l]* copen
 """ }}} for ctags
 
+""" {{{ for terminal
+" terminal でも <C-r> をインサートモードと同じ挙動にする
+tnoremap <C-r> <C-w>"
+""" }}} for terminal
+
 """ {{{ for sonicktemplate-vim
 let g:sonictemplate_vim_template_dir = '~/.vim/template'
 """ }}} for sonicktemplate-vim
