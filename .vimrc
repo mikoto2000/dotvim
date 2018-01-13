@@ -136,7 +136,7 @@ autocmd! FileType markdown hi! def link markdownItalic NONE
 
 """ {{{ highlight white spaces
 set list
-set listchars=tab:>-,eol:$,trail:-
+set listchars=tab:>-,trail:-
 set showbreak=\\\ 
 
 function! SpaceHilight()
