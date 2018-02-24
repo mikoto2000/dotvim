@@ -264,6 +264,7 @@ filetype plugin indent on
 augroup m2h
     autocmd!
     autocmd FileType markdown command! M2h call m2h#M2H()
+    autocmd FileType markdown command! M2hsc call m2h#M2H_SC()
 augroup END
 """ }}} for blog
 
