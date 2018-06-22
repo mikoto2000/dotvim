@@ -24,6 +24,7 @@ set cursorcolumn
 set ambiwidth=double
 set breakindent
 set cmdheight=2
+set nofixeol
 
 " Leader
 let mapleader = ' '
