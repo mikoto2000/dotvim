@@ -168,7 +168,7 @@ autocmd QuickfixCmdPost [^l]* copen
 tnoremap <C-r> <C-w>"
 
 command! Powershell execute "terminal powershell"
-command! Bash execute "terminal c:/msys64/usr/bin/bash.exe --login"
+command! Bash execute "terminal c:/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
