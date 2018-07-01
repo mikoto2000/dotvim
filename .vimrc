@@ -166,6 +166,9 @@ autocmd QuickfixCmdPost [^l]* copen
 """ {{{ for terminal
 " terminal でも <C-r> をインサートモードと同じ挙動にする
 tnoremap <C-r> <C-w>"
+
+command! Powershell execute "terminal powershell"
+command! Bash execute "terminal c:/msys64/usr/bin/bash.exe --login"
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
