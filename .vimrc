@@ -168,6 +168,9 @@ autocmd QuickfixCmdPost [^l]* copen
 tnoremap <C-r> <C-w>"
 
 command! Powershell execute "terminal powershell"
+
+" msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
+let $LANG = "ja_JP.UTF-8"
 command! Bash execute "terminal c:/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
 """ }}} for terminal
 
