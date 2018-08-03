@@ -137,21 +137,8 @@ autocmd! FileType markdown hi! def link markdownItalic NONE
 
 """ {{{ highlight white spaces
 set list
-set listchars=tab:>-,trail:-
+set listchars=tab:>-,trail:-,space:␣
 set showbreak=\\\ 
-
-function! SpaceHilight()
-    syntax match Space "^\s\+" display containedin=ALL
-    highlight Space ctermbg=DarkGray guibg=gray15
-endf
-
-if has("syntax")
-    syntax on
-    augroup invisible
-        autocmd! invisible
-        autocmd BufNew,BufRead * call SpaceHilight()
-    augroup END
-endif
 """ }}} highlight white spaces
 
 """ {{{ for ctags
