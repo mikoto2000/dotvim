@@ -397,3 +397,23 @@ endfunction
 nnoremap <Leader>e :call file_explorer#OpenFileExplorer(expand("%:h:p"))<Enter>
 
 """ }}} for file_explorer
+
+""" {{{ for Google Translate
+""" Require: https://github.com/mikoto2000/MiscellaneousTools/tree/master/win/OpenGoogleTranslate
+let g:OpenGoogleTranslateCommand = "~/project/MiscellaneousTools/win/OpenGoogleTranslate/OpenGoogleTranslate.bat"
+command! -range OpenGoogleTranslate :call OpenGoogleTranslate()
+function! OpenGoogleTranslate() range
+    " 選択範囲の文字列をクリップボードにコピー
+    let tmp = @@
+    silent normal gvy
+    let @* = @@
+
+    " OpenGoogleTranslate スクリプトを呼び出す
+    let command = fnamemodify(g:OpenGoogleTranslateCommand, ":p")
+    silent execute "!start cmd /c " . command
+
+    " 元の内容を復元
+    let @@ = tmp
+endfunction
+""" }}} for Google Translate
+
