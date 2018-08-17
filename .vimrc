@@ -80,7 +80,7 @@ augroup END
 """""" 今日の日付
 let $TODAY = strftime('%Y%m%d')
 inoremap <silent> <Leader>td <C-R>=strftime('%Y%m%d')<CR>
-command! Tmp :e ~/worklog/$TODAY.mkd | :set filetype=markdown
+command! Tmp :e ~/worklog/$TODAY.md
 
 """ {{{ rc 系を開く
 command! Vimrc :e ~/.vimrc
