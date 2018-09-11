@@ -142,7 +142,7 @@ autocmd! FileType markdown hi! def link markdownItalic NONE
 
 """ {{{ highlight white spaces
 set list
-set listchars=tab:>-,trail:-,space:␣
+set listchars=tab:>-,trail:-,space:˽
 set showbreak=\\\ 
 """ }}} highlight white spaces
 
