@@ -116,7 +116,12 @@ noremap <Leader>vs :vsplit<Enter>
 """ {{{ encoding
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
+if has("kaoriya")
+    set fileencodings=guess,utf-8
+else
+    set fileencodings=utf-8
+endif
+set fileencodings+=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
 set fileformats=unix,dos,mac
 set fileformat=unix
 """ }}} encoding
