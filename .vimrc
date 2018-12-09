@@ -170,48 +170,6 @@ command! Bash execute "terminal c:/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/
 let g:sonictemplate_vim_template_dir = '~/.vim/template'
 """ }}} for sonicktemplate-vim
 
-""" {{{ for neosnippet
-
-" Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-let g:neosnippet#disable_runtime_snippets = {
-        \   '_' : 1,
-        \ }
-
-""" スニペットのディレクトリ設定
-let g:neosnippet#snippets_directory = $HOME . '/.vim/snippets'
-
-"" SuperTab like snippets behavior.
-imap <expr><C-l> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<C-l>"
-smap <expr><C-l> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<C-l>"
-
-""" }}} for neosnippet
-
-""" {{{ neocomplete
-" neocomplete の自動有効化
-let g:neocomplete#enable_at_startup = 1
-
-" 大文字小文字を区別する
-let g:neocomplete#smart_case = 1
-
-" キャメルケース補完を有効にする
-let g:neocomplete#enable_camelcase_completion = 1
-
-" アンダーバー補完を有効にする
-let g:neocomplete#enable_underbar_completion = 1
-"
-"" シンタックスファイルの補完対象キーワードとする最小の長さ
-let g:neocomplete#min_syntax_length = 3
-let g:neocomplete#min_keyword_length = 3
-""" }}} neocomplete
-
 """ restart setting
 let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'

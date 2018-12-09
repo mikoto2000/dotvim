@@ -1,12 +1,6 @@
 [submodule ".vim/pack/b/start/sonictemplate-vim"]
 	path = .vim/pack/b/start/sonictemplate-vim
 	url = https://github.com/mattn/sonictemplate-vim
-[submodule ".vim/pack/b/start/neosnippet.vim"]
-	path = .vim/pack/b/start/neosnippet.vim
-	url = https://github.com/Shougo/neosnippet.vim
-[submodule ".vim/pack/completion/start/neocomplete.vim"]
-	path = .vim/pack/completion/start/neocomplete.vim
-	url = https://github.com/Shougo/neocomplete.vim
 [submodule ".vim/pack/b/opt/vim-singleton"]
 	path = .vim/pack/b/opt/vim-singleton
 	url = http://github.com/thinca/vim-singleton
