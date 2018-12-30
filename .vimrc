@@ -380,3 +380,16 @@ function! OpenGoogleTranslate() range
 endfunction
 """ }}} for Google Translate
 
+""" {{{ for Snippets
+inoremap <C-l> <Esc>:call SearchNextMark()<Enter>
+nnoremap <C-l> <Esc>:call SearchNextMark()<Enter>
+""" 謎形式(<`1:xxx`>)のプレースホルダまでジャンプする
+function! SearchNextMark()
+    " 次のマークまで移動
+    call search('<`\d.\{-\}:.\{-\}`>', 'w')
+
+    " マーク末尾までを置換編集
+    normal vf>
+endfunction
+
+""" }}}
