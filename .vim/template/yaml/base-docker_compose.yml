@@ -1,0 +1,13 @@
+version: '3'
+services:
+    <`1:service`>:
+        image: <`2:image`>
+        volumes:
+            - <`3:volume`>
+        ports:
+            - <`4:port`>
+volumes:
+    <`5:volume_name`>:
+        external: true
+
+
