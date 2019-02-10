@@ -386,7 +386,12 @@ nnoremap <C-l> <Esc>:call SearchNextMark()<Enter>
 """ 謎形式(<`1:xxx`>)のプレースホルダまでジャンプする
 function! SearchNextMark()
     " 次のマークまで移動
-    call search('<`\d.\{-\}:.\{-\}`>', 'w')
+    let line = search('<`\d.\{-\}:.\{-\}`>', 'w')
+
+    " 見つからなければ何もしない
+    if line == 0
+        return
+    endif
 
     " マーク末尾までを置換編集
     normal vf>
