@@ -260,19 +260,39 @@ command! Cpp call c_previewer#OpenPreprocessBuffer()
 """ for java development
 command! Javad call StartJavaDevelopment()
 function! StartJavaDevelopment()
-    packadd unite.vim
-    packadd vim-javaclasspath
-    packadd vim-unite-javaimport
+    packadd async.vim
+    packadd vim-lsp
 
-    let g:javaimport_config.exclude_packages = ['com.oracle', 'cum.sun', 'sun', 'sunw', 'org.ietf', 'org.jcp', 'org.omg']
+    let g:lsp_log_verbose = 1
+    let g:lsp_log_file = expand('~/vim-lsp.log')
 
-    command! Import call QuickImport()
-    function! QuickImport()
-        normal viwy
-        let word = @"
-        Unite javaimport/class
-        call feedkeys('i' . word)
-    endfunction
+    " for asyncomplete.vim log
+    let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'eclipse.jdt.ls',
+        \ 'cmd': {server_info->[
+        \     'c:\java\jdk1.8.0_201\bin\java',
+        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \     '-Dosgi.bundles.defaultStartLevel=4',
+        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \     '-Dlog.level=ALL',
+        \     '-noverify',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-Xmx1G',
+        \     '-jar',
+        \     fnamemodify("~", ":p") . '/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar',
+        \     '-configuration',
+        \     fnamemodify("~", ":p") . '/eclipse.jdt.ls/config_win',
+        \     '-data',
+        \     fnamemodify("~", ":p") . '/eclipse.jdt.ls/workspace'
+        \ ]},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'build.gradle'))},
+        \ 'whitelist': ['java'],
+        \ })
+
+    call lsp#enable()
+    autocmd FileType java setlocal omnifunc=lsp#complete
 endfunction
 
 """ for ctags
@@ -398,3 +418,5 @@ function! SearchNextMark()
 endfunction
 
 """ }}}
+
+

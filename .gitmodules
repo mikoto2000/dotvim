@@ -61,3 +61,9 @@
 [submodule ".vim/pack/html/opt/emmet-vim"]
 	path = .vim/pack/html/opt/emmet-vim
 	url = https://github.com/mattn/emmet-vim
+[submodule ".vim/pack/lsp/opt/async.vim"]
+	path = .vim/pack/lsp/opt/async.vim
+	url = https://github.com/prabirshrestha/async.vim
+[submodule ".vim/pack/lsp/opt/vim-lsp"]
+	path = .vim/pack/lsp/opt/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
