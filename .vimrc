@@ -260,8 +260,10 @@ command! Cpp call c_previewer#OpenPreprocessBuffer()
 """ for complete
 " プレビューウィンドウを開かないようにする
 set completeopt=menuone
+
+" <C-Space> でオムニ補完を行えるようにマッピング
 " オムニ補完開始直後に、インクリメンタル絞り込みができるようにマッピング
-inoremap <C-X><C-O> <C-X><C-O><C-P>
+inoremap <C-Space> <C-X><C-O><C-P>
 
 """ for java development
 command! Javad call StartJavaDevelopment()
