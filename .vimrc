@@ -257,6 +257,12 @@ command! Symbols call c_previewer#OpenSymbolsBuffer()
 command! Hex call c_previewer#OpenHexBuffer()
 command! Cpp call c_previewer#OpenPreprocessBuffer()
 
+""" for complete
+" プレビューウィンドウを開かないようにする
+set completeopt=menuone
+" オムニ補完開始直後に、インクリメンタル絞り込みができるようにマッピング
+inoremap <C-X><C-O> <C-X><C-O><C-P>
+
 """ for java development
 command! Javad call StartJavaDevelopment()
 function! StartJavaDevelopment()
@@ -295,6 +301,40 @@ function! StartJavaDevelopment()
 
     call lsp#enable()
     autocmd FileType java setlocal omnifunc=lsp#complete
+endfunction
+
+""" for xml development
+command! Xmld call StartXmlDevelopment()
+function! StartXmlDevelopment()
+    packadd async.vim
+    packadd vim-lsp
+    packadd emmet-vim
+
+    " let g:lsp_log_verbose = 1
+    " let g:lsp_log_file = expand('~/vim-lsp.log')
+
+    " for asyncomplete.vim log
+    " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'lsp4xml',
+        \ 'cmd': {server_info->[
+        \     'c:\java\jdk1.8.0_201\bin\java',
+        \     '-noverify',
+        \     '-Xmx1G',
+        \     '-XX:+UseStringDeduplication',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-jar',
+        \     fnamemodify("~", ":p") . '/.vim/lsp/lsp4xml/org.eclipse.lsp4xml-0.3.0-uber.jar'
+        \ ]},
+        \ 'whitelist': ['xml', 'arxml'],
+        \ })
+
+    call lsp#enable()
+    autocmd FileType arxml setlocal omnifunc=lsp#complete
+    autocmd FileType xml setlocal omnifunc=lsp#complete
+    " TODO: ExpandOrSerchNextMark みたいなことをしたい
+    imap <C-L> <C-Y><Plug>(emmet-expand-abbr)
 endfunction
 
 """ for ctags
