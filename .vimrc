@@ -333,6 +333,10 @@ function! StartXmlDevelopment()
     call lsp#enable()
     autocmd FileType arxml setlocal omnifunc=lsp#complete
     autocmd FileType xml setlocal omnifunc=lsp#complete
+
+    " arxml では、`:`, `-` 区切りの文字列も 1 単語として扱いたい
+    autocmd FileType xml setlocal iskeyword+=:-
+
     " TODO: ExpandOrSerchNextMark みたいなことをしたい
     imap <C-L> <C-Y><Plug>(emmet-expand-abbr)
 endfunction
