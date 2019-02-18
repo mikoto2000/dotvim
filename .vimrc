@@ -263,12 +263,14 @@ function! StartJavaDevelopment()
     packadd async.vim
     packadd vim-lsp
 
-    let g:lsp_log_verbose = 1
-    let g:lsp_log_file = expand('~/vim-lsp.log')
+    " let g:lsp_log_verbose = 1
+    " let g:lsp_log_file = expand('~/vim-lsp.log')
 
     " for asyncomplete.vim log
-    let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+    " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
+    " bat ファイルを作ってそれを叩くようにしたら、 'invalid content-length'
+    " というエラーになってしまうのでここに全部オプションを書くようにしている。
     autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'eclipse.jdt.ls',
         \ 'cmd': {server_info->[
@@ -281,11 +283,11 @@ function! StartJavaDevelopment()
         \     '-Dfile.encoding=UTF-8',
         \     '-Xmx1G',
         \     '-jar',
-        \     fnamemodify("~", ":p") . '/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar',
+        \     fnamemodify("~", ":p") . '/.vim/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar',
         \     '-configuration',
-        \     fnamemodify("~", ":p") . '/eclipse.jdt.ls/config_win',
+        \     fnamemodify("~", ":p") . '/.vim/lsp/eclipse.jdt.ls/config_win',
         \     '-data',
-        \     fnamemodify("~", ":p") . '/eclipse.jdt.ls/workspace'
+        \     fnamemodify("~", ":p") . '/.vim/lsp/eclipse.jdt.ls/workspace'
         \ ]},
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'build.gradle'))},
         \ 'whitelist': ['java'],
