@@ -22,7 +22,7 @@ function! m2h#M2H()
 
     " pandoc で Markdown -> html 変換
     " 出力先は出力用一時バッファ
-    call job_start("pandoc --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 --standalone " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'exit_cb': function("m2h#M2H_CB")})
+    call job_start("pandoc --mathml --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 --standalone " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'exit_cb': function("m2h#M2H_CB")})
 endfunction
 
 function! m2h#M2H_SC()
@@ -42,6 +42,6 @@ function! m2h#M2H_SC()
 
     " pandoc で Markdown -> html 変換
     " 出力先は出力用一時バッファ
-    call job_start("pandoc --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 --standalone --self-contained " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'exit_cb': function("m2h#M2H_CB")})
+    call job_start("pandoc --mathml --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 --standalone --self-contained " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'exit_cb': function("m2h#M2H_CB")})
 endfunction
 
