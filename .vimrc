@@ -282,7 +282,7 @@ function! StartJavaDevelopment()
     autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'eclipse.jdt.ls',
         \ 'cmd': {server_info->[
-        \     'c:\java\jdk1.8.0_201\bin\java',
+        \     'java',
         \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         \     '-Dosgi.bundles.defaultStartLevel=4',
         \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -297,7 +297,7 @@ function! StartJavaDevelopment()
         \     '-data',
         \     fnamemodify("~", ":p") . '/.vim/lsp/eclipse.jdt.ls/workspace'
         \ ]},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'build.gradle'))},
+        \ 'root_uri':{server_info->SearchProjectRoot('settings.gradle')},
         \ 'whitelist': ['java'],
         \ })
 
@@ -321,7 +321,7 @@ function! StartXmlDevelopment()
     autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'lsp4xml',
         \ 'cmd': {server_info->[
-        \     'c:\java\jdk1.8.0_201\bin\java',
+        \     'java',
         \     '-noverify',
         \     '-Xmx1G',
         \     '-XX:+UseStringDeduplication',
@@ -343,6 +343,19 @@ function! StartXmlDevelopment()
     " TODO: ExpandOrSerchNextMark みたいなことをしたい
     imap <C-L> <C-Y><Plug>(emmet-expand-abbr)
 endfunction
+
+""" for lsp
+function! SearchProjectRoot(target_file)
+    echo "called"
+    let l:project_root = lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), a:target_file))
+
+    if l:project_root ==# ''
+        let l:project_root = expand('%:p:h')
+    endif
+
+    return l:project_root
+endfunction
+
 
 """ for ctags
 nnoremap <C-]> :call ctags_selector#OpenTagSelector()<Enter>
