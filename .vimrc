@@ -346,7 +346,6 @@ endfunction
 
 """ for lsp
 function! SearchProjectRoot(target_file)
-    echo "called"
     let l:project_root = lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), a:target_file))
 
     if l:project_root ==# ''
