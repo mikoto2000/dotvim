@@ -159,11 +159,11 @@ autocmd QuickfixCmdPost [^l]* copen
 " terminal でも <C-r> をインサートモードと同じ挙動にする
 tnoremap <C-r> <C-w>"
 
-command! Powershell execute "terminal powershell"
+command! Powershell execute "terminal ++close powershell"
 
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
-command! Bash execute "terminal c:/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
+command! Bash execute "terminal ++close c:/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
