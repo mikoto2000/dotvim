@@ -23,8 +23,8 @@ if not exist "lsp\eclipse.jdt.ls" (
 cd lsp\eclipse.jdt.ls
 
 rem eclipse.jdt.ls をダウンロード
-set JDT_LS_BASE_PATH=https://download.eclipse.org/jdtls/milestones/0.32.0
-set JDT_LS_TAR_GZ=jdt-language-server-0.32.0-201901231649.tar.gz
+set JDT_LS_BASE_PATH=https://download.eclipse.org/jdtls/milestones/0.35.0
+set JDT_LS_TAR_GZ=jdt-language-server-0.35.0-201903142358.tar.gz
 if not exist "%JDT_LS_TAR_GZ%" (
     wget.exe %JDT_LS_BASE_PATH%/%JDT_LS_TAR_GZ%
 )
