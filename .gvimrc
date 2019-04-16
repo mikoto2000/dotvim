@@ -17,7 +17,7 @@ set vb t_vb=
 
 """ フォント設定
 if has('win32') || has('win64')
-    set guifont=Osaka－等幅:h9
+    set guifont=Osaka－等幅:h9,Ricty_Diminished:h16:cSHIFTJIS:qDRAFT,ＭＳ_ゴシック:h12:cSHIFTJIS:qDRAFT
     set rop=type:directx
 else
     set guifont=Ricty_Diminished\ 13
