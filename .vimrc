@@ -291,11 +291,11 @@ function! StartJavaDevelopment()
         \     '-Dfile.encoding=UTF-8',
         \     '-Xmx1G',
         \     '-jar',
-        \     fnamemodify("~", ":p") . '/.vim/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar',
+        \     expand('~/.vim/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar'),
         \     '-configuration',
-        \     fnamemodify("~", ":p") . '/.vim/lsp/eclipse.jdt.ls/config_win',
+        \     expand('~/.vim/lsp/eclipse.jdt.ls/config_win'),
         \     '-data',
-        \     fnamemodify("~", ":p") . '/.vim/lsp/eclipse.jdt.ls/workspace'
+        \     expand('~/.vim/lsp/eclipse.jdt.ls/workspace)'
         \ ]},
         \ 'root_uri':{server_info->SearchProjectRoot('settings.gradle')},
         \ 'whitelist': ['java'],
@@ -327,7 +327,7 @@ function! StartXmlDevelopment()
         \     '-XX:+UseStringDeduplication',
         \     '-Dfile.encoding=UTF-8',
         \     '-jar',
-        \     fnamemodify("~", ":p") . '/.vim/lsp/lsp4xml/org.eclipse.lsp4xml-0.3.0-uber.jar'
+        \     expand('~/.vim/lsp/lsp4xml/org.eclipse.lsp4xml-0.3.0-uber.jar')
         \ ]},
         \ 'whitelist': ['xml', 'arxml'],
         \ })
