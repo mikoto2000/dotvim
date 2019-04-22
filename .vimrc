@@ -301,7 +301,6 @@ function! StartJavaDevelopment()
         \     '-data',
         \     expand('~/.vim/lsp/eclipse.jdt.ls/workspace'),
         \ ]},
-        \ 'root_uri':{server_info->SearchProjectRoot('settings.gradle')},
         \ 'whitelist': ['java'],
         \ })
 
