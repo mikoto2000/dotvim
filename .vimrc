@@ -295,7 +295,7 @@ function! StartJavaDevelopment()
         \     '-configuration',
         \     expand('~/.vim/lsp/eclipse.jdt.ls/config_win'),
         \     '-data',
-        \     expand('~/.vim/lsp/eclipse.jdt.ls/workspace)'
+        \     expand('~/.vim/lsp/eclipse.jdt.ls/workspace'),
         \ ]},
         \ 'root_uri':{server_info->SearchProjectRoot('settings.gradle')},
         \ 'whitelist': ['java'],
