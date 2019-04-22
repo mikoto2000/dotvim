@@ -26,8 +26,8 @@ fi
 cd lsp/eclipse.jdt.ls
 
 # eclipse.jdt.ls をダウンロード
-JDT_LS_BASE_PATH=https://download.eclipse.org/jdtls/milestones/0.35.0
-JDT_LS_TAR_GZ=jdt-language-server-0.35.0-201903142358.tar.gz
+JDT_LS_BASE_PATH=http://download.eclipse.org/jdtls/snapshots
+JDT_LS_TAR_GZ=jdt-language-server-0.37.0-201904162228.tar.gz
 if [ ! -e ${JDT_LS_TAR_GZ} ]; then
     wget ${JDT_LS_BASE_PATH}/${JDT_LS_TAR_GZ}
 fi

@@ -291,7 +291,7 @@ function! StartJavaDevelopment()
         \     '-Dfile.encoding=UTF-8',
         \     '-Xmx1G',
         \     '-jar',
-        \     expand('~/.vim/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.200.v20180922-1751.jar'),
+        \     expand('~/.vim/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'),
         \     '-configuration',
         \     expand('~/.vim/lsp/eclipse.jdt.ls/config_win'),
         \     '-data',
