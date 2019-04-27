@@ -259,7 +259,8 @@ command! Cpp call c_previewer#OpenPreprocessBuffer()
 
 """ for complete
 " プレビューウィンドウを開かないようにする
-set completeopt=menuone
+" 補完呼び出し時に自動で先頭のアイテムが選択状態になるのを防ぐ
+set completeopt=menuone,noselect
 
 " <C-Space> でオムニ補完を行えるようにマッピング
 " オムニ補完開始直後に、インクリメンタル絞り込みができるようにマッピング
