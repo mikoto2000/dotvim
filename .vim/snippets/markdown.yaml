@@ -1,0 +1,22 @@
+snippets:
+    markdown: &markdown
+        - label: link
+          description: link
+          newText: "[${1:label}](${2:url})"
+        - label: image
+          description: image
+          newText: "![${1:caption}](${2:url})"
+        - label: refdef
+          description: references
+          newText: [${1:ref_id}]: ${2:url}
+        - label: refuse
+          description: references
+          newText: [${1:label}][${2:ref_id}]
+        - label: table
+          description: table template
+          newText: |-
+              ${1:header1} ${2:header2}
+              ============ ============
+              ${3:value1}  ${4:value2}
+    md: *markdown
+
