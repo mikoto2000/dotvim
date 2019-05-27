@@ -466,22 +466,35 @@ endfunction
 """ }}} for Google Translate
 
 """ {{{ for Snippets
-inoremap <C-l> <Esc>:call SearchNextMark()<Enter>
-nnoremap <C-l> <Esc>:call SearchNextMark()<Enter>
-""" 謎形式(<`1:xxx`>)のプレースホルダまでジャンプする
+inoremap <C-j> <Esc>:call SearchNextMark()<Enter>
+nnoremap <C-j> <Esc>:call SearchNextMark()<Enter>
+vnoremap <C-j> <Esc>:call SearchNextMark()<Enter>
+inoremap <C-k> <Esc>:call SearchPrevMark()<Enter>
+nnoremap <C-k> <Esc>:call SearchPrevMark()<Enter>
+vnoremap <C-k> <Esc>:call SearchPrevMark()<Enter>
+""" LSP形式のプレースホルダ(${1:xxx})までジャンプする
 function! SearchNextMark()
+    call SearchMark('w')
+endfunction
+
+function! SearchPrevMark()
+    call SearchMark('b')
+endfunction
+
+function! SearchMark(search_option)
+    normal 
+
     " 次のマークまで移動
-    let line = search('<`\d.\{-\}:.\{-\}`>', 'w')
+    let l:line = search('\${\d\{-\}:\w\{-\}}', a:search_option)
 
     " 見つからなければ何もしない
-    if line == 0
+    if l:line == 0
         return
     endif
 
     " マーク末尾までを置換編集
-    normal vf>
+    normal vf}
 endfunction
-
 """ }}}
 
 
