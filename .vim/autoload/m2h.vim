@@ -1,4 +1,4 @@
-function! m2h#M2H_CB(job, status)
+function! m2h#M2H_CB(channel)
     call job_start("cmd /c " . s:m2h_tmp, {'out_io': 'null'})
 
     " 出力用一時バッファを split して開く
@@ -29,7 +29,7 @@ function! m2h#M2H()
     endif
 
     " 出力先は出力用一時バッファ
-    call job_start("pandoc --mathml --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 " . css . " --standalone " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'exit_cb': function("m2h#M2H_CB")})
+    call job_start("pandoc --mathml --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 " . css . " --standalone " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'close_cb': function("m2h#M2H_CB")})
 endfunction
 
 function! m2h#M2H_SC()
@@ -56,6 +56,6 @@ function! m2h#M2H_SC()
     endif
 
     " 出力先は出力用一時バッファ
-    call job_start("pandoc --mathml --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 " . css . " --standalone --self-contained " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'exit_cb': function("m2h#M2H_CB")})
+    call job_start("pandoc --mathml --toc --toc-depth 4 -f markdown+pandoc_title_block-ascii_identifiers -t html5 " . css . " --standalone --self-contained " . tempfile_in, {'cwd': cwd, 'out_io': 'file', 'out_name': tempfile_out, 'close_cb': function("m2h#M2H_CB")})
 endfunction
 
