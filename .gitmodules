@@ -55,3 +55,6 @@
 [submodule ".vim/pack/lsp/opt/vim-lsp"]
 	path = .vim/pack/lsp/opt/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp
+[submodule ".\\.vim\\pack\\b\\start\\vim-color-forest-night"]
+	path = .\\.vim\\pack\\b\\start\\vim-color-forest-night
+	url = https://github.com/sainnhe/vim-color-forest-night.git

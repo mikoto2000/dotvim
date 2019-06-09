@@ -8,7 +8,7 @@ endif
 """ メニュー設定
 set guioptions=
 
-colorscheme desert
+colorscheme forest-night
 highlight Error term=none ctermfg=15 ctermbg=124 gui=bold guifg=#ff5050 guibg=#343434
 highlight ErrorMsg term=none ctermfg=15 ctermbg=124 gui=bold guifg=#ff5050 guibg=#343434
 

@@ -38,7 +38,14 @@ set textwidth=0
 " 80 文字目をハイライト
 set colorcolumn=80
 
-colorscheme desert
+if has('termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+    colorscheme forest-night
+else
+    colorscheme desert
+endif
 
 """ for Windows {{{
 if has("win32")
