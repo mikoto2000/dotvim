@@ -1,5 +1,14 @@
 snippets:
     markdown: &markdown
+        - label: pandoc
+          type: template
+          description: pandoc template
+          newText: |-
+              % ${:TITLE}
+              % ${:AUTHOR}
+              % ${:DATE}
+              
+              ${4:CONTENT}
         - label: link
           description: link
           newText: "[${1:label}](${2:url})"
@@ -8,10 +17,10 @@ snippets:
           newText: "![${1:caption}](${2:url})"
         - label: refdef
           description: references
-          newText: [${1:ref_id}]: ${2:url}
+          newText: "[${1:ref_id}]: ${2:url}"
         - label: refuse
           description: references
-          newText: [${1:label}][${2:ref_id}]
+          newText: "[${1:label}][${2:ref_id}]"
         - label: table
           description: table template
           newText: |-
