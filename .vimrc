@@ -514,7 +514,7 @@ function! StartSnippet()
     " bat ファイルを作ってそれを叩くようにしたら、 'invalid content-length'
     " というエラーになってしまうのでここに全部オプションを書くようにしている。
     autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'lsp4snippet',
+        \ 'name': 'lsp4snippet - md',
         \ 'cmd': {server_info->[
         \     'java',
         \     '--add-modules=ALL-SYSTEM',
@@ -532,10 +532,8 @@ function! StartSnippet()
         \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
         \     '--snippet',
         \     expand('~/.vim/snippets/markdown.yaml'),
-        \     '--snippet',
-        \     expand('~/.vim/markdown/rst.yaml'),
         \ ]},
-        \ 'whitelist': ['markdown', 'rst'],
+        \ 'whitelist': ['markdown'],
         \ })
 
     call lsp#enable()
