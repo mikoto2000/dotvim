@@ -502,6 +502,44 @@ function! SearchMark(search_option)
     " マーク末尾までを置換編集
     normal vf}
 endfunction
-""" }}}
 
+command! Snip call StartSnippet()
+function! StartSnippet()
+    packadd async.vim
+    packadd vim-lsp
+
+    " let g:lsp_log_verbose = 1
+    " let g:lsp_log_file = expand('~/vim-lsp.log')
+
+    " bat ファイルを作ってそれを叩くようにしたら、 'invalid content-length'
+    " というエラーになってしまうのでここに全部オプションを書くようにしている。
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'lsp4snippet',
+        \ 'cmd': {server_info->[
+        \     'java',
+        \     '--add-modules=ALL-SYSTEM',
+        \     '--add-opens',
+        \     'java.base/java.util=ALL-UNNAMED',
+        \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \     '-Dosgi.bundles.defaultStartLevel=4',
+        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \     '-Dlog.level=ALL',
+        \     '-noverify',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-Xmx1G',
+        \     '-jar',
+        \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
+        \     '--snippet',
+        \     expand('~/.vim/snippets/markdown.yaml'),
+        \     '--snippet',
+        \     expand('~/.vim/markdown/rst.yaml'),
+        \ ]},
+        \ 'whitelist': ['markdown', 'rst'],
+        \ })
+
+    call lsp#enable()
+    autocmd FileType markdown setlocal omnifunc=lsp#complete
+endfunction
+""" }}} for Snippets
 
