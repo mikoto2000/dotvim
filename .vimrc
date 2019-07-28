@@ -313,6 +313,29 @@ function! StartJavaDevelopment()
         \ 'whitelist': ['java'],
         \ })
 
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'lsp4snippet - java',
+        \ 'cmd': {server_info->[
+        \     'java',
+        \     '--add-modules=ALL-SYSTEM',
+        \     '--add-opens',
+        \     'java.base/java.util=ALL-UNNAMED',
+        \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \     '-Dosgi.bundles.defaultStartLevel=4',
+        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \     '-Dlog.level=ALL',
+        \     '-noverify',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-Xmx1G',
+        \     '-jar',
+        \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
+        \     '--snippet',
+        \     expand('~/.vim/snippets/java.yaml'),
+        \ ]},
+        \ 'whitelist': ['java'],
+        \ })
+
     call lsp#enable()
     autocmd FileType java setlocal omnifunc=lsp#complete
 endfunction
