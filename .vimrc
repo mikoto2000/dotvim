@@ -276,6 +276,7 @@ inoremap <C-Space> <C-X><C-O><C-P>
 """ for java development
 command! Javad call StartJavaDevelopment()
 function! StartJavaDevelopment()
+    packadd vim-lsp-tiny-snippet-support
     packadd async.vim
     packadd vim-lsp
 
@@ -319,6 +320,7 @@ endfunction
 """ for xml development
 command! Xmld call StartXmlDevelopment()
 function! StartXmlDevelopment()
+    packadd vim-lsp-tiny-snippet-support
     packadd async.vim
     packadd vim-lsp
     packadd emmet-vim
@@ -473,38 +475,16 @@ endfunction
 """ }}} for Google Translate
 
 """ {{{ for Snippets
-inoremap <C-j> <Esc>:call SearchNextMark()<Enter>
-nnoremap <C-j> <Esc>:call SearchNextMark()<Enter>
-vnoremap <C-j> <Esc>:call SearchNextMark()<Enter>
-inoremap <C-k> <Esc>:call SearchPrevMark()<Enter>
-nnoremap <C-k> <Esc>:call SearchPrevMark()<Enter>
-vnoremap <C-k> <Esc>:call SearchPrevMark()<Enter>
-""" LSP形式のプレースホルダ(${1:xxx})までジャンプする
-function! SearchNextMark()
-    call SearchMark('w')
-endfunction
-
-function! SearchPrevMark()
-    call SearchMark('b')
-endfunction
-
-function! SearchMark(search_option)
-    normal 
-
-    " 次のマークまで移動
-    let l:line = search('\${\d\{-\}:\w\{-\}}', a:search_option)
-
-    " 見つからなければ何もしない
-    if l:line == 0
-        return
-    endif
-
-    " マーク末尾までを置換編集
-    normal vf}
-endfunction
+inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
+nnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
+vnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
+inoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
+nnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
+vnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
 
 command! Snip call StartSnippet()
 function! StartSnippet()
+    packadd vim-lsp-tiny-snippet-support
     packadd async.vim
     packadd vim-lsp
 
