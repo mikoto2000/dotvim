@@ -25,6 +25,7 @@ set ambiwidth=double
 set breakindent
 set cmdheight=2
 set nofixeol
+set shellslash
 
 " Leader
 let mapleader = ' '
