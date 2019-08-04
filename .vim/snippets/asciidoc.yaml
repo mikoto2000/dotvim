@@ -1,0 +1,40 @@
+snippets:
+  asciidoc: &asciidoc
+    - label: link
+      description: link
+      newText: "link:${1:url}[${2:label}]"
+    - label: xref
+      description: xref
+      newText: "xref:${1:url}[${2:label}]"
+    - label: image
+      description: image
+      newText: |-
+        .${1:title}
+        [#${2:id}]
+        [caption="${3:caption}:", link=${4:link}]
+        image::${5:imaga_path}[${6:alt}, ${7:width}, ${8:height}]
+    - label: codeblock
+      description: codeblock
+      newText: |-
+        .${1:file_nane}
+        [source,${2:file_type}]
+        ----
+        ${3:content}
+        ----
+    - label: table
+      description: table
+      newText: |-
+        .${1:title}
+        |===
+        |${2:column_name_1}|${3:column_name_2}
+        
+        |${4:cell_value_1}
+        |${5:cell_value_2}
+        
+        |===
+    - label: footnote
+      description: footnote
+      newText: "footnote:${1:id}[${2:content}]"
+  adoc: *asciidoc
+
+

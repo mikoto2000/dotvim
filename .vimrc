@@ -536,12 +536,15 @@ function! StartSnippet()
         \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
         \     '--snippet',
         \     expand('~/.vim/snippets/markdown.yaml'),
+        \     '--snippet',
+        \     expand('~/.vim/snippets/asciidoc.yaml'),
         \ ]},
-        \ 'whitelist': ['markdown'],
+        \ 'whitelist': ['markdown', 'asciidoc'],
         \ })
 
     call lsp#enable()
     autocmd FileType markdown setlocal omnifunc=lsp#complete
+    autocmd FileType asciidoc setlocal omnifunc=lsp#complete
 endfunction
 """ }}} for Snippets
 
