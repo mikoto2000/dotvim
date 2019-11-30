@@ -88,7 +88,17 @@ augroup END
 """""" 今日の日付
 let $TODAY = strftime('%Y%m%d')
 inoremap <silent> <Leader>td <C-R>=strftime('%Y%m%d')<CR>
-command! Tmp :e ~/worklog/$TODAY.md
+command! Tmp :call CreateTempFile()
+
+function! CreateTempFile()
+    " 日付取得
+    let l:today = strftime('%Y%m%d')
+    let l:seq_no = 1
+    while filereadable(fnamemodify('~/worklog/' . l:today . '_' . printf('%02s', l:seq_no) . '.md', ':p'))
+        let l:seq_no = l:seq_no + 1
+    endwhile
+    execute 'e ~/worklog/' . l:today . '_' . printf('%02s', l:seq_no) . '.md'
+endfunction
 
 """ {{{ rc 系を開く
 command! Vimrc :e ~/.vimrc
