@@ -21,11 +21,25 @@ snippets:
         - label: refuse
           description: references
           newText: "[${1:label}][${2:ref_id}]"
+        - label: annotationdef
+          description: annotation
+          newText: "[^${1:id}]: ${2:description}"
+        - label: annotationuse
+          description: annotation
+          newText: "[${1:id}]"
+        - label: code
+          description: code block
+          newText: |-
+              ```${1:file_type}:${2:file_name}
+              ${3:content}
+              ```
         - label: table
           description: table template
           newText: |-
               ${1:header1} ${2:header2}
-              ============ ============
+              ------------ ------------
               ${3:value1}  ${4:value2}
+
+              Table ${5:title}
     md: *markdown
 
