@@ -294,6 +294,8 @@ function! StartJavaDevelopment()
     " let g:lsp_log_verbose = 1
     " let g:lsp_log_file = expand('~/vim-lsp.log')
 
+    let g:lsp_get_supported_capabilities = [function('Java_lsp_get_capability')]
+
     " for asyncomplete.vim log
     " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
@@ -556,5 +558,27 @@ function! StartSnippet()
     autocmd FileType markdown setlocal omnifunc=lsp#complete
     autocmd FileType asciidoc setlocal omnifunc=lsp#complete
 endfunction
+
+function! Java_lsp_get_capability(server_info) abort
+    let l:my_lsp_capability = lsp#tinysnippet#lsp_get_snippet_supported_capability(a:server_info)
+
+    let l:my_lsp_capability['textDocument']['codeAction'] = {
+    \    'codeActionLiteralSupport': {
+    \        'codeActionKind': {
+    \            'valueSet': [
+    \                '',
+    \                'quickfix',
+    \                'refactor',
+    \                'refactor.extract',
+    \                'refactor.inline',
+    \                'refactor.rewrite',
+    \            ]
+    \        }
+    \    }
+    \ }
+
+    return l:my_lsp_capability
+endfunction
+
 """ }}} for Snippets
 
