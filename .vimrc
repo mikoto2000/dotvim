@@ -233,6 +233,10 @@ packadd! c_previewer.vim
 packadd! hex_edit.vim
 packadd! outline.vim
 
+packadd async.vim
+packadd vim-lsp
+packadd vim-lsp-settings
+
 filetype plugin indent on
 
 """ {{{ for blog
@@ -283,126 +287,6 @@ set completeopt=menuone,noselect
 " <C-Space> でオムニ補完を行えるようにマッピング
 " オムニ補完開始直後に、インクリメンタル絞り込みができるようにマッピング
 inoremap <C-Space> <C-X><C-O><C-P>
-
-""" for java development
-command! Javad call StartJavaDevelopment()
-function! StartJavaDevelopment()
-    packadd vim-lsp-tiny-snippet-support
-    packadd async.vim
-    packadd vim-lsp
-
-    " let g:lsp_log_verbose = 1
-    " let g:lsp_log_file = expand('~/vim-lsp.log')
-
-    let g:lsp_get_supported_capabilities = [function('Java_lsp_get_capability')]
-
-    " for asyncomplete.vim log
-    " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
-
-    " bat ファイルを作ってそれを叩くようにしたら、 'invalid content-length'
-    " というエラーになってしまうのでここに全部オプションを書くようにしている。
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'eclipse.jdt.ls',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '--add-modules=ALL-SYSTEM',
-        \     '--add-opens',
-        \     'java.base/java.util=ALL-UNNAMED',
-        \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand('~/.vim/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'),
-        \     '-configuration',
-        \     expand('~/.vim/lsp/eclipse.jdt.ls/config_win'),
-        \     '-data',
-        \     expand('~/.vim/lsp/eclipse.jdt.ls/workspace'),
-        \ ]},
-        \ 'whitelist': ['java'],
-        \ })
-
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'lsp4snippet - java',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '--add-modules=ALL-SYSTEM',
-        \     '--add-opens',
-        \     'java.base/java.util=ALL-UNNAMED',
-        \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
-        \     '--snippet',
-        \     expand('~/.vim/snippets/java.yaml'),
-        \ ]},
-        \ 'whitelist': ['java'],
-        \ })
-
-    call lsp#enable()
-    autocmd FileType java setlocal omnifunc=lsp#complete
-endfunction
-
-""" for xml development
-command! Xmld call StartXmlDevelopment()
-function! StartXmlDevelopment()
-    packadd vim-lsp-tiny-snippet-support
-    packadd async.vim
-    packadd vim-lsp
-    packadd emmet-vim
-
-    " let g:lsp_log_verbose = 1
-    " let g:lsp_log_file = expand('~/vim-lsp.log')
-
-    " for asyncomplete.vim log
-    " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
-
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'lsp4xml',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '-noverify',
-        \     '-Xmx1G',
-        \     '-XX:+UseStringDeduplication',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-jar',
-        \     expand('~/.vim/lsp/lsp4xml/org.eclipse.lsp4xml-0.3.0-uber.jar')
-        \ ]},
-        \ 'whitelist': ['xml', 'arxml'],
-        \ })
-
-    call lsp#enable()
-    autocmd FileType arxml setlocal omnifunc=lsp#complete
-    autocmd FileType xml setlocal omnifunc=lsp#complete
-
-    " arxml では、`:`, `-` 区切りの文字列も 1 単語として扱いたい
-    autocmd FileType xml setlocal iskeyword+=-
-    autocmd FileType xml setlocal iskeyword+=:
-
-    " TODO: ExpandOrSerchNextMark みたいなことをしたい
-    imap <C-L> <C-Y><Plug>(emmet-expand-abbr)
-endfunction
-
-""" for lsp
-function! SearchProjectRoot(target_file)
-    let l:project_root = lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), a:target_file))
-
-    if l:project_root ==# ''
-        let l:project_root = expand('%:p:h')
-    endif
-
-    return l:project_root
-endfunction
 
 
 """ for ctags

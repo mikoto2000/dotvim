@@ -61,3 +61,6 @@
 [submodule ".vim/pack/lsp/opt/vim-lsp-tiny-snippet-support"]
 	path = .vim/pack/lsp/opt/vim-lsp-tiny-snippet-support
 	url = https://github.com/mikoto2000/vim-lsp-tiny-snippet-support.git
+[submodule ".vim/pack/lsp/opt/vim-lsp-settings"]
+	path = .vim/pack/lsp/opt/vim-lsp-settings
+	url = https://github.com/mattn/vim-lsp-settings.git
