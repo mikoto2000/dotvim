@@ -1,5 +1,5 @@
-% <`1:TITLE`>
-% <`2:AUTHOR`>
-% <`3:DATE`>
+% ${1:TITLE}
+% ${2:AUTHOR}
+% ${3:DATE}
 
-<`4:CONTENT`>
+${4:CONTENT}
