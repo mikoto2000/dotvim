@@ -233,9 +233,12 @@ packadd! c_previewer.vim
 packadd! hex_edit.vim
 packadd! outline.vim
 
-packadd async.vim
-packadd vim-lsp
-packadd vim-lsp-settings
+"packadd async.vim
+"packadd vim-lsp
+"packadd vim-lsp-settings
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
 
 filetype plugin indent on
 
@@ -394,7 +397,12 @@ function! OpenGoogleTranslate() range
 endfunction
 """ }}} for Google Translate
 
-""" {{{ for Snippets
+" {{{ for vim-lsp
+packadd vim-lsp-tiny-snippet-support
+packadd vim-lsp-settings
+packadd async.vim
+packadd vim-lsp
+
 inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
 nnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
 vnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
@@ -402,67 +410,55 @@ inoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
 nnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
 vnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
 
-command! Snip call StartSnippet()
-function! StartSnippet()
-    packadd vim-lsp-tiny-snippet-support
-    packadd async.vim
-    packadd vim-lsp
+let g:lsp_settings = {
+\   'lemminx': {
+\       'workspace_config': {
+\           'implementation': {
+\               'completionItem': {
+\                   'snippetSupport': v:true
+\               }
+\           }
+\       }
+\   }
+\}
 
-    " let g:lsp_log_verbose = 1
-    " let g:lsp_log_file = expand('~/vim-lsp.log')
+""" for xml development {{{
+autocmd FileType xml setlocal omnifunc=lsp#complete
+autocmd FileType xml packadd emmet-vim
+autocmd FileType xml setlocal iskeyword+=-
+autocmd FileType xml setlocal iskeyword+=:
+""" }}} for xml development
 
-    " bat ファイルを作ってそれを叩くようにしたら、 'invalid content-length'
-    " というエラーになってしまうのでここに全部オプションを書くようにしている。
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'lsp4snippet - md',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '--add-modules=ALL-SYSTEM',
-        \     '--add-opens',
-        \     'java.base/java.util=ALL-UNNAMED',
-        \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
-        \     '--snippet',
-        \     expand('~/.vim/snippets/markdown.yaml'),
-        \     '--snippet',
-        \     expand('~/.vim/snippets/asciidoc.yaml'),
-        \ ]},
-        \ 'whitelist': ['markdown', 'asciidoc'],
-        \ })
+" {{{ for snippet
+call lsp#register_server({
+    \ 'name': 'lsp4snippet - md',
+    \ 'cmd': {server_info->[
+    \     'java',
+    \     '--add-modules=ALL-SYSTEM',
+    \     '--add-opens',
+    \     'java.base/java.util=ALL-UNNAMED',
+    \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+    \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+    \     '-Dosgi.bundles.defaultStartLevel=4',
+    \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+    \     '-Dlog.level=ALL',
+    \     '-noverify',
+    \     '-Dfile.encoding=UTF-8',
+    \     '-Xmx1G',
+    \     '-jar',
+    \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
+    \     '--snippet',
+    \     expand('~/.vim/snippets/markdown.yaml'),
+    \     '--snippet',
+    \     expand('~/.vim/snippets/asciidoc.yaml'),
+    \ ]},
+    \ 'whitelist': ['markdown', 'asciidoc'],
+    \ })
+""" }}} for snippet
 
-    call lsp#enable()
-    autocmd FileType markdown setlocal omnifunc=lsp#complete
-    autocmd FileType asciidoc setlocal omnifunc=lsp#complete
-endfunction
+" }}} for vim-lsp
 
-function! Java_lsp_get_capability(server_info) abort
-    let l:my_lsp_capability = lsp#tinysnippet#lsp_get_snippet_supported_capability(a:server_info)
-
-    let l:my_lsp_capability['textDocument']['codeAction'] = {
-    \    'codeActionLiteralSupport': {
-    \        'codeActionKind': {
-    \            'valueSet': [
-    \                '',
-    \                'quickfix',
-    \                'refactor',
-    \                'refactor.extract',
-    \                'refactor.inline',
-    \                'refactor.rewrite',
-    \            ]
-    \        }
-    \    }
-    \ }
-
-    return l:my_lsp_capability
-endfunction
-
-""" }}} for Snippets
+" {{{ for ARXML
+autocmd BufNewFile,BufRead *.arxml set filetype=xml
+" }}} for ARXML
 
