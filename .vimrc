@@ -233,7 +233,6 @@ packadd! c_previewer.vim
 packadd! hex_edit.vim
 packadd! outline.vim
 
-"packadd async.vim
 "packadd vim-lsp
 "packadd vim-lsp-settings
 
@@ -400,7 +399,6 @@ endfunction
 " {{{ for vim-lsp
 packadd vim-lsp-tiny-snippet-support
 packadd vim-lsp-settings
-packadd async.vim
 packadd vim-lsp
 
 inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
