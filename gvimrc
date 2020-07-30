@@ -30,7 +30,7 @@ augroup END
 
 """ {{{ for windows position save
 """ from [vim-jp » Hack #120: gVim でウィンドウの位置とサイズを記憶する](http://vim-jp.org/vim-users-jp/2010/01/28/Hack-120.html)
-let g:save_window_file = expand('~/.vim/winpos')
+let g:save_window_file = expand(g:myvimfiles . 'winpos')
 augroup SaveWindow
   autocmd!
   autocmd VimLeavePre * call s:save_window()

@@ -1,4 +1,8 @@
 !*.gitkeep
-.vim/eclim/
-.vim/plugin/
+backup
+bundle
+ftplugin
+undo
+.netrwhist
+winpos
 

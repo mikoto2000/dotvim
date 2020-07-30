@@ -1,63 +1,63 @@
 [submodule ".vim/pack/b/start/sonictemplate-vim"]
-	path = .vim/pack/b/start/sonictemplate-vim
+	path = pack/b/start/sonictemplate-vim
 	url = https://github.com/mattn/sonictemplate-vim
 [submodule ".vim/pack/b/opt/vim-singleton"]
-	path = .vim/pack/b/opt/vim-singleton
+	path = pack/b/opt/vim-singleton
 	url = https://github.com/thinca/vim-singleton
 [submodule ".vim/pack/b/start/restart.vim"]
-	path = .vim/pack/b/start/restart.vim
+	path = pack/b/start/restart.vim
 	url = https://github.com/tyru/restart.vim
 [submodule ".vim/pack/golang/opt/vim-go-extra"]
-	path = .vim/pack/golang/opt/vim-go-extra
+	path = pack/golang/opt/vim-go-extra
 	url = https://github.com/vim-jp/vim-go-extra
 [submodule ".vim/pack/b/opt/buffer_selector.vim"]
-	path = .vim/pack/b/opt/buffer_selector.vim
+	path = pack/b/opt/buffer_selector.vim
 	url = https://github.com/mikoto2000/buffer_selector.vim
 [submodule ".vim/pack/test/opt/vital.vim"]
-	path = .vim/pack/test/opt/vital.vim
+	path = pack/test/opt/vital.vim
 	url = https://github.com/vim-jp/vital.vim
 [submodule ".vim/pack/test/opt/vital-vimlcompiler"]
-	path = .vim/pack/test/opt/vital-vimlcompiler
+	path = pack/test/opt/vital-vimlcompiler
 	url = https://github.com/haya14busa/vital-vimlcompiler
 [submodule ".vim/pack/test/opt/vital-power-assert"]
-	path = .vim/pack/test/opt/vital-power-assert
+	path = pack/test/opt/vital-power-assert
 	url = https://github.com/haya14busa/vital-power-assert
 [submodule ".vim/pack/test/opt/vital-safe-string"]
-	path = .vim/pack/test/opt/vital-safe-string
+	path = pack/test/opt/vital-safe-string
 	url = https://github.com/haya14busa/vital-safe-string
 [submodule ".vim/pack/test/opt/vim-themis"]
-	path = .vim/pack/test/opt/vim-themis
+	path = pack/test/opt/vim-themis
 	url = https://github.com/thinca/vim-themis
 [submodule ".vim/pack/b/opt/file_selector.vim"]
-	path = .vim/pack/b/opt/file_selector.vim
+	path = pack/b/opt/file_selector.vim
 	url = https://github.com/mikoto2000/file_selector.vim
 [submodule ".vim/pack/b/opt/outline.vim"]
-	path = .vim/pack/b/opt/outline.vim
+	path = pack/b/opt/outline.vim
 	url = https://github.com/mikoto2000/outline.vim
 [submodule ".vim/pack/c/opt/c_previewer.vim"]
-	path = .vim/pack/c/opt/c_previewer.vim
+	path = pack/c/opt/c_previewer.vim
 	url = https://github.com/mikoto2000/c_previewer.vim
 [submodule ".vim/pack/c/opt/hex_edit.vim"]
-	path = .vim/pack/c/opt/hex_edit.vim
+	path = pack/c/opt/hex_edit.vim
 	url = https://github.com/mikoto2000/hex_edit.vim
 [submodule ".vim/pack/b/opt/ctags_selector.vim"]
-	path = .vim/pack/b/opt/ctags_selector.vim
+	path = pack/b/opt/ctags_selector.vim
 	url = https://github.com/mikoto2000/ctags_selector.vim
 [submodule ".vim/pack/b/start/file_explorer.vim"]
-	path = .vim/pack/b/start/file_explorer.vim
+	path = pack/b/start/file_explorer.vim
 	url = https://github.com/mikoto2000/file_explorer.vim
 [submodule ".vim/pack/html/opt/emmet-vim"]
-	path = .vim/pack/html/opt/emmet-vim
+	path = pack/html/opt/emmet-vim
 	url = https://github.com/mattn/emmet-vim
 [submodule ".vim/pack/lsp/opt/vim-lsp"]
-	path = .vim/pack/lsp/opt/vim-lsp
+	path = pack/lsp/opt/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp
 [submodule ".vim/pack/b/start/vim-color-forest-night"]
-	path = .vim/pack/b/start/vim-color-forest-night
+	path = pack/b/start/vim-color-forest-night
 	url = https://github.com/sainnhe/vim-color-forest-night.git
 [submodule ".vim/pack/lsp/opt/vim-lsp-tiny-snippet-support"]
-	path = .vim/pack/lsp/opt/vim-lsp-tiny-snippet-support
+	path = pack/lsp/opt/vim-lsp-tiny-snippet-support
 	url = https://github.com/mikoto2000/vim-lsp-tiny-snippet-support.git
 [submodule ".vim/pack/lsp/opt/vim-lsp-settings"]
-	path = .vim/pack/lsp/opt/vim-lsp-settings
+	path = pack/lsp/opt/vim-lsp-settings
 	url = https://github.com/mattn/vim-lsp-settings.git

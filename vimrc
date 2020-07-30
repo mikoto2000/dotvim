@@ -17,7 +17,6 @@ set incsearch
 set nonumber
 set hidden
 set noswapfile
-set backupdir=~/.vim/backup
 set foldenable
 set foldmethod=marker
 set cursorcolumn
@@ -26,6 +25,12 @@ set breakindent
 set cmdheight=2
 set nofixeol
 set shellslash
+
+if has("win32")
+    let g:myvimfiles = $HOME . "/vimfiles"
+else
+    let g:myvimfiles = $HOME . "/.vim"
+endif
 
 " Leader
 let mapleader = ' '
@@ -50,12 +55,11 @@ endif
 
 """ for Windows {{{
 if has("win32")
-    set runtimepath+=$HOME/.vim,$HOME/.vim/after
-    set packpath+=$HOME/.vim,$HOME/.vim/after
-
     command! Shell !start C:\msys64\msys2_shell.cmd -here
 endif
 """ }}} for Windows
+
+exec "set backupdir=" . g:myvimfiles . "/backup"
 
 """ restart setting
 let g:restart_sessionoptions
@@ -73,7 +77,7 @@ au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g
 
 """ undo 設定
 if has('persistent_undo')
-    set undodir=~/.vim/undo
+    exec "set undodir=" . g:myvimfiles . "/undo"
     set undofile
 endif
 
@@ -101,8 +105,8 @@ function! CreateTempFile()
 endfunction
 
 """ {{{ rc 系を開く
-command! Vimrc :e ~/.vimrc
-command! Gvimrc :e ~/.gvimrc
+command! Vimrc :e $MYVIMRC
+command! Gvimrc :e $MYGVIMRC
 """ }}} rc 系を開く
 
 """ {{{ about buffer
@@ -150,7 +154,7 @@ set laststatus=2
 set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
 """ tabline
-source ~/.vim/tabconf.vimrc
+exec "source " . g:myvimfiles . "/tabconf.vimrc"
 """ }}} infomation lines
 
 """ {{{ for markdown
@@ -181,11 +185,11 @@ command! Powershell execute "terminal ++close powershell"
 
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
-command! Bash execute "terminal ++close c:/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
+command! Bash execute "terminal ++close c:/tools/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
-let g:sonictemplate_vim_template_dir = '~/.vim/template'
+let g:sonictemplate_vim_template_dir = g:myvimfiles . '/template'
 """ }}} for sonicktemplate-vim
 
 """ restart setting
