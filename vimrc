@@ -402,8 +402,77 @@ endfunction
 
 " {{{ for vim-lsp
 packadd vim-lsp-tiny-snippet-support
-packadd vim-lsp-settings
+
+" 環境変数 CHE_API が存在しない場合は、 vim-lsp-settings を有効化
+" TODO: 別ファイルにするのを検討
+if !exists("$CHE_API")
+    packadd vim-lsp-settings
+
+    let g:lsp_settings = {
+    \   'lemminx': {
+    \       'workspace_config': {
+    \           'implementation': {
+    \               'completionItem': {
+    \                   'snippetSupport': v:true
+    \               }
+    \           }
+    \       }
+    \   }
+    \}
+
+    """ for xml development {{{
+    autocmd FileType xml setlocal omnifunc=lsp#complete
+    autocmd FileType xml packadd emmet-vim
+    autocmd FileType xml setlocal iskeyword+=-
+    autocmd FileType xml setlocal iskeyword+=:
+    """ }}} for xml development
+
+endif
+
 packadd vim-lsp
+
+" 環境変数 CHE_API が存在する場合は、
+" デフォルトの Language Server に接続する設定を行う。
+if exists("$CHE_API")
+    call lsp#register_server({
+        \ 'name': 'Default LS',
+        \ 'cmd': {server_info->[
+        \     'socat',
+        \     'tcp-connect:' . $HOSTNAME . ':18080',
+        \     'stdio'
+        \ ]}
+        \ })
+
+    set omnifunc=lsp#complete
+else
+    " {{{ for snippet
+    call lsp#register_server({
+        \ 'name': 'lsp4snippet - md',
+        \ 'cmd': {server_info->[
+        \     'java',
+        \     '--add-modules=ALL-SYSTEM',
+        \     '--add-opens',
+        \     'java.base/java.util=ALL-UNNAMED',
+        \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \     '-Dosgi.bundles.defaultStartLevel=4',
+        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \     '-Dlog.level=ALL',
+        \     '-noverify',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-Xmx1G',
+        \     '-jar',
+        \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
+        \     '--snippet',
+        \     expand('~/.vim/snippets/markdown.yaml'),
+        \     '--snippet',
+        \     expand('~/.vim/snippets/asciidoc.yaml'),
+        \ ]},
+        \ 'whitelist': ['markdown', 'asciidoc'],
+        \ })
+    """ }}} for snippet
+
+endif
 
 inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
 nnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
@@ -411,52 +480,6 @@ vnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
 inoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
 nnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
 vnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
-
-let g:lsp_settings = {
-\   'lemminx': {
-\       'workspace_config': {
-\           'implementation': {
-\               'completionItem': {
-\                   'snippetSupport': v:true
-\               }
-\           }
-\       }
-\   }
-\}
-
-""" for xml development {{{
-autocmd FileType xml setlocal omnifunc=lsp#complete
-autocmd FileType xml packadd emmet-vim
-autocmd FileType xml setlocal iskeyword+=-
-autocmd FileType xml setlocal iskeyword+=:
-""" }}} for xml development
-
-" {{{ for snippet
-call lsp#register_server({
-    \ 'name': 'lsp4snippet - md',
-    \ 'cmd': {server_info->[
-    \     'java',
-    \     '--add-modules=ALL-SYSTEM',
-    \     '--add-opens',
-    \     'java.base/java.util=ALL-UNNAMED',
-    \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-    \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    \     '-Dosgi.bundles.defaultStartLevel=4',
-    \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    \     '-Dlog.level=ALL',
-    \     '-noverify',
-    \     '-Dfile.encoding=UTF-8',
-    \     '-Xmx1G',
-    \     '-jar',
-    \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
-    \     '--snippet',
-    \     expand('~/.vim/snippets/markdown.yaml'),
-    \     '--snippet',
-    \     expand('~/.vim/snippets/asciidoc.yaml'),
-    \ ]},
-    \ 'whitelist': ['markdown', 'asciidoc'],
-    \ })
-""" }}} for snippet
 
 " }}} for vim-lsp
 
