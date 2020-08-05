@@ -467,9 +467,9 @@ else
         \     '-jar',
         \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
         \     '--snippet',
-        \     expand('~/.vim/snippets/markdown.yaml'),
+        \     expand('~/vimfiles/snippets/markdown.yaml'),
         \     '--snippet',
-        \     expand('~/.vim/snippets/asciidoc.yaml'),
+        \     expand('~/vimfiles/snippets/asciidoc.yaml'),
         \ ]},
         \ 'whitelist': ['markdown', 'asciidoc'],
         \ })
