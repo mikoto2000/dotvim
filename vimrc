@@ -17,6 +17,7 @@ set incsearch
 set nonumber
 set hidden
 set noswapfile
+set backup
 set foldenable
 set foldmethod=marker
 set cursorcolumn
