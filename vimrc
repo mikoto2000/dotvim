@@ -426,6 +426,8 @@ if !exists("$CHE_API")
     autocmd FileType xml packadd emmet-vim
     autocmd FileType xml setlocal iskeyword+=-
     autocmd FileType xml setlocal iskeyword+=:
+    autocmd FileType xml let g:xml_syntax_folding = 1
+    autocmd FileType xml setlocal foldmethod=syntax
     """ }}} for xml development
 
 endif
