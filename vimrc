@@ -27,6 +27,8 @@ set cmdheight=2
 set nofixeol
 set shellslash
 
+hi Comment gui=NONE cterm=NONE term=NONE
+
 if has("win32")
     let g:myvimfiles = $HOME . "/vimfiles"
 else
@@ -452,7 +454,7 @@ else
     call lsp#register_server({
         \ 'name': 'lsp4snippet - md',
         \ 'cmd': {server_info->[
-        \     'java',
+        \     $JAVA14_HOME . '/bin/java',
         \     '--add-modules=ALL-SYSTEM',
         \     '--add-opens',
         \     'java.base/java.util=ALL-UNNAMED',
@@ -475,6 +477,8 @@ else
         \ })
     """ }}} for snippet
 
+    autocmd FileType markdown setlocal omnifunc=lsp#complete
+    autocmd FileType asciidoc setlocal omnifunc=lsp#complete
 endif
 
 inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
@@ -489,4 +493,18 @@ vnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
 " {{{ for ARXML
 autocmd BufNewFile,BufRead *.arxml set filetype=xml
 " }}} for ARXML
+
+""" {{{ for Java
+augroup java
+    autocmd!
+    autocmd FileType java setlocal omnifunc=lsp#complete
+augroup END
+"""i }}}
+
+""" {{{ for Html
+augroup html
+    autocmd!
+    autocmd FileType html packadd emmet-vim
+augroup END
+"""i }}}
 
