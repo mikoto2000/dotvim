@@ -47,14 +47,7 @@ set textwidth=0
 " 80 文字目をハイライト
 set colorcolumn=80
 
-if has('termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-    colorscheme forest-night
-else
-    colorscheme desert
-endif
+colorscheme desert
 
 """ for Windows {{{
 if has("win32")
@@ -128,7 +121,8 @@ noremap <Leader>cn <Esc>:cn<Enter>
 noremap <Leader>cp <Esc>:cp<Enter>
 
 noremap <Leader>f <Esc>:call file_selector#OpenFileSelector()<Enter>
-let g:file_selector_exclude_pattern = '\(^bin\|^build$\|^build[/\\]\|^gradle\|^config\|^node_modules\)'
+let g:file_selector_wildignore = '**/bin/**,**/build/**,**/gradle/**,**/node_modules/**'
+let g:file_selector_exclude_pattern = '\(^bin\|^build$\|^build[/\\]\|^gradle\|^config\|^config\)'
 
 noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 
@@ -239,9 +233,6 @@ packadd! ctags_selector.vim
 packadd! c_previewer.vim
 packadd! hex_edit.vim
 packadd! outline.vim
-
-"packadd vim-lsp
-"packadd vim-lsp-settings
 
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/vim-lsp.log')
@@ -404,82 +395,35 @@ endfunction
 """ }}} for Google Translate
 
 " {{{ for vim-lsp
-packadd vim-lsp-tiny-snippet-support
+packadd vim-lsp
+packadd vim-lsp-settings
 
-" 環境変数 CHE_API が存在しない場合は、 vim-lsp-settings を有効化
-" TODO: 別ファイルにするのを検討
-if !exists("$CHE_API")
-    packadd vim-lsp-settings
+let g:lsp_settings_root_markers = [
+\   'pom.xml'
+\ ]
 
-    let g:lsp_settings = {
-    \   'lemminx': {
-    \       'workspace_config': {
-    \           'implementation': {
-    \               'completionItem': {
-    \                   'snippetSupport': v:true
-    \               }
-    \           }
-    \       }
-    \   }
-    \}
+let g:lsp_settings = {
+\   'lemminx': {
+\       'workspace_config': {
+\           'implementation': {
+\               'completionItem': {
+\                   'snippetSupport': v:true
+\               }
+\           }
+\       }
+\   }
+\}
 
-    """ for xml development {{{
-    autocmd FileType xml setlocal omnifunc=lsp#complete
-    autocmd FileType xml packadd emmet-vim
-    autocmd FileType xml setlocal iskeyword+=-
-    autocmd FileType xml setlocal iskeyword+=:
-    autocmd FileType xml let g:xml_syntax_folding = 1
-    autocmd FileType xml setlocal foldmethod=syntax
-    """ }}} for xml development
-
-endif
+""" for xml development {{{
+autocmd FileType xml setlocal omnifunc=lsp#complete
+autocmd FileType xml packadd emmet-vim
+autocmd FileType xml setlocal iskeyword+=-
+autocmd FileType xml setlocal iskeyword+=:
+autocmd FileType xml let g:xml_syntax_folding = 1
+autocmd FileType xml setlocal foldmethod=syntax
+""" }}} for xml development
 
 packadd vim-lsp
-
-" 環境変数 CHE_API が存在する場合は、
-" デフォルトの Language Server に接続する設定を行う。
-if exists("$CHE_API")
-    call lsp#register_server({
-        \ 'name': 'Default LS',
-        \ 'cmd': {server_info->[
-        \     'socat',
-        \     'tcp-connect:' . $HOSTNAME . ':18080',
-        \     'stdio'
-        \ ]}
-        \ })
-
-    set omnifunc=lsp#complete
-else
-    " {{{ for snippet
-    call lsp#register_server({
-        \ 'name': 'lsp4snippet - md',
-        \ 'cmd': {server_info->[
-        \     $JAVA14_HOME . '/bin/java',
-        \     '--add-modules=ALL-SYSTEM',
-        \     '--add-opens',
-        \     'java.base/java.util=ALL-UNNAMED',
-        \     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand('~/project/lsp4snippet/build/libs/lsp4snippet-1.0.0.jar'),
-        \     '--snippet',
-        \     expand('~/vimfiles/snippets/markdown.yaml'),
-        \     '--snippet',
-        \     expand('~/vimfiles/snippets/asciidoc.yaml'),
-        \ ]},
-        \ 'whitelist': ['markdown', 'asciidoc'],
-        \ })
-    """ }}} for snippet
-
-    autocmd FileType markdown setlocal omnifunc=lsp#complete
-    autocmd FileType asciidoc setlocal omnifunc=lsp#complete
-endif
 
 inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
 nnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
@@ -500,6 +444,14 @@ augroup java
     autocmd FileType java setlocal omnifunc=lsp#complete
 augroup END
 """i }}}
+
+""" {{{ for TypeScript
+augroup typescript
+    autocmd!
+    autocmd FileType typescript setlocal omnifunc=lsp#complete
+augroup END
+"""i }}}
+
 
 """ {{{ for Html
 augroup html
