@@ -1,5 +1,7 @@
-% ${1:TITLE}
-% ${2:AUTHOR}
-% ${3:DATE}
+---
+title: ${1:TITLE}
+author: ${2:AUTHOR}
+date: ${3:DATE}
+---
 
 ${4:CONTENT}
