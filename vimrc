@@ -229,6 +229,7 @@ filetype plugin indent off
 packadd! vim-go-extra
 packadd! buffer_selector.vim
 packadd! file_selector.vim
+packadd! oldfiles_selector.vim
 packadd! ctags_selector.vim
 packadd! c_previewer.vim
 packadd! hex_edit.vim
