@@ -181,6 +181,9 @@ autocmd QuickfixCmdPost [^l]* copen
 tnoremap <C-r> <C-w>"
 
 command! Powershell execute "terminal ++close powershell"
+command! Vpowershell execute "vertical terminal ++close powershell"
+command! Wsl execute "terminal ++close ++type=conpty wsl"
+command! Vwsl execute "vertical terminal ++close ++type=conpty wsl"
 
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
