@@ -427,6 +427,7 @@ autocmd FileType xml setlocal foldmethod=syntax
 """ }}} for xml development
 
 packadd vim-lsp
+packadd vim-lsp-tiny-snippet-support
 
 inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
 nnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
