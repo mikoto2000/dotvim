@@ -58,3 +58,6 @@
 [submodule ".vim/pack/lsp/opt/vim-lsp-settings"]
 	path = pack/lsp/opt/vim-lsp-settings
 	url = https://github.com/mattn/vim-lsp-settings.git
+[submodule "pack/b/opt/oldfiles_selector.vim"]
+	path = pack/b/opt/oldfiles_selector.vim
+	url = https://github.com/mikoto2000/oldfiles_selector.vim.git
