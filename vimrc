@@ -124,6 +124,8 @@ noremap <Leader>f <Esc>:call file_selector#OpenFileSelector()<Enter>
 let g:file_selector_wildignore = '**/bin/**,**/build/**,**/gradle/**,**/node_modules/**'
 let g:file_selector_exclude_pattern = '\(^bin\|^build$\|^build[/\\]\|^gradle\|^config\|^config\)'
 
+noremap <Leader>mru <Esc>:call oldfiles_selector#OpenOldfilesSelector()<Enter>
+
 noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 
 """ }}} about buffer about buffer
