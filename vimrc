@@ -180,8 +180,8 @@ autocmd QuickfixCmdPost [^l]* copen
 " terminal でも <C-r> をインサートモードと同じ挙動にする
 tnoremap <C-r> <C-w>"
 
-command! Powershell execute "terminal ++close powershell"
-command! Vpowershell execute "vertical terminal ++close powershell"
+command! Powershell execute "terminal ++close pwsh"
+command! Vpowershell execute "vertical terminal ++close pwsh"
 command! Wsl execute "terminal ++close ++type=conpty wsl"
 command! Vwsl execute "vertical terminal ++close ++type=conpty wsl"
 
