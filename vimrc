@@ -1,7 +1,7 @@
 """ Common Custom
 syntax on
 set tabstop=4
-set nrformats=
+set nrformats=unsigned
 set cindent
 set smartindent
 set autoindent
