@@ -14,7 +14,7 @@ set pastetoggle=<f11>
 set ignorecase
 set hlsearch
 set incsearch
-set nonumber
+set relativenumber
 set hidden
 set noswapfile
 set backup
