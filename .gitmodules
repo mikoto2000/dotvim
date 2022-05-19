@@ -61,3 +61,6 @@
 [submodule "pack/b/opt/oldfiles_selector.vim"]
 	path = pack/b/opt/oldfiles_selector.vim
 	url = https://github.com/mikoto2000/oldfiles_selector.vim.git
+[submodule "pack/b/start/vim-ambiwidth"]
+	path = pack/b/start/vim-ambiwidth
+	url = https://github.com/rbtnn/vim-ambiwidth.git
