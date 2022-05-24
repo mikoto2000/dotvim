@@ -1,5 +1,12 @@
 function! m2h#M2H_CB(channel)
-    call job_start("cmd /c " . s:m2h_tmp, {'out_io': 'null'})
+
+    if has('win32') || has('win64')
+        let l:open_command = "cmd /c "
+    else
+        let l:open_command = "xdg-open "
+    endif
+
+    call job_start(l:open_command . s:m2h_tmp, {'out_io': 'null'})
 
     " 出力用一時バッファを split して開く
     new `=s:m2h_tmp`
