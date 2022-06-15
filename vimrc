@@ -188,6 +188,14 @@ command! Vwsl execute "vertical terminal ++close ++type=conpty wsl"
 
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
+
+" ターミナルノーマルモードで相対行番号を表示しないようにする
+" (行番号分幅が狭くなり、折り返しが発生して表示が汚くなるのを防止)
+augroup terminal
+    autocmd!
+    autocmd! TerminalWinOpen * setlocal norelativenumber
+augroup END
+
 command! Bash execute "terminal ++close c:/tools/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
 """ }}} for terminal
 
