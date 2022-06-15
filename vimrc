@@ -185,6 +185,11 @@ command! Powershell execute "terminal ++close pwsh"
 command! Vpowershell execute "vertical terminal ++close pwsh"
 command! Wsl execute "terminal ++close ++type=conpty wsl"
 command! Vwsl execute "vertical terminal ++close ++type=conpty wsl"
+command! Vterminal execute "vertical terminal ++close ++type=conpty"
+
+if has("win32")
+    set shell=pwsh
+endif
 
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
