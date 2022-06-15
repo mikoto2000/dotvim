@@ -26,7 +26,7 @@ set breakindent
 set cmdheight=2
 set nofixeol
 set shellslash
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 
 hi Comment gui=NONE cterm=NONE term=NONE
 
