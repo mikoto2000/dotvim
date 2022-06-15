@@ -64,3 +64,6 @@
 [submodule "pack/b/start/vim-ambiwidth"]
 	path = pack/b/start/vim-ambiwidth
 	url = https://github.com/rbtnn/vim-ambiwidth.git
+[submodule "pack/b/opt/previm"]
+	path = pack/b/opt/previm
+	url = https://github.com/previm/previm.git

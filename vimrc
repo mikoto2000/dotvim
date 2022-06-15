@@ -481,3 +481,10 @@ augroup html
 augroup END
 """i }}}
 
+""" {{{ for previm
+packadd! previm
+
+let g:previm_open_cmd="cmd /c start"
+let g:previm_disable_default_css = 1
+let g:previm_custom_css_path = '~/bin/default.css'
+""" }}}
