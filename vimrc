@@ -89,16 +89,29 @@ augroup END
 """""" 今日の日付
 let $TODAY = strftime('%Y%m%d')
 inoremap <silent> <Leader>td <C-R>=strftime('%Y%m%d')<CR>
-command! Tmp :call CreateTempFile()
+command! Tmp :call CreateTempFile('')
+command! Teirei :call CreateTempFile('定例')
 
-function! CreateTempFile()
+function! CreateTempFile(suffix)
+    " サフィックス計算
+    if a:suffix == ''
+        let l:suffix_str = ''
+    else
+        let l:suffix_str = '_' . a:suffix
+    endif
+
     " 日付取得
     let l:today = strftime('%Y%m%d')
+
+    " ファイル名生成
     let l:seq_no = 1
-    while filereadable(fnamemodify('~/worklog/' . l:today . '_' . printf('%02s', l:seq_no) . '.md', ':p'))
+    let l:file_name = fnamemodify('~/worklog/' . l:today . l:suffix_str . '_' . printf('%02s', l:seq_no) . '.md', ':p')
+    while filereadable(l:file_name)
         let l:seq_no = l:seq_no + 1
+        let l:file_name = fnamemodify('~/worklog/' . l:today . l:suffix_str . '_' . printf('%02s', l:seq_no) . '.md', ':p')
     endwhile
-    execute 'e ~/worklog/' . l:today . '_' . printf('%02s', l:seq_no) . '.md'
+
+    execute 'e ' . l:file_name
 endfunction
 
 """ {{{ rc 系を開く
