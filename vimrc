@@ -501,3 +501,12 @@ let g:previm_open_cmd="cmd /c start"
 let g:previm_disable_default_css = 1
 let g:previm_custom_css_path = '~/bin/default.css'
 """ }}}
+
+""" {{{ for 人と見るときは普通の行番号表示にしたい
+command! ToggleNumbers call ToggleNumbers()
+function! ToggleNumbers()
+    let &number = !&number
+    let &relativenumber = !&relativenumber
+endfunction
+""" }}} for 人と見るときは普通の行番号表示にしたい
+
