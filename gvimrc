@@ -49,18 +49,33 @@ endif
 """ }}} for windows position save
 
 """ {{{ for guifont
-command! UpFontSize call AddFontSize(1)
-nnoremap fu :UpFontSize<Enter>
-command! DownFontSize call AddFontSize(-1)
-nnoremap fd :DownFontSize<Enter>
-function! AddFontSize(number)
+command! UpFontSize call AddGuifontSize(1)
+nnoremap <Leader>fu :UpFontSize<Enter>
+command! DownFontSize call AddGuifontSize(-1)
+nnoremap <Leader>fd :DownFontSize<Enter>
+function! AddGuifontSize(number)
+    " 現在の guifont を取得
     let guifont = &guifont
-    let font_size_str = split(l:guifont, ":")[1][1:]
+
+    " 現在の guifont に列挙されているフォント定義ごとにフォントサイズ更新処理を実施
+    let fonts = []
+    for font in split(l:guifont, ",")
+        let new_font = UpdateFontSize(l:font, a:number)
+        call add(l:fonts, l:new_font)
+    endfor
+
+    " 更新したフォント定義を ',' 区切りで結合
+    let new_guifont = join(l:fonts, ",")
+
+    " guifont へ設定
+    let &guifont = l:new_guifont
+endfunction
+
+function! UpdateFontSize(font, number)
+    let font_size_str = split(a:font, ":")[1][1:]
     let font_size = str2nr(l:font_size_str)
     let new_font_size = font_size + a:number
-    let new_guifont = substitute(l:guifont, l:font_size_str, l:new_font_size, "")
-
-    let &guifont = l:new_guifont
+    return substitute(a:font, l:font_size_str, l:new_font_size, "")
 endfunction
 """ }}} for guifont
 
