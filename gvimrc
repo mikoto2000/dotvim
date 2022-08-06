@@ -47,3 +47,20 @@ if filereadable(g:save_window_file)
   execute 'source' g:save_window_file
 endif
 """ }}} for windows position save
+
+""" {{{ for guifont
+command! UpFontSize call AddFontSize(1)
+nnoremap fu :UpFontSize<Enter>
+command! DownFontSize call AddFontSize(-1)
+nnoremap fd :DownFontSize<Enter>
+function! AddFontSize(number)
+    let guifont = &guifont
+    let font_size_str = split(l:guifont, ":")[1][1:]
+    let font_size = str2nr(l:font_size_str)
+    let new_font_size = font_size + a:number
+    let new_guifont = substitute(l:guifont, l:font_size_str, l:new_font_size, "")
+
+    let &guifont = l:new_guifont
+endfunction
+""" }}} for guifont
+
