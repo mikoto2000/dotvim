@@ -77,5 +77,8 @@ function! UpdateFontSize(font, number)
     let new_font_size = font_size + a:number
     return substitute(a:font, l:font_size_str, l:new_font_size, "")
 endfunction
+
+nnoremap <C-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
+nnoremap <C-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
 """ }}} for guifont
 
