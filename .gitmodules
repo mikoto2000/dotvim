@@ -67,3 +67,6 @@
 [submodule "pack/b/opt/previm"]
 	path = pack/b/opt/previm
 	url = https://github.com/previm/previm.git
+[submodule "pack/b/start/tiny-snippet.vim"]
+	path = pack/b/start/tiny-snippet.vim
+	url = https://github.com/mikoto2000/tiny-snippet.vim

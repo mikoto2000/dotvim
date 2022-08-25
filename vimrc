@@ -461,16 +461,6 @@ autocmd FileType xml let g:xml_syntax_folding = 1
 autocmd FileType xml setlocal foldmethod=syntax
 """ }}} for xml development
 
-packadd vim-lsp
-packadd vim-lsp-tiny-snippet-support
-
-inoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
-nnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
-vnoremap <silent> <C-j> <Esc>:call lsp#tinysnippet#select_next()<Enter>
-inoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
-nnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
-vnoremap <silent> <C-k> <Esc>:call lsp#tinysnippet#select_prev()<Enter>
-
 " }}} for vim-lsp
 
 " {{{ for ARXML
@@ -515,3 +505,17 @@ function! ToggleNumbers()
 endfunction
 """ }}} for 人と見るときは普通の行番号表示にしたい
 
+""" {{{ for tinysnippet
+packadd! tiny-snippet.vim
+let g:tiny_snippet_support_snippet_directories_default = []
+
+inoremap <silent> <C-j> <Esc>:call tinysnippet#select_next()<Enter>
+nnoremap <silent> <C-j> <Esc>:call tinysnippet#select_next()<Enter>
+vnoremap <silent> <C-j> <Esc>:call tinysnippet#select_next()<Enter>
+inoremap <silent> <C-k> <Esc>:call tinysnippet#select_prev()<Enter>
+nnoremap <silent> <C-k> <Esc>:call tinysnippet#select_prev()<Enter>
+vnoremap <silent> <C-k> <Esc>:call tinysnippet#select_prev()<Enter>
+
+set completefunc=tinysnippet#Complete
+
+""" }}} for tinysnippet
