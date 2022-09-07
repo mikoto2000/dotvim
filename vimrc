@@ -220,12 +220,6 @@ command! Bash execute "terminal ++close c:/tools/msys64/usr/bin/env.exe CHERE_IN
 """ {{{ for sonicktemplate-vim
 let g:sonictemplate_vim_template_dir = g:myvimfiles . '/template'
 
-" 補完アイテム決定時の <C-Y> とかぶって使いにくいため無効化
-let g:sonictemplate_key='<k0>'
-let g:sonictemplate_intelligent_key='<k0>'
-let g:sonictemplate_postfix_key='<k0>'
-""" }}} for sonicktemplate-vim
-
 """ restart setting
 let g:restart_sessionoptions
     \ = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
