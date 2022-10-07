@@ -173,6 +173,7 @@ exec "source " . g:myvimfiles . "/tabconf.vimrc"
 """ {{{ for markdown
 """ disable underbar highlight
 autocmd! FileType markdown hi! def link markdownItalic NONE
+autocmd! FileType markdown packadd emmet-vim
 """ }}} for markdown
 
 """ {{{ highlight white spaces
@@ -257,17 +258,14 @@ set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.s
 
 filetype plugin indent off
 
-packadd! vim-go-extra
-packadd! buffer_selector.vim
-packadd! file_selector.vim
-packadd! oldfiles_selector.vim
-packadd! ctags_selector.vim
-packadd! c_previewer.vim
-packadd! hex_edit.vim
-packadd! outline.vim
-
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
+packadd vim-go-extra
+packadd buffer_selector.vim
+packadd file_selector.vim
+packadd oldfiles_selector.vim
+packadd ctags_selector.vim
+packadd c_previewer.vim
+packadd hex_edit.vim
+packadd outline.vim
 
 filetype plugin indent on
 
@@ -427,11 +425,14 @@ endfunction
 """ }}} for Google Translate
 
 " {{{ for vim-lsp
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
 packadd vim-lsp
 packadd vim-lsp-settings
 
 let g:lsp_settings_root_markers = [
-\   'pom.xml'
+\   'pom.xml', 'Makefile', '.git'
 \ ]
 
 let g:lsp_settings = {
@@ -513,3 +514,5 @@ vnoremap <silent> <C-k> <Esc>:call tinysnippet#select_prev()<Enter>
 set completefunc=tinysnippet#Complete
 
 """ }}} for tinysnippet
+
+
