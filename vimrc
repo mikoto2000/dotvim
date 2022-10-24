@@ -27,6 +27,7 @@ set cmdheight=1
 set nofixeol
 set shellslash
 set clipboard=unnamed,unnamedplus
+set autoread
 
 hi Comment gui=NONE cterm=NONE term=NONE
 
