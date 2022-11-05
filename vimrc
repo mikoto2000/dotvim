@@ -217,6 +217,14 @@ augroup terminal
 augroup END
 
 command! Bash execute "terminal ++close c:/tools/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
+
+" aliases
+tnoremap <Leader><Leader>dr docker run -it --rm 
+tnoremap <Leader><Leader>drv docker run -it --rm -v "$(pwd):/work" --workdir="/work" 
+tnoremap <Leader><Leader>aoj docker run -it --rm -v "$(pwd):/work" --workdir /work --name aoj mikoto2000/clang<Return>
+tnoremap <Leader><Leader>atcoder docker run -it --rm -v "$(pwd):/work" --workdir /work --name atcoder mikoto2000/clang<Return>
+
+tnoremap <Leader><Leader>dproxy export HTTP_PROXY=http://host.docker.internal:3142<Return>
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
