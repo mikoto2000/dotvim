@@ -1,0 +1,13 @@
+snippets:
+    docerfile:
+        - label: encoding
+          type: template
+          description: template
+          newText: |-
+              FROM ${1:base_image}
+
+              LABEL maintainer "${2:maintainer}"
+              LABEL version="${3:version}"
+              LABEL description "${4:description}"
+
+              ${5:content}

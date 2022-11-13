@@ -224,7 +224,7 @@ tnoremap <Leader><Leader>drv docker run -it --rm -v "$(pwd):/work" --workdir="/w
 tnoremap <Leader><Leader>aoj docker run -it --rm -v "$(pwd):/work" --workdir /work --name aoj mikoto2000/clang<Return>
 tnoremap <Leader><Leader>atcoder docker run -it --rm -v "$(pwd):/work" --workdir /work --name atcoder mikoto2000/clang<Return>
 
-tnoremap <Leader><Leader>dproxy export HTTP_PROXY=http://host.docker.internal:3142<Return>
+tnoremap <Leader><Leader>dproxy export http_proxy=http://host.docker.internal:3142<Return>
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
