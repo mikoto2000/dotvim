@@ -456,6 +456,11 @@ let g:lsp_settings = {
 \   }
 \}
 
+inoremap <silent> <C-.> <C-o>:LspCodeAction<Enter>
+nnoremap <silent> <C-.> :LspCodeAction<Enter>
+inoremap <silent> <F2> <C-o>:LspRename<Enter>
+nnoremap <silent> <F2> :LspRename<Enter>
+
 """ for xml development {{{
 autocmd FileType xml setlocal omnifunc=lsp#complete
 autocmd FileType xml packadd emmet-vim
