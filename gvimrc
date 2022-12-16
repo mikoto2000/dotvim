@@ -16,10 +16,10 @@ set vb t_vb=
 
 """ フォント設定
 if has('win32') || has('win64')
-    set guifont=Osaka－等幅:h9,Ricty_Diminished:h16:cSHIFTJIS:qDRAFT,ＭＳ_ゴシック:h12:cSHIFTJIS:qDRAFT
+    set guifont=MyricaM_M:h16:cSHIFTJIS:qDRAFT,Ricty_Diminished_Discord:h16:cSHIFTJIS:qDRAFT,ＭＳ_ゴシック:h12:cSHIFTJIS:qDRAFT
     set rop=type:directx
 else
-    set guifont=Ricty_Diminished\ 13
+    set guifont=MyricaM_M\ 13,Ricty_Diminished_Discord\ 13
 endif
 
 " 引数なしで開いた場合にホームディレクトリに移動する
