@@ -179,7 +179,7 @@ autocmd! FileType markdown packadd emmet-vim
 
 """ {{{ highlight white spaces
 set list
-set listchars=tab:>-,trail:-,space:˽
+set listchars=tab:>-,trail:-
 set showbreak=\\\ 
 """ }}} highlight white spaces
 

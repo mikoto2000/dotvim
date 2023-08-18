@@ -22,6 +22,10 @@ else
     set guifont=MyricaM_M\ 13,Ricty_Diminished_Discord\ 13
 endif
 
+""" {{{ highlight white spaces
+set listchars=tab:>-,trail:-,space:˽
+""" }}} highlight white spaces
+
 " 引数なしで開いた場合にホームディレクトリに移動する
 augroup cdhome
     autocmd VimEnter * nested if @% == '' | lcd ~/ | endif
