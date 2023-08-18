@@ -1,14 +1,14 @@
 """ Common Custom
 syntax on
-set tabstop=4
+set tabstop=2
 set nrformats=unsigned
 set cindent
 set smartindent
 set autoindent
 set expandtab
 set showmatch
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set nocompatible
 set pastetoggle=<f11>
 set ignorecase
