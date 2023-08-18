@@ -441,7 +441,7 @@ packadd vim-lsp
 packadd vim-lsp-settings
 
 let g:lsp_settings_root_markers = [
-\   'pom.xml', 'Makefile', '.git'
+\   'pom.xml', 'Makefile'
 \ ]
 
 let g:lsp_settings = {
