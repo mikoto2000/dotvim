@@ -13,9 +13,6 @@
 [submodule ".vim/pack/b/opt/buffer_selector.vim"]
 	path = pack/b/opt/buffer_selector.vim
 	url = https://github.com/mikoto2000/buffer_selector.vim
-[submodule ".vim/pack/test/opt/vim-themis"]
-	path = pack/test/opt/vim-themis
-	url = https://github.com/thinca/vim-themis
 [submodule ".vim/pack/b/opt/file_selector.vim"]
 	path = pack/b/opt/file_selector.vim
 	url = https://github.com/mikoto2000/file_selector.vim
