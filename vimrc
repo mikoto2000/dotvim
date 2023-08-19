@@ -453,7 +453,8 @@ let g:lsp_settings = {
 \               }
 \           }
 \       }
-\   }
+\   },
+\  'typeprof': {'disabled': 1},
 \}
 
 inoremap <silent> <C-.> <C-o>:LspCodeAction<Enter>
