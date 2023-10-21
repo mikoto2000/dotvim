@@ -1,0 +1,19 @@
+  mysql:
+    image: mysql:8.1
+    restart: always
+    volumes:
+      # MySQL データディレクトリ
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: public
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      TZ: Asia/Tokyo
+    ports:
+      - 0.0.0.0:3306:3306
+    command: >
+      mysqld
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --default-time-zone=Asia/Tokyo
