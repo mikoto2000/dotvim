@@ -1,13 +1,13 @@
 version: '3'
 services:
-    <`1:service`>:
-        image: <`2:image`>
-        volumes:
-            - <`3:volume`>
-        ports:
-            - <`4:port`>
+  ${1:service}:
+    image: ${2:image}
+    volumes:
+      - ${3:volume}
+    ports:
+      - ${4:port}
+    command: "sleep infinity"
 volumes:
-    <`5:volume_name`>:
-        external: true
-
+  ${5:volume_name}:
+    driver: local
 
