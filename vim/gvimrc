@@ -5,3 +5,9 @@ else
     set guifont=MyricaM M\ 13,Ricty_Diminished_Discord\ 13
 endif
 
+nnoremap <C-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
+nnoremap <C-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
+
+function! SetGuiFont(new_guifont)
+  let &guifont = a:new_guifont
+endfunction

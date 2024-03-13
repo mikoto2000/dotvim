@@ -5,3 +5,17 @@ else
     GuiFont! MyricaM M\ 13,Ricty_Diminished_Discord\ 13
 endif
 
+nnoremap <C-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
+nnoremap <C-1-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
+nnoremap <C-2-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
+nnoremap <C-3-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
+nnoremap <C-4-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
+nnoremap <C-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
+nnoremap <C-1-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
+nnoremap <C-2-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
+nnoremap <C-3-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
+nnoremap <C-4-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
+
+function! SetGuiFont(new_guifont)
+  exec "GuiFont! " . a:new_guifont
+endfunction
