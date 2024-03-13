@@ -1,5 +1,6 @@
 """ ターミナルの操作改善
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc><Esc> <C-\><C-n>
+tnoremap <C-]> <C-\><C-n>
 tnoremap <C-w> <C-\><C-n><C-w>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 

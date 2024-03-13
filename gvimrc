@@ -1,5 +1,3 @@
-set listchars=tab:>-,trail:-,space:˽
-
 " Windows 版 gvim のメニュー文字化け対策
 if has('win32') || has('win64')
     source $VIMRUNTIME/delmenu.vim
@@ -17,7 +15,7 @@ set visualbell
 set vb t_vb=
 
 """ {{{ highlight white spaces
-set listchars=tab:>-,trail:-,space:˽
+set listchars=tab:>-,trail:-
 """ }}} highlight white spaces
 
 " 引数なしで開いた場合にホームディレクトリに移動する
