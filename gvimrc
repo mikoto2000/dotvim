@@ -19,9 +19,9 @@ set listchars=tab:>-,trail:-
 """ }}} highlight white spaces
 
 " 引数なしで開いた場合にホームディレクトリに移動する
-augroup cdhome
-    autocmd VimEnter * nested if @% == '' | lcd ~/ | endif
-augroup END
+if argc() == 0
+  cd ~
+endif
 
 """ {{{ for windows position save
 """ from [vim-jp » Hack #120: gVim でウィンドウの位置とサイズを記憶する](http://vim-jp.org/vim-users-jp/2010/01/28/Hack-120.html)
