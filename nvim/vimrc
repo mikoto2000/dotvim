@@ -1,0 +1,22 @@
+""" ターミナルの操作改善
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-w> <C-\><C-n><C-w>
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
+augroup terminal
+    autocmd!
+    autocmd TermClose * execute close!
+    autocmd TermOpen * startinsert
+    autocmd BufEnter term://* startinsert
+    autocmd TermOpen * setlocal norelativenumber
+    autocmd TermOpen * setlocal nonumber
+augroup END
+
+
+""" undo 設定
+if has('persistent_undo')
+    exec "set undodir=" . g:myvimfiles . "/nvim/undo"
+    set undofile
+endif
+
+

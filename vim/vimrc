@@ -1,0 +1,14 @@
+""" undo 設定
+if has('persistent_undo')
+    exec "set undodir=" . g:myvimfiles . "/vim/undo"
+    set undofile
+endif
+
+" ターミナルノーマルモードで相対行番号を表示しないようにする
+" (行番号分幅が狭くなり、折り返しが発生して表示が汚くなるのを防止)
+augroup terminal
+    autocmd!
+    autocmd! TerminalWinOpen * setlocal norelativenumber
+    autocmd! TerminalWinOpen * setlocal nonumber
+augroup END
+

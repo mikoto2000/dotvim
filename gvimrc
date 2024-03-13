@@ -16,14 +16,6 @@ highlight ErrorMsg term=none ctermfg=15 ctermbg=124 gui=bold guifg=#ff5050 guibg
 set visualbell
 set vb t_vb=
 
-""" フォント設定
-if has('win32') || has('win64')
-    set guifont=MyricaM_M:h16:cSHIFTJIS:qDRAFT,Ricty_Diminished_Discord:h16:cSHIFTJIS:qDRAFT,ＭＳ_ゴシック:h12:cSHIFTJIS:qDRAFT
-    set rop=type:directx
-else
-    set guifont=MyricaM_M\ 13,Ricty_Diminished_Discord\ 13
-endif
-
 """ {{{ highlight white spaces
 set listchars=tab:>-,trail:-,space:˽
 """ }}} highlight white spaces
@@ -35,23 +27,23 @@ augroup END
 
 """ {{{ for windows position save
 """ from [vim-jp » Hack #120: gVim でウィンドウの位置とサイズを記憶する](http://vim-jp.org/vim-users-jp/2010/01/28/Hack-120.html)
-let g:save_window_file = expand(g:myvimfiles . '/winpos')
-augroup SaveWindow
-  autocmd!
-  autocmd VimLeavePre * call s:save_window()
-  function! s:save_window()
-    let options = [
-      \ 'set columns=' . &columns,
-      \ 'set lines=' . &lines,
-      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
-      \ ]
-    call writefile(options, g:save_window_file)
-  endfunction
-augroup END
-
-if filereadable(g:save_window_file)
-  execute 'source' g:save_window_file
-endif
+"""let g:save_window_file = expand(g:myvimfiles . '/winpos')
+"""augroup SaveWindow
+"""  autocmd!
+"""  autocmd VimLeavePre * call s:save_window()
+"""  function! s:save_window()
+"""    let options = [
+"""      \ 'set columns=' . &columns,
+"""      \ 'set lines=' . &lines,
+"""      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+"""      \ ]
+"""    call writefile(options, g:save_window_file)
+"""  endfunction
+"""augroup END
+"""
+"""if filereadable(g:save_window_file)
+"""  execute 'source' g:save_window_file
+"""endif
 """ }}} for windows position save
 
 """ {{{ for guifont
@@ -88,3 +80,9 @@ nnoremap <C-ScrollWheelUp> :call AddGuifontSize(1)<Enter>
 nnoremap <C-ScrollWheelDown> :call AddGuifontSize(-1)<Enter>
 """ }}} for guifont
 
+""" vim/neovim 別設定
+if has('nvim')
+  exec "source " . g:myvimfiles . "/nvim/gvimrc"
+else
+  exec "source " . g:myvimfiles . "/vim/gvimrc"
+endif

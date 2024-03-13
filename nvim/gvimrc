@@ -1,0 +1,7 @@
+""" フォント設定
+if has('win32') || has('win64')
+    GuiFont! MyricaM M:h16
+else
+    GuiFont! MyricaM M\ 13,Ricty_Diminished_Discord\ 13
+endif
+

@@ -73,12 +73,6 @@ nnoremap <Esc><Esc> :nohlsearch<Return>
 """ カーソル位置記憶
 au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
 
-""" undo 設定
-if has('persistent_undo')
-    exec "set undodir=" . g:myvimfiles . "/undo"
-    set undofile
-endif
-
 """ auto comment off
 augroup auto_comment_off
     autocmd!
@@ -198,9 +192,9 @@ tnoremap <C-r> <C-w>"
 
 command! Powershell execute "terminal ++close pwsh"
 command! Vpowershell execute "vertical terminal ++close pwsh"
-command! Wsl execute "terminal ++close ++type=conpty wsl"
-command! Vwsl execute "vertical terminal ++close ++type=conpty wsl"
-command! Vterminal execute "vertical terminal ++close ++type=conpty"
+command! Wsl execute "terminal ++close ++type=winpty wsl"
+command! Vwsl execute "vertical terminal ++close ++type=winpty wsl"
+command! Vterminal execute "vertical terminal ++close ++type=winpty"
 
 if has("win32")
     set shell=pwsh
@@ -208,13 +202,6 @@ endif
 
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
-
-" ターミナルノーマルモードで相対行番号を表示しないようにする
-" (行番号分幅が狭くなり、折り返しが発生して表示が汚くなるのを防止)
-augroup terminal
-    autocmd!
-    autocmd! TerminalWinOpen * setlocal norelativenumber
-augroup END
 
 command! Bash execute "terminal ++close c:/tools/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
 
@@ -522,4 +509,9 @@ set completefunc=tinysnippet#Complete
 
 """ }}} for tinysnippet
 
-
+""" vim/neovim 別設定
+if has('nvim')
+  exec "source " . g:myvimfiles . "/nvim/vimrc"
+else
+  exec "source " . g:myvimfiles . "/vim/vimrc"
+endif
