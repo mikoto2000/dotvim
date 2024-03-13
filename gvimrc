@@ -1,3 +1,5 @@
+set listchars=tab:>-,trail:-,space:˽
+
 " Windows 版 gvim のメニュー文字化け対策
 if has('win32') || has('win64')
     source $VIMRUNTIME/delmenu.vim
