@@ -23,27 +23,6 @@ if argc() == 0
   cd ~
 endif
 
-""" {{{ for windows position save
-""" from [vim-jp » Hack #120: gVim でウィンドウの位置とサイズを記憶する](http://vim-jp.org/vim-users-jp/2010/01/28/Hack-120.html)
-"""let g:save_window_file = expand(g:myvimfiles . '/winpos')
-"""augroup SaveWindow
-"""  autocmd!
-"""  autocmd VimLeavePre * call s:save_window()
-"""  function! s:save_window()
-"""    let options = [
-"""      \ 'set columns=' . &columns,
-"""      \ 'set lines=' . &lines,
-"""      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
-"""      \ ]
-"""    call writefile(options, g:save_window_file)
-"""  endfunction
-"""augroup END
-"""
-"""if filereadable(g:save_window_file)
-"""  execute 'source' g:save_window_file
-"""endif
-""" }}} for windows position save
-
 """ {{{ for guifont
 command! UpFontSize call AddGuifontSize(1)
 nnoremap <Leader>fu :UpFontSize<Enter>
