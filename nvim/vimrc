@@ -1,12 +1,12 @@
 """ ターミナルの操作改善
 tnoremap <Esc><Esc> <C-\><C-n>
-tnoremap <C-]> <C-\><C-n>
+tnoremap <C-[> <C-\><C-n>
 tnoremap <C-w> <C-\><C-n><C-w>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 augroup terminal
     autocmd!
-    autocmd TermClose * execute close!
+    autocmd TermClose * execute 'bwipeout'
     autocmd TermOpen * startinsert
     autocmd BufEnter term://* startinsert
     autocmd TermOpen * setlocal norelativenumber
