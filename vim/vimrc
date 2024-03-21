@@ -8,7 +8,6 @@ endif
 " (行番号分幅が狭くなり、折り返しが発生して表示が汚くなるのを防止)
 augroup terminal
     autocmd!
-    autocmd! TerminalWinOpen * setlocal norelativenumber
-    autocmd! TerminalWinOpen * setlocal nonumber
+    autocmd! TerminalOpen * setlocal norelativenumber nonumber
 augroup END
 
