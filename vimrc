@@ -448,6 +448,13 @@ inoremap <silent> <C-.> <C-o>:LspCodeAction<Enter>
 nnoremap <silent> <C-.> :LspCodeAction<Enter>
 inoremap <silent> <F2> <C-o>:LspRename<Enter>
 nnoremap <silent> <F2> :LspRename<Enter>
+inoremap <silent> <A-S-f> <C-o>:LspDocumentFormat<Enter>
+nnoremap <silent> <A-S-f> :LspDocumentFormat<Enter>
+vnoremap <silent> <A-S-f> :LspDocumentRangeFormat<Enter>
+inoremap <silent> <F12> <C-o>:LspDefinition<Enter>
+nnoremap <silent> <F12> :LspDefinition<Enter>
+inoremap <silent> <C-k><C-i> <C-o>:LspHover<Enter>
+nnoremap <silent> <C-k><C-i> :LspHover<Enter>
 
 """ for xml development {{{
 autocmd FileType xml setlocal omnifunc=lsp#complete
