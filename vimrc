@@ -444,6 +444,8 @@ let g:lsp_settings = {
 \  'typeprof': {'disabled': 1},
 \}
 
+set omnifunc=lsp#complete
+
 inoremap <silent> <C-.> <C-o>:LspCodeAction<Enter>
 nnoremap <silent> <C-.> :LspCodeAction<Enter>
 inoremap <silent> <F2> <C-o>:LspRename<Enter>
@@ -457,7 +459,6 @@ inoremap <silent> <C-k><C-i> <C-o>:LspHover<Enter>
 nnoremap <silent> <C-k><C-i> :LspHover<Enter>
 
 """ for xml development {{{
-autocmd FileType xml setlocal omnifunc=lsp#complete
 autocmd FileType xml packadd emmet-vim
 autocmd FileType xml setlocal iskeyword+=-
 autocmd FileType xml setlocal iskeyword+=:
@@ -470,21 +471,6 @@ autocmd FileType xml setlocal foldmethod=syntax
 " {{{ for ARXML
 autocmd BufNewFile,BufRead *.arxml set filetype=xml
 " }}} for ARXML
-
-""" {{{ for Java
-augroup java
-    autocmd!
-    autocmd FileType java setlocal omnifunc=lsp#complete
-augroup END
-"""i }}}
-
-""" {{{ for TypeScript
-augroup typescript
-    autocmd!
-    autocmd FileType typescript setlocal omnifunc=lsp#complete
-augroup END
-"""i }}}
-
 
 """ {{{ for Html
 augroup html
