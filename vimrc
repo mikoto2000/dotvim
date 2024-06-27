@@ -18,6 +18,7 @@ set relativenumber
 set hidden
 set noswapfile
 set backup
+set backupcopy=yes
 set foldenable
 set foldmethod=marker
 set cursorcolumn
