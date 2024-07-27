@@ -510,3 +510,10 @@ if has('nvim')
 else
   exec "source " . g:myvimfiles . "/vim/vimrc"
 endif
+
+""" {{{ for file complete
+inoremap <expr> /
+      \ complete_info(['mode']).mode == 'files' && complete_info(['selected']).selected >= 0
+      \   ? '<c-x><c-f>'
+      \   : '/'
+""" }}}
