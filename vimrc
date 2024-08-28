@@ -519,25 +519,9 @@ inoremap <expr> /
 """ }}}
 
 """ {{{ for convert case
-function! ConvertToLowerCamel()
-  exec ':normal viwuve:s/\v_(.)/\u\1/g'
-endfunction
-
-function! ConvertToUpperCamel()
-  exec ':normal viwuvUe:s/\v_(.)/\u\1/g'
-endfunction
-
-function! ConvertToLowerSnake()
-  exec ':normal viw:s/\C\v.([A-Z])/_\l\1/gvu'
-endfunction
-
-function! ConvertToUpperSnake()
-  exec ':normal viw:s/\C\v.([A-Z])/_\l\1/gviwU'
-endfunction
-
-command! ConvertToLowerCamel :call ConvertToLowerCamel()<Enter>
-command! ConvertToUpperCamel :call ConvertToUpperCamel()<Enter>
-command! ConvertToLowerSnake :call ConvertToLowerSnake()<Enter>
-command! ConvertToUpperSnake :call ConvertToUpperSnake()<Enter>
+command! ConvertToLowerCamel exec ':normal viwuve:s/\v_(.)/\u\1/g'
+command! ConvertToUpperCamel exec ':normal viwuvUe:s/\v_(.)/\u\1/g'
+command! ConvertToLowerSnake exec ':normal viw:s/\C\v(.)([A-Z])/\1_\l\2/gvu'
+command! ConvertToUpperSnake exec ':normal viw:s/\C\v(.)([A-Z])/\1_\l\2/gviwU'
 """ }}} for convert case
 
