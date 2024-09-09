@@ -1,3 +1,7 @@
+" TODO: g:myvimfiles 内に backup や undofile を格納すると、
+" コンテナにバインドマウントしたときにぐちゃぐちゃになって使えなくなるので
+" その辺を解消する
+
 """ Common Custom
 syntax on
 set tabstop=2
@@ -41,8 +45,10 @@ endif
 " Leader
 let mapleader = ' '
 
+""" {{{ for command line mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+""" }}} for command line mode
 
 " 自動折り返しを無効化
 set textwidth=0
@@ -138,7 +144,7 @@ noremap <Leader>mru <Esc>:call oldfiles_selector#OpenOldfilesSelector()<Enter>
 
 noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 
-""" }}} about buffer about buffer
+""" }}} about buffer
 
 """ split
 noremap <Leader>sp :split<Enter>
@@ -478,13 +484,6 @@ set completefunc=tinysnippet#Complete
 
 """ }}} for tinysnippet
 
-""" vim/neovim 別設定
-if has('nvim')
-  exec "source " . g:myvimfiles . "/nvim/vimrc"
-else
-  exec "source " . g:myvimfiles . "/vim/vimrc"
-endif
-
 """ {{{ for file complete
 inoremap <expr> /
       \ complete_info(['mode']).mode == 'files' && complete_info(['selected']).selected >= 0
@@ -498,4 +497,11 @@ command! ConvertToUpperCamel exec ':normal viwuvUe:s/\v_(.)/\u\1/g'
 command! ConvertToLowerSnake exec ':normal viw:s/\C\v(.)([A-Z])/\1_\l\2/gvu'
 command! ConvertToUpperSnake exec ':normal viw:s/\C\v(.)([A-Z])/\1_\l\2/gviwU'
 """ }}} for convert case
+
+""" vim/neovim 別設定
+if has('nvim')
+  exec "source " . g:myvimfiles . "/nvim/vimrc"
+else
+  exec "source " . g:myvimfiles . "/vim/vimrc"
+endif
 
