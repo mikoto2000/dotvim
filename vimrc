@@ -321,33 +321,6 @@ inoremap <C-Space> <C-X><C-O><C-P>
 """ for ctags
 nnoremap <C-]> :call ctags_selector#OpenTagSelector()<Enter>
 
-""" for markdown
-" 見出し用の線を引く
-augroup auto_markdown
-    autocmd!
-    autocmd FileType markdown nnoremap <buffer> <Leader>h1 :call Heading('=')<Return>
-    autocmd FileType markdown nnoremap <buffer> <Leader>h2 :call Heading('-')<Return>
-augroup END
-
-function! Heading(char)
-    " 末尾に移動
-    normal $
-
-    " 末尾の見た目の列数を取得
-    let h1_char_num = virtcol('.')
-
-    " 直下に空行を挿入
-    normal o
-
-    " 必要な数だけ文字を挿入
-    execute "normal " . h1_char_num . "i" . a:char
-
-    " 行の先頭へ移動
-    normal 0
-
-endfunction
-
-
 """ for sphinx {{{
 augroup auto_sphinx_rst
     autocmd!
