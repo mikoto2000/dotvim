@@ -257,6 +257,7 @@ filetype plugin indent off
 
 packadd comment
 packadd vim-go-extra
+packadd vim-suda
 packadd buffer_selector.vim
 packadd file_selector.vim
 packadd oldfiles_selector.vim

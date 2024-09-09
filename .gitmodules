@@ -49,3 +49,6 @@
 [submodule "pack/b/start/tiny-snippet.vim"]
 	path = pack/b/start/tiny-snippet.vim
 	url = https://github.com/mikoto2000/tiny-snippet.vim
+[submodule "pack/b/opt/vim-suda"]
+	path = pack/b/opt/vim-suda
+	url = https://github.com/lambdalisue/vim-suda.git
