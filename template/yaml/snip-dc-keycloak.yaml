@@ -1,0 +1,58 @@
+  postgres:
+    image: postgres:15.2
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./.devcontainer/config/postgres/initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: ${KC_DB_NAME}
+      POSTGRES_USER: ${KC_DB_USERNAME}
+      POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
+    ports:
+      - 0.0.0.0:5432:5432
+  keycloak:
+    # 本番環境で使用する場合には、ビルド済みの keycloak イメージを使うこと
+    # 本番は HTTPS 必須なので注意
+    # See: [Running Keycloak in a container - Keycloak](https://www.keycloak.org/server/containers)
+    image: quay.io/keycloak/keycloak:19.0
+    init: true
+    restart: always
+    environment:
+      KC_HEALTH_ENABLED: false
+      KC_METRICS_ENABLED: false
+      KC_DB: postgres
+      KC_DB_URL: ${KC_DB_URL}
+      KC_DB_USERNAME: ${KC_DB_USERNAME}
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    command: ["start-dev"]
+    ports:
+      - 0.0.0.0:8080:8080
+    depends_on:
+      - postgres
+    healthcheck:
+      test: curl --fail http://localhost:8080
+      interval: 5s
+      timeout: 5s
+      retries: 6
+      start_period: 10s
+  kc-init:
+    image: mikoto2000/kcadm:19
+    init: true
+    restart: "no"
+    depends_on:
+      keycloak:
+        condition: service_healthy
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      REALM: ${REALM}
+      CLIENT_ID: ${CLIENT_ID}
+      CLIENT_SECRET: ${CLIENT_SECRET}
+    volumes:
+      # 初期化スクリプト
+      - "./.devcontainer/script/kc-init/init.sh:/init.sh"
+    command:
+      - /init.sh
+
