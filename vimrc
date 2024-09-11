@@ -1,7 +1,3 @@
-" TODO: g:myvimfiles 内に backup や undofile を格納すると、
-" コンテナにバインドマウントしたときにぐちゃぐちゃになって使えなくなるので
-" その辺を解消する
-
 """ Common Custom
 syntax on
 set tabstop=2
@@ -36,6 +32,31 @@ set autoread
 
 hi Comment gui=NONE cterm=NONE term=NONE
 
+""" {{{ for backup and undo dir
+if has('nvim')
+  let g:vim_cache_dir = $HOME . "/.cache/nvim"
+else
+  let g:vim_cache_dir = $HOME . "/.cache/vim"
+end
+
+if !isdirectory(g:vim_cache_dir)
+  call mkdir(g:vim_cache_dir, "p")
+endif
+
+exec "set backupdir=" . g:vim_cache_dir . "/backup"
+if !isdirectory(&backupdir)
+  call mkdir(&backupdir, "p")
+endif
+
+if has('persistent_undo')
+    exec "set undodir=" . g:vim_cache_dir . "/undo"
+    if !isdirectory(&undodir)
+      call mkdir(&undodir, "p")
+    endif
+    set undofile
+endif
+""" }}} for backup and undo dir
+
 if has("win32")
     let g:myvimfiles = $HOME . "/vimfiles"
 else
@@ -63,8 +84,6 @@ if has("win32")
     command! Shell !start C:\msys64\msys2_shell.cmd -here
 endif
 """ }}} for Windows
-
-exec "set backupdir=" . g:myvimfiles . "/backup"
 
 """ restart setting
 let g:restart_sessionoptions

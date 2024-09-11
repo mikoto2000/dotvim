@@ -13,11 +13,3 @@ augroup terminal
     autocmd TermOpen * setlocal nonumber
 augroup END
 
-
-""" undo 設定
-if has('persistent_undo')
-    exec "set undodir=" . g:myvimfiles . "/nvim/undo"
-    set undofile
-endif
-
-
