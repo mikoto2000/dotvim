@@ -490,7 +490,7 @@ endfunction
 
 """ {{{ for tinysnippet
 packadd! tiny-snippet.vim
-let g:tiny_snippet_support_snippet_directories_default = []
+let g:tiny_snippet_snippet_directories_custom = [g:myvimfiles . "/snippets"]
 
 inoremap <silent> <C-j> <Esc>:call tinysnippet#select_next()<Enter>
 nnoremap <silent> <C-j> <Esc>:call tinysnippet#select_next()<Enter>
