@@ -421,6 +421,29 @@ function! OpenGoogleTranslate() range
 endfunction
 """ }}} for Google Translate
 
+""" {{{ for Google Translate
+""" Require:
+""" - https://huggingface.co/webbigdata/C3TR-Adapter_gguf
+""" - https://github.com/ggerganov/llama.cpp(llama-server)
+""" - https://github.com/koron/c3tr-client
+""" TODO: 結果表示をいい感じにしたい
+""" TODO: 複数行を結合して渡したい
+let g:OpenLlamaTranslateCommand = "F:/llm/c3tr-client.exe"
+command! -range OpenLlamaTranslate :call OpenLlamaTranslate()
+function! OpenLlamaTranslate() range
+    " 選択範囲の文字列をクリップボードにコピー
+    let tmp = @@
+    silent normal gvy
+    let @* = @@
+
+    " OpenGoogleTranslate スクリプトを呼び出す
+    execute "!cmd /c F:/llm/c3tr-client.exe " . @@
+
+    " 元の内容を復元
+    let @@ = tmp
+endfunction
+""" }}} for Google Translate
+
 " {{{ for vim-lsp
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/vim-lsp.log')
