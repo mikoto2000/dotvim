@@ -421,7 +421,7 @@ function! OpenGoogleTranslate() range
 endfunction
 """ }}} for Google Translate
 
-""" {{{ for Google Translate
+""" {{{ for c3tr Translate
 """ Require:
 """ - https://huggingface.co/webbigdata/C3TR-Adapter_gguf
 """ - https://github.com/ggerganov/llama.cpp(llama-server)
@@ -442,7 +442,7 @@ function! OpenLlamaTranslate() range
     " 元の内容を復元
     let @@ = tmp
 endfunction
-""" }}} for Google Translate
+""" }}} for c3tr Translate
 
 " {{{ for vim-lsp
 let g:lsp_log_verbose = 1
