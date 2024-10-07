@@ -22,6 +22,7 @@ set backupcopy=yes
 set foldenable
 set foldmethod=marker
 set cursorcolumn
+set cursorline
 set ambiwidth=single
 set breakindent
 set cmdheight=1
