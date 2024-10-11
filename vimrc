@@ -23,7 +23,7 @@ set foldenable
 set foldmethod=marker
 set cursorcolumn
 set cursorline
-set ambiwidth=single
+set ambiwidth=double
 set breakindent
 set cmdheight=1
 set nofixeol
@@ -58,6 +58,33 @@ if has('persistent_undo')
 endif
 """ }}} for backup and undo dir
 
+""" split
+noremap <Leader>sp :split<Enter>
+noremap <Leader>vs :vsplit<Enter>
+
+""" {{{ encoding
+set encoding=utf-8
+set fileencoding=utf-8
+if has("kaoriya")
+    set fileencodings=guess,utf-8
+else
+    set fileencodings=utf-8
+endif
+set fileencodings+=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
+set fileformats=unix,dos,mac
+set fileformat=unix
+""" }}} encoding
+
+""" {{{ infomation lines
+""" statusline
+set laststatus=2
+set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
+
+""" tabline
+exec "source " . g:myvimfiles . "/tabconf.vimrc"
+""" }}} infomation lines
+
+" Windows とそれ以外で vimfiles の場所が違うのでグローバル変数に記録しておく
 if has("win32")
     let g:myvimfiles = $HOME . "/vimfiles"
 else
@@ -79,12 +106,6 @@ set textwidth=0
 set colorcolumn=80
 
 colorscheme desert
-
-""" for Windows {{{
-if has("win32")
-    command! Shell !start C:\msys64\msys2_shell.cmd -here
-endif
-""" }}} for Windows
 
 """ restart setting
 let g:restart_sessionoptions
@@ -166,32 +187,6 @@ noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 
 """ }}} about buffer
 
-""" split
-noremap <Leader>sp :split<Enter>
-noremap <Leader>vs :vsplit<Enter>
-
-""" {{{ encoding
-set encoding=utf-8
-set fileencoding=utf-8
-if has("kaoriya")
-    set fileencodings=guess,utf-8
-else
-    set fileencodings=utf-8
-endif
-set fileencodings+=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
-set fileformats=unix,dos,mac
-set fileformat=unix
-""" }}} encoding
-
-""" {{{ infomation lines
-""" statusline
-set laststatus=2
-set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
-
-""" tabline
-exec "source " . g:myvimfiles . "/tabconf.vimrc"
-""" }}} infomation lines
-
 """ {{{ for markdown
 """ disable underbar highlight
 autocmd! FileType markdown hi! def link markdownItalic NONE
@@ -243,6 +238,7 @@ tnoremap <Leader><Leader>dproxy export http_proxy=http://host.docker.internal:31
 
 """ {{{ for sonicktemplate-vim
 let g:sonictemplate_vim_template_dir = g:myvimfiles . '/template'
+""" }}} for sonicktemplate-vim
 
 """ restart setting
 let g:restart_sessionoptions
