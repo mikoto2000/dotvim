@@ -80,16 +80,16 @@ set fileformat=unix
 set laststatus=2
 set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
-""" tabline
-exec "source " . g:myvimfiles . "/tabconf.vimrc"
-""" }}} infomation lines
-
 " Windows とそれ以外で vimfiles の場所が違うのでグローバル変数に記録しておく
 if has("win32")
     let g:myvimfiles = $HOME . "/vimfiles"
 else
     let g:myvimfiles = $HOME . "/.vim"
 endif
+
+""" tabline
+exec "source " . g:myvimfiles . "/tabconf.vimrc"
+""" }}} infomation lines
 
 " Leader
 let mapleader = ' '
