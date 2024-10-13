@@ -58,10 +58,6 @@ if has('persistent_undo')
 endif
 """ }}} for backup and undo dir
 
-""" split
-noremap <Leader>sp :split<Enter>
-noremap <Leader>vs :vsplit<Enter>
-
 """ {{{ encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -93,6 +89,10 @@ exec "source " . g:myvimfiles . "/tabconf.vimrc"
 
 " Leader
 let mapleader = ' '
+
+""" split
+noremap <Leader>sp :split<Enter>
+noremap <Leader>vs :vsplit<Enter>
 
 """ {{{ for command line mode
 cnoremap <C-p> <Up>
@@ -179,7 +179,7 @@ noremap <Leader>cp <Esc>:cp<Enter>
 
 noremap <Leader>f <Esc>:call file_selector#OpenFileSelector()<Enter>
 let g:file_selector_wildignore = '**/bin/**,**/build/**,**/gradle/**,**/node_modules/**'
-let g:file_selector_exclude_pattern = '\(^bin\|^build$\|^build[/\\]\|^gradle\|^config\|^config\)'
+let g:file_selector_exclude_pattern = '\(^bin\|^build$\|^build[/\\]\|^gradle\|^config\|^config\|^\.git$\|^target\|^node_modules\|^dist\)'
 
 noremap <Leader>mru <Esc>:wviminfo<Enter>:rviminfo!<Enter>:call oldfiles_selector#OpenOldfilesSelector()<Enter>
 
@@ -271,7 +271,6 @@ nnoremap <Leader>fc :foldclose<Return>
 
 """ {{{ for grep
 nnoremap <Leader><Leader> viwy:grep <C-r>" ./<Left><Left><Left>
-nnoremap <Leader>s viwy:grep <C-r>" ./<Left><Left><Left>
 set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.svn\ --exclude=tags
 """ }}} for grep
 
@@ -452,18 +451,18 @@ let g:lsp_settings_root_markers = [
 \   'pom.xml', 'Makefile'
 \ ]
 
-let g:lsp_settings = {
-\   'lemminx': {
-\       'workspace_config': {
-\           'implementation': {
-\               'completionItem': {
-\                   'snippetSupport': v:true
-\               }
-\           }
-\       }
-\   },
-\  'typeprof': {'disabled': 1},
-\}
+"let g:lsp_settings = {
+"\   'lemminx': {
+"\       'workspace_config': {
+"\           'implementation': {
+"\               'completionItem': {
+"\                   'snippetSupport': v:true
+"\               }
+"\           }
+"\       }
+"\   },
+"\  'typeprof': {'disabled': 1},
+"\}
 
 set omnifunc=lsp#complete
 
