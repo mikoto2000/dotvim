@@ -188,12 +188,6 @@ autocmd QuickfixCmdPost [^l]* copen
 " terminal でも <C-r> をインサートモードと同じ挙動にする
 tnoremap <C-r> <C-w>"
 
-command! Powershell execute "terminal ++close pwsh"
-command! Vpowershell execute "vertical terminal ++close pwsh"
-command! Wsl execute "terminal ++close ++type=winpty wsl"
-command! Vwsl execute "vertical terminal ++close ++type=winpty wsl"
-command! Vterminal execute "vertical terminal ++close ++type=winpty"
-
 if has("win32")
     set shell=pwsh
 endif
@@ -201,14 +195,7 @@ endif
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
 
-command! Bash execute "terminal ++close c:/tools/msys64/usr/bin/env.exe CHERE_INVOKING=1 /bin/bash.exe --login"
-
 " aliases
-tnoremap <Leader><Leader>dr docker run -it --rm 
-tnoremap <Leader><Leader>drv docker run -it --rm -v "$(pwd):/work" --workdir="/work" 
-tnoremap <Leader><Leader>aoj docker run -it --rm -v "$(pwd):/work" --workdir /work --name aoj mikoto2000/clang<Return>
-tnoremap <Leader><Leader>atcoder docker run -it --rm -v "$(pwd):/work" --workdir /work --name atcoder mikoto2000/clang<Return>
-
 tnoremap <Leader><Leader>dproxy export http_proxy=http://host.docker.internal:3142<Return>
 """ }}} for terminal
 
