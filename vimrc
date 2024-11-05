@@ -169,6 +169,14 @@ autocmd! FileType markdown hi! def link markdownItalic NONE
 autocmd! FileType markdown packadd emmet-vim
 """ }}} for markdown
 
+""" {{{ for devcontainer
+augroup devcontainer_json
+    autocmd!
+    autocmd BufEnter *devcontainer.json setlocal ft=json5
+    autocmd BufEnter *devcontainer.vim.json setlocal ft=json5
+augroup END
+""" }}}
+
 """ {{{ highlight white spaces
 set list
 set listchars=tab:>-,trail:-
