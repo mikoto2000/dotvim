@@ -100,13 +100,22 @@ export def DrawHtml(file: string)
 
   temp_html_file_path = $"{tempname()}.png"
   term_start($"google-chrome --headless --screenshot={temp_html_file_path} --window-size={width},{height} {file}", { "term_finish": "close", "hidden": v:true, "close_cb": function("sixel_previewer#CloseCb") })
-
-#call job_start($"bash -c 'chromium --headless --screenshot={temp_html_file_path} {file}'", { 'close_cb': function("sixel_previewer#CloseCb")})
 enddef
 
 export def CloseCb(channel: channel)
   call sixel_previewer#Draw(temp_html_file_path)
   system($"rm {temp_html_file_path}")
+enddef
+
+var temp_mdhtml_file_path = ""
+
+export def DrawMarkdown(file: string)
+  temp_mdhtml_file_path = $"{tempname()}.html"
+  term_start($"pandoc --toc --toc-depth 4 --standalone --css ~/bin/default.css {file} -o {temp_mdhtml_file_path}", { "term_finish": "close", "hidden": v:true, "close_cb": function("sixel_previewer#CloseMarkdownCb") })
+enddef
+
+export def CloseMarkdownCb(channel: channel)
+  call sixel_previewer#DrawHtml(temp_mdhtml_file_path)
 enddef
 
 export def StartWatch()
@@ -115,6 +124,7 @@ export def StartWatch()
       autocmd!
       autocmd BufWritePost *.svg execute ':call sixel_previewer#Draw(expand("%"))'
       autocmd BufWritePost *.html execute ':call sixel_previewer#DrawHtml(expand("%"))'
+      autocmd BufWritePost *.md execute ':call sixel_previewer#DrawMarkdown(expand("%"))'
   augroup END
 
 enddef
