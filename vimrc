@@ -175,6 +175,11 @@ augroup devcontainer_json
     autocmd BufEnter *devcontainer.json setlocal ft=json5
     autocmd BufEnter *devcontainer.vim.json setlocal ft=json5
 augroup END
+
+if get(g:, "devcontainer_vim", v:false)
+  command! StartMdPreview :call send_to_simai#StartPreview()
+  command! StopMdPreview :call send_to_simai#StopPreview()
+endif
 """ }}}
 
 """ {{{ highlight white spaces
