@@ -167,6 +167,16 @@ noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 """ disable underbar highlight
 autocmd! FileType markdown hi! def link markdownItalic NONE
 autocmd! FileType markdown packadd emmet-vim
+
+
+" ※ Simai(https://github.com/mikoto2000/Simai) が必要
+if get(g:, "devcontainer_vim", v:false)
+  let g:simai_host = "host.docker.internal"
+else
+  let g:simai_host = "localhost"
+endif
+command! MdPreviewStart :call send_to_simai#StartPreview(g:simai_host, 7878)
+command! MdPreviewStop :call send_to_simai#StopPreview()
 """ }}} for markdown
 
 """ {{{ for devcontainer
@@ -175,11 +185,6 @@ augroup devcontainer_json
     autocmd BufEnter *devcontainer.json setlocal ft=json5
     autocmd BufEnter *devcontainer.vim.json setlocal ft=json5
 augroup END
-
-if get(g:, "devcontainer_vim", v:false)
-  command! StartMdPreview :call send_to_simai#StartPreview()
-  command! StopMdPreview :call send_to_simai#StopPreview()
-endif
 """ }}}
 
 """ {{{ highlight white spaces
