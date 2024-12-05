@@ -524,3 +524,21 @@ else
   exec "source " . g:myvimfiles . "/vim/vimrc"
 endif
 
+""" {{{ Vim ゴルフ養成ギプス
+let g:golf_training = v:false
+function! ToggleGolfTraining() abort
+  if !g:golf_training
+    augroup golf_training
+      autocmd!
+      autocmd KeyInputPre * sleep 1
+    augroup END
+    let g:golf_training = v:true
+  else
+    augroup golf_training
+      autocmd!
+    augroup END
+    let g:golf_training = v:false
+  endif
+endfunction
+command! ToggleGolfTraining call ToggleGolfTraining()
+""" }}} Vim ゴルフ養成ギプス
