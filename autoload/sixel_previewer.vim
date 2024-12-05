@@ -1,7 +1,6 @@
 vim9script
 
 export def Open()
-  var termsize_py = $"{expand("<script>:p:h")}/termsize.py"
 
   # ウィンドウを開く
   if bufwinnr("__SIXEL_PREVIEWER__") != -1
