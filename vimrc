@@ -525,5 +525,5 @@ else
 endif
 
 """ {{{ Vim ゴルファー養成ギプス
-command! ToggleGolfTraining call vim_golfer_training_cast#ToggleGolfTraining()
+command! ToggleGolfTraining call keyinput_delayer#ToggleKeyInputDelay()
 """ }}} Vim ゴルファー養成ギプス
