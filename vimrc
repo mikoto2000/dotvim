@@ -524,7 +524,7 @@ else
   exec "source " . g:myvimfiles . "/vim/vimrc"
 endif
 
-""" {{{ Vim ゴルフ養成ギプス
+""" {{{ Vim ゴルファー養成ギプス
 let g:golf_training = v:false
 function! ToggleGolfTraining() abort
   if !g:golf_training
@@ -541,4 +541,4 @@ function! ToggleGolfTraining() abort
   endif
 endfunction
 command! ToggleGolfTraining call ToggleGolfTraining()
-""" }}} Vim ゴルフ養成ギプス
+""" }}} Vim ゴルファー養成ギプス
