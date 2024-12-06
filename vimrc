@@ -105,7 +105,13 @@ set textwidth=0
 " 80 文字目をハイライト
 set colorcolumn=80
 
-colorscheme desert
+""" コンテナ内にいることがわかりやすいように colorscheme を変更
+if get(g:, "devcontainer_vim", v:false)
+  colorscheme slate
+else
+  colorscheme desert
+endif
+
 
 """ restart setting
 let g:restart_sessionoptions
