@@ -273,6 +273,7 @@ packadd ctags_selector.vim
 packadd c_previewer.vim
 packadd hex_edit.vim
 packadd outline.vim
+packadd keyinput-delayer.vim
 
 filetype plugin indent on
 
