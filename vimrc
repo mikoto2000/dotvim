@@ -219,8 +219,10 @@ endif
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
 
-" aliases
+" docker 用プロキシ設定
 tnoremap <Leader><Leader>dproxy export http_proxy=http://host.docker.internal:3142<Return>
+" ターミナル最小化
+tnoremap <Leader>m <C-w><S-N>1<C-w>_a
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
