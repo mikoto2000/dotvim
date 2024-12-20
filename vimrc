@@ -221,8 +221,8 @@ let $LANG = "ja_JP.UTF-8"
 
 " docker 用プロキシ設定
 tnoremap <Leader><Leader>dproxy export http_proxy=http://host.docker.internal:3142<Return>
-" ターミナル最小化
-tnoremap <Leader>m <C-w><S-N>1<C-w>_a
+" ターミナルを最小化して次のウィンドウへ
+tnoremap <Leader>m <C-w><S-N>1<C-w>_a<C-w><C-w>
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
