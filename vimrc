@@ -431,7 +431,7 @@ endfunction
 """ }}} for c3tr Translate
 
 " {{{ for vim-lsp
-let g:lsp_log_verbose = 1
+let g:lsp_log_verbose = 0
 let g:lsp_log_file = expand('~/vim-lsp.log')
 
 packadd vim-lsp
