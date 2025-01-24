@@ -55,3 +55,15 @@
 [submodule "pack/b/opt/keyinput-delayer.vim"]
 	path = pack/b/opt/keyinput-delayer.vim
 	url = https://github.com/mikoto2000/keyinput-delayer.vim
+[submodule "pack/denops/opt/denops"]
+	path = pack/denops/opt/denops
+	url = https://github.com/vim-denops/denops.vim.git
+[submodule "pack/b/opt/ddt.vim"]
+	path = pack/b/opt/ddt.vim
+	url = https://github.com/Shougo/ddt.vim.git
+[submodule "pack/b/opt/ddt-ui-terminal"]
+	path = pack/b/opt/ddt-ui-terminal
+	url = https://github.com/Shougo/ddt-ui-terminal.git
+[submodule "pack/b/opt/ddt-ui-shell"]
+	path = pack/b/opt/ddt-ui-shell
+	url = https://github.com/Shougo/ddt-ui-shell.git

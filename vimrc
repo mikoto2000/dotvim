@@ -533,6 +533,51 @@ else
   exec "source " . g:myvimfiles . "/vim/vimrc"
 endif
 
+
+""" {{{ for ddt.vim
+" TODO: debian 系のコンテナを使っていると、 glibc のバージョンがくて動かないのを何とかしたい...
+if executable("deno")
+  packadd denops
+  packadd ddt.vim
+  packadd ddt-ui-shell
+
+  """ from https://github.com/Shougo/shougo-s-github/blob/master/vim/rc/ddt.vim
+
+  let g:denops#server#deno_args = [
+      \   '-q',
+      \   '-A',
+      \ ]
+  let g:denops#server#deno_args += ['--unstable-ffi']
+
+  call ddt#custom#patch_global(#{
+      \   uiParams: #{
+      \     shell: #{
+      \       nvimServer: '~/.cache/nvim/server.pipe',
+      \       prompt: '=\\\>',
+      \       promptPattern: '\w*=\\\> \?',
+      \     },
+      \   },
+      \ })
+
+  """ {{{ for ddt-ui-shell
+  command! Shell :top call ddt#start(#{
+      \   name: t:->get('ddt_ui_shell_last_name',
+      \                 'shell-' .. win_getid()),
+      \   ui: 'shell',
+      \ })<CR>
+
+  augroup ddt-shell
+      autocmd!
+      autocmd FileType ddt-shell nnoremap <buffer> <C-y> <Cmd>call ddt#ui#do_action('pastePrompt')<CR>
+      autocmd FileType ddt-shell nnoremap <buffer> <CR> <Cmd>call ddt#ui#do_action('executeLine')<CR>
+      autocmd FileType ddt-shell inoremap <buffer> <CR> <Cmd>call ddt#ui#do_action('executeLine')<CR>
+  augroup END
+  """ }}} for ddt-ui-shell
+else
+  command! Shell :terminal
+endif
+""" }}} for ddt.vim
+
 """ {{{ Vim ゴルファー養成ギプス
 command! ToggleGolfTraining call keyinput_delayer#ToggleKeyInputDelay()
 """ }}} Vim ゴルファー養成ギプス
