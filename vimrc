@@ -553,8 +553,8 @@ if executable("deno")
       \   uiParams: #{
       \     shell: #{
       \       nvimServer: '~/.cache/nvim/server.pipe',
-      \       prompt: '=\\\>',
-      \       promptPattern: '\w*=\\\> \?',
+      \       prompt: '%>',
+      \       promptPattern: '\w*% \?',
       \     },
       \   },
       \ })
