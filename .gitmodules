@@ -67,3 +67,6 @@
 [submodule "pack/b/opt/ddt-ui-shell"]
 	path = pack/b/opt/ddt-ui-shell
 	url = https://github.com/Shougo/ddt-ui-shell.git
+[submodule "pack/github/start/copilot.vim"]
+	path = pack/github/start/copilot.vim
+	url = https://github.com/github/copilot.vim.git

@@ -578,6 +578,12 @@ else
 endif
 """ }}} for ddt.vim
 
+""" {{{ for copilot.vim
+if executable("node")
+  " TODO: copilot.vim の help を見て設定する
+endif
+""" }}} for copilot.vim
+
 """ {{{ Vim ゴルファー養成ギプス
 command! ToggleGolfTraining call keyinput_delayer#ToggleKeyInputDelay()
 """ }}} Vim ゴルファー養成ギプス
