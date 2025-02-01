@@ -154,7 +154,7 @@ noremap <Leader>bb :b#<Enter>
 noremap <Leader>l <Esc>:call buffer_selector#OpenBufferSelector()<Enter>
 
 """ バッファ移動
-noremap <Leader>b <Esc>:buffer 
+noremap <Leader>b <Esc>:buffer<Space>
 
 """ cNext, cPrev
 noremap <Leader>cn <Esc>:cn<Enter>
