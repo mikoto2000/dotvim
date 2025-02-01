@@ -289,11 +289,11 @@ augroup END
 """ }}} for blog
 
 """ {{{ radix conversion
-command! Num2b execute "normal viwc<C-R>=printf(\"0b%b\", <C-R>\")<Return><Esc>"
-command! Num2d execute "normal viwc<C-R>=printf(\"%d\", <C-R>\")<Return><Esc>"
-command! Num2x execute "normal viwc<C-R>=printf(\"0x%04X\", <C-R>\")<Return><Esc>"
-command! Num2Mask0 execute "normal viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", pow(2, <C-R>\")))<Return><Esc>"
-command! Num2Mask1 execute "normal viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", pow(2, <C-R>\"-1)))<Return><Esc>"
+command! Num2b execute "normal! viwc<C-R>=printf(\"0b%b\", <C-R>\")<Return><Esc>"
+command! Num2d execute "normal! viwc<C-R>=printf(\"%d\", <C-R>\")<Return><Esc>"
+command! Num2x execute "normal! viwc<C-R>=printf(\"0x%04X\", <C-R>\")<Return><Esc>"
+command! Num2Mask0 execute "normal! viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", pow(2, <C-R>\")))<Return><Esc>"
+command! Num2Mask1 execute "normal! viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\", pow(2, <C-R>\"-1)))<Return><Esc>"
 """ }}} radix conversion
 
 " 選択範囲の式を評価して置き換える(改行未対応)
@@ -346,7 +346,7 @@ augroup END
 """ カーソル下のファイルパスを取得
 function! GetCursorPath()
     let current_buffer = @"
-    normal BvEy
+    normal! BvEy
     let ret = @"
     let @" = current_buffer
     return ret
@@ -396,7 +396,7 @@ command! -range OpenGoogleTranslate :call OpenGoogleTranslate()
 function! OpenGoogleTranslate() range
     " 選択範囲の文字列をクリップボードにコピー
     let tmp = @@
-    silent normal gvy
+    silent normal! gvy
     let @* = @@
 
     " OpenGoogleTranslate スクリプトを呼び出す
@@ -420,7 +420,7 @@ command! -range OpenLlamaTranslate :call OpenLlamaTranslate()
 function! OpenLlamaTranslate() range
     " 選択範囲の文字列をクリップボードにコピー
     let tmp = @@
-    silent normal gvy
+    silent normal! gvy
     let @* = @@
 
     " OpenGoogleTranslate スクリプトを呼び出す
@@ -521,10 +521,10 @@ inoremap <expr> /
 """ }}}
 
 """ {{{ for convert case
-command! ConvertToLowerCamel exec ':normal viwuve:s/\v_(.)/\u\1/g'
-command! ConvertToUpperCamel exec ':normal viwuvUe:s/\v_(.)/\u\1/g'
-command! ConvertToLowerSnake exec ':normal viw:s/\C\v(.)([A-Z])/\1_\l\2/gvu'
-command! ConvertToUpperSnake exec ':normal viw:s/\C\v(.)([A-Z])/\1_\l\2/gviwU'
+command! ConvertToLowerCamel exec ':normal! viwuve:s/\v_(.)/\u\1/g'
+command! ConvertToUpperCamel exec ':normal! viwuvUe:s/\v_(.)/\u\1/g'
+command! ConvertToLowerSnake exec ':normal! viw:s/\C\v(.)([A-Z])/\1_\l\2/gvu'
+command! ConvertToUpperSnake exec ':normal! viw:s/\C\v(.)([A-Z])/\1_\l\2/gviwU'
 """ }}} for convert case
 
 """ vim/neovim 別設定
