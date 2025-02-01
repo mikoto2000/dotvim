@@ -31,8 +31,6 @@ set shellslash
 set clipboard=unnamed,unnamedplus
 set autoread
 
-hi Comment gui=NONE cterm=NONE term=NONE
-
 """ {{{ for backup and undo dir
 if has('nvim')
   let g:vim_cache_dir = $HOME . "/.cache/nvim"
