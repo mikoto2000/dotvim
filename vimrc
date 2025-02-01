@@ -123,7 +123,10 @@ noremap <C-@> :nohlsearch<Enter>
 nnoremap <Esc><Esc> :nohlsearch<Return>
 
 """ カーソル位置記憶
-au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
+augroup restore_cursor
+  autocmd!
+  autocmd BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
+augroup END
 
 """ auto comment off
 augroup auto_comment_off
