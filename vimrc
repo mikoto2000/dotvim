@@ -105,9 +105,9 @@ set colorcolumn=80
 
 """ コンテナ内にいることがわかりやすいように colorscheme を変更
 if get(g:, "devcontainer_vim", v:false)
-  colorscheme slate
-else
   colorscheme desert
+else
+  colorscheme slate
 endif
 
 
