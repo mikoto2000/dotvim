@@ -274,7 +274,6 @@ packadd file_selector.vim
 packadd oldfiles_selector.vim
 packadd ctags_selector.vim
 packadd c_previewer.vim
-packadd hex_edit.vim
 packadd outline.vim
 packadd keyinput-delayer.vim
 
@@ -298,27 +297,6 @@ command! Num2Mask1 execute "normal! viwc<C-R>=printf(\"0x%04X\", printf(\"%.f\",
 
 " 選択範囲の式を評価して置き換える(改行未対応)
 vnoremap <Leader>= c<C-R>=eval("<C-R>"")<Return><Esc>
-
-""" for hex edit
-command! StartHexEdit call hex_edit#StartHexEdit()
-command! SaveHexEdit call hex_edit#SaveHexEdit()
-command! EndHexEdit call hex_edit#EndHexEdit()
-
-" :w でセーブできるようにマッピング追加
-augroup hex_edit
-    autocmd!
-    autocmd FileType xxd nnoremap <buffer> :w :call hex_edit#SaveHexEdit()<Return>
-augroup END
-
-""" for c_previewer
-let g:c_previewer_toolchain = 'aarch64-linux-gnu-'
-let g:c_previewer_cflags = ' -I c:/Users/mikoto/project/raspberrypi_bare_metal/util/include '
-
-command! Assenble call c_previewer#OpenAssembleBuffer()
-command! Headers call c_previewer#OpenHeadersBuffer()
-command! Symbols call c_previewer#OpenSymbolsBuffer()
-command! Hex call c_previewer#OpenHexBuffer()
-command! Cpp call c_previewer#OpenPreprocessBuffer()
 
 """ for complete
 " プレビューウィンドウを開かないようにする
