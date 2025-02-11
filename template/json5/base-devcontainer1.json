@@ -1,0 +1,5 @@
+{
+  "name": "${1:APP_NAME}",
+  "image": "${2:APP_IMAGE}"
+}
+
