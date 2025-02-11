@@ -1,6 +1,6 @@
 {
 	"name": "${1:APP_NAME}",
-	"dockerComposeFile": "../docker-compose.yml",
+	"dockerComposeFile": "../docker-compose.yaml",
 	"service": "app",
 	"workspaceFolder": "/workspaces",
 }
