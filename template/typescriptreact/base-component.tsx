@@ -9,3 +9,4 @@ export const {{_name_}}: React.FC<{{_name_}}Props> = ({}) => {
   )
 }
 
+export default {{_name_}};
