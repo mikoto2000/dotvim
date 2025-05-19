@@ -175,6 +175,7 @@ noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 autocmd! FileType markdown hi! def link markdownItalic NONE
 autocmd! FileType markdown packadd emmet-vim
 
+let g:markdown_fenced_languages = ['sh', 'bash', 'java', 'go', 'javascript', 'typescript']
 
 " ※ Simai(https://github.com/mikoto2000/Simai) が必要
 if get(g:, "devcontainer_vim", v:false)
