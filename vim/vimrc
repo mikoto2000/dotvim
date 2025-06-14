@@ -1,6 +1,6 @@
 " ターミナルノーマルモードで相対行番号を表示しないようにする
 " (行番号分幅が狭くなり、折り返しが発生して表示が汚くなるのを防止)
-augroup terminal
+augroup terminal_number
     autocmd!
     autocmd! TerminalOpen * setlocal norelativenumber nonumber
 augroup END

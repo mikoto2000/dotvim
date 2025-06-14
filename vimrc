@@ -175,7 +175,7 @@ noremap <Leader>o <Esc>:call outline#OpenOutlineBuffer()<Enter>
 autocmd! FileType markdown hi! def link markdownItalic NONE
 autocmd! FileType markdown packadd emmet-vim
 
-let g:markdown_fenced_languages = ['sh', 'bash', 'java', 'go', 'javascript', 'typescript']
+"let g:markdown_fenced_languages = ['sh', 'bash', 'java', 'go', 'javascript', 'typescript']
 
 " ※ Simai(https://github.com/mikoto2000/Simai) が必要
 if get(g:, "devcontainer_vim", v:false)
@@ -224,7 +224,14 @@ let $LANG = "ja_JP.UTF-8"
 " docker 用プロキシ設定
 tnoremap <Leader><Leader>dproxy export http_proxy=http://host.docker.internal:3142<Return>
 " ターミナルを最小化して次のウィンドウへ
-tnoremap <Leader><Leader>m <C-w><S-N>1<C-w>_a<C-w><C-w>
+tnoremap <Leader><Leader>_ <C-w><S-N>1<C-w>_a<C-w><C-w>
+
+augroup terminal_ambiwidth
+  autocmd!
+  autocmd BufEnter * if &buftype == "terminal" | call setcellwidths([]) | endif
+  autocmd BufLeave * if &buftype == "terminal" | call ambiwidth#set_ambiwidth() | endif
+augroup END
+
 """ }}} for terminal
 
 """ {{{ for sonicktemplate-vim
