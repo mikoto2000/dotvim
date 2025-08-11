@@ -27,12 +27,6 @@
 
 3.  Vim/Neovim を起動します。
 
-### プラグインの更新
-
-```bash
-git pull --rebase
-git submodule update --init --recursive
-```
 
 ## ディレクトリ構成
 
