@@ -537,3 +537,8 @@ nmap zz zz<sid>(z1)
 nnoremap <script> <sid>(z1)z zt<sid>(z2)
 nnoremap <script> <sid>(z2)z zb<sid>(z3)
 nnoremap <script> <sid>(z3)z zz<sid>(z1)
+
+""" {{{ ヴィジュアルモード時の p と P 入れ替え
+vnoremap p P
+vnoremap P p
+""" }}} ヴィジュアルモード時の p と P 入れ替え
