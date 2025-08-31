@@ -538,3 +538,15 @@ nnoremap <script> <sid>(z3)z zz<sid>(z1)
 vnoremap p P
 vnoremap P p
 """ }}} ヴィジュアルモード時の p と P 入れ替え
+
+""" {{{ ウィンドウポジションのセーブとレストア
+function! SaveWindowPos()
+  let g:restore_window_pos_cmd = winrestcmd()
+endfunction
+function! RestoreWindowPos()
+  execute g:restore_window_pos_cmd
+endfunction
+nnoremap <Leader>sw :call SaveWindowPos()<Enter>
+nnoremap <Leader>rw :call RestoreWindowPos()<Enter>
+""" }}} ウィンドウポジションのセーブとレストア
+
