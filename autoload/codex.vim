@@ -21,6 +21,8 @@ let s:HEADERS = {
       \}
 let s:MODEL = "gpt-5"
 
+let s:prev_response_id = ''
+
 function! codex#OpenCodexBuffer() abort
     """ 呼び出し元のウィンドウ ID を記憶
     let s:caller_window_id = win_getid()
@@ -39,6 +41,17 @@ function! codex#AppendText(text) abort
   " 追記する行データを用意（文字列 or リストの両対応）
   let lines = type(a:text) == v:t_list ? a:text : split(a:text, "\n", 1)
 
+  " codex 用バッファの特定（なければ作成）
+  let name = '__CODEX_BUFFER__'
+  let buf  = bufnr(name)
+  if buf == -1
+    call codex#OpenCodexBuffer()
+    let buf  = bufnr(name)
+  endif
+
+  if !bufloaded(buf) | call bufload(buf) | endif
+
+
   " 末尾に追記（空バッファなら1行目を置換）
   let lc = getbufinfo(buf)[0].linecount
   if lc == 1 && getbufline(buf, 1)[0] ==# ''
@@ -53,27 +66,34 @@ function! codex#ExitCb(job, code, headers, body) abort
   let body_json = json_decode(body_text)
   let text = body_json.output[1].content[0].text
   call codex#AppendText(text)
+
+  " stateful 用に id を保持（あれば更新）
+  if has_key(body_json, 'id') && type(body_json.id) == v:t_string && !empty(body_json.id)
+    let s:prev_response_id = body_json.id
+  endif
 endfunction
 
 function! codex#Request(text) abort
-  let name = '__CODEX_BUFFER__'
-  let buf  = bufnr(name)
-  if buf == -1
-    call codex#OpenCodexBuffer()
-  endif
+  let payload = {
+        \   "model": s:MODEL,
+        \   "input": a:text
+        \ }
 
-  if !bufloaded(buf) | call bufload(buf) | endif
+  if type(s:prev_response_id) == v:t_string && !empty(s:prev_response_id)
+    let payload.previous_response_id = s:prev_response_id
+  endif
 
   call s:HTTP.request_async({
         \ "url": s:ENDPOINT_URL,
         \ "method": "POST",
         \ "headers": s:HEADERS,
-        \ "data": json_encode({
-        \   "model": s:MODEL,
-        \   "input": a:text
-        \ }),
+        \ "data": json_encode(payload),
         \ "exit_cb": "codex#ExitCb"
         \})
+endfunction
+
+function! codex#ResetContext() abort
+  let s:prev_response_id = ''
 endfunction
 
 let &cpo = s:save_cpo
