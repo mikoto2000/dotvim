@@ -25,12 +25,6 @@ function! codex#OpenCodexBuffer() abort
     """ 呼び出し元のウィンドウ ID を記憶
     let s:caller_window_id = win_getid()
 
-    """ 変数 buffer_list に ``:ls`` の結果を格納
-    let buffer_list=""
-    redir => buffer_list
-    silent ls
-    redir END
-
     """ 新しいバッファを作成
     silent bo new __CODEX_BUFFER__
 
