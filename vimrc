@@ -271,6 +271,7 @@ set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.s
 
 filetype plugin indent off
 
+packadd codex.vim
 packadd comment
 packadd vim-surround
 packadd vim-go-extra
