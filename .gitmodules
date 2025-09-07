@@ -1,3 +1,6 @@
+[submodule ".vim/pack/b/opt/codex.im"]
+	path = pack/b/opt/codex.vim
+	url = https://github.com/mikoto2000/codex.vim
 [submodule ".vim/pack/b/start/sonictemplate-vim"]
 	path = pack/b/start/sonictemplate-vim
 	url = https://github.com/mattn/sonictemplate-vim
