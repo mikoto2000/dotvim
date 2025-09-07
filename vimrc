@@ -551,3 +551,16 @@ nnoremap <Leader>sw :call SaveWindowPos()<Enter>
 nnoremap <Leader>rw :call RestoreWindowPos()<Enter>
 """ }}} ウィンドウポジションのセーブとレストア
 
+""" {{{ for codex.vim
+" 選択範囲のテキストをリクエストとして送るコマンド
+command! -range CodexRequest call codex#Request(codex#GetVisualText())
+
+" リクエスト専用バッファを開くコマンド
+command! CodexOpenRequestBuffer call codex#OpenRequestBuffer()
+
+" リクエスト専用バッファの内容をリクエストとして送るコマンド
+command! CodexRequestFromBuffer call codex#RequestFromBuffer()
+
+" コンテキストをリセットするコマンド
+command! CodexResetContext call codex#ResetContext()
+""" }}} for codex.vim
