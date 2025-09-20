@@ -31,6 +31,7 @@ set shellslash
 set clipboard=unnamed,unnamedplus
 set autoread
 set diffopt=internal,filler,algorithm:histogram,indent-heuristic
+set mouse=
 
 """ {{{ for backup and undo dir
 if has('nvim')
@@ -214,10 +215,6 @@ autocmd QuickfixCmdPost [^l]* copen
 """ {{{ for terminal
 " terminal でも <C-r> をインサートモードと同じ挙動にする
 tnoremap <C-r> <C-w>"
-
-if has("win32")
-    set shell=pwsh
-endif
 
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
