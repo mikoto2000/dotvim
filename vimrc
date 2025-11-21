@@ -561,3 +561,12 @@ command! CodexRequestFromBuffer call codex#RequestFromBuffer()
 " コンテキストをリセットするコマンド
 command! CodexResetContext call codex#ResetContext()
 """ }}} for codex.vim
+
+""" {{{ カーソル下の単語ハイライト
+augroup CursorWordHighlight
+  autocmd!
+  autocmd CursorMoved,CursorMovedI * call cursorword#HighlightCrsorWord()
+augroup END
+""" }}} カーソル下の単語ハイライト
+
+highlight CursorWord cterm=bold ctermbg=darkgreen gui=bold guibg=darkgreen
