@@ -76,3 +76,6 @@
 [submodule "pack/b/opt/vim-surround"]
 	path = pack/b/opt/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "pack/test/opt/vim-themis"]
+	path = pack/test/opt/vim-themis
+	url = https://github.com/thinca/vim-themis.git
