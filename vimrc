@@ -502,10 +502,10 @@ inoremap <expr> /
 """ }}}
 
 """ {{{ for convert case
-command! ConvertToLowerCamel exec ':normal! viwuve:s/\v_(.)/\u\1/g'
-command! ConvertToUpperCamel exec ':normal! viwuvUe:s/\v_(.)/\u\1/g'
-command! ConvertToLowerSnake exec ':normal! viw:s/\C\v(.)([A-Z])/\1_\l\2/gvu'
-command! ConvertToUpperSnake exec ':normal! viw:s/\C\v(.)([A-Z])/\1_\l\2/gviwU'
+command! ConvertToUpperCamel call caseconverter#ToUpperCamelCase()
+command! ConvertToLowerCamel call caseconverter#ToLowerCamelCase()
+command! ConvertToUpperSnake call caseconverter#ToUpperSnakeCase()
+command! ConvertToLowerSnake call caseconverter#ToLowerSnakeCase()
 """ }}} for convert case
 
 """ vim/neovim 別設定
