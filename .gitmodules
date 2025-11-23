@@ -79,3 +79,6 @@
 [submodule "pack/test/opt/vim-themis"]
 	path = pack/test/opt/vim-themis
 	url = https://github.com/thinca/vim-themis.git
+[submodule "pack/b/opt/submode.vim"]
+	path = pack/b/opt/submode.vim
+	url = https://github.com/mikoto2000/submode.vim.git
