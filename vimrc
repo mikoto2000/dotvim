@@ -572,12 +572,12 @@ augroup END
 """ {{{ サブモード
 :vim9 import "./autoload/submode.vim"
 :vim9 g:submode_mappings = {
-      \   'winsize': submode.Submode.new('winsize', {
-      \     '+': submode.Mapping.new('+', ':resize +1<CR>'),
-      \     '-': submode.Mapping.new('-', ':resize -1<CR>'),
-      \     '<': submode.Mapping.new('<', ':vertical resize -1<CR>'),
-      \     '>': submode.Mapping.new('>', ':vertical resize +1<CR>'),
-      \   }),
+      \   'winsize': {
+      \     '+': ':resize +1<CR>',
+      \     '-': ':resize -1<CR>',
+      \     '<': ':vertical resize -1<CR>',
+      \     '>': ':vertical resize +1<CR>',
+      \   },
       \ }
 
 nnoremap <C-w>+ :call submode#EnterSubmode('winsize')<Enter>+

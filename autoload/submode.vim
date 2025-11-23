@@ -1,42 +1,15 @@
 vim9script
 
+# サブモードごとのマッピング定義
+# key: サブモード名
+# value: マッピング定義の辞書
+#        key: マッピングキー(lhs)
+#        value: マッピング後の定義(rhs)
 if !exists('g:submode_mappings')
   g:submode_mappings = {}
 endif
 
 var submode = ''
-
-export class Mapping
-  var lhs: string
-  var rhs: string
-  def new(lhs: string, rhs: string)
-    this.lhs = lhs
-    this.rhs = rhs
-  enddef
-endclass
-
-export class Submode
-  var name: string
-  var mappings: dict<Mapping>
-  def new(name: string, mappings: dict<Mapping>)
-    this.name = name
-    this.mappings = mappings
-  enddef
-endclass
-
-# サブモードごとのマッピング定義
-# key: サブモード名
-# value: マッピング定義の辞書
-#        key: マッピングキー
-#        value: Mapping オブジェクト
-g:submode_mappings = {
-  'winsize': Submode.new('winsize', {
-    '+': Mapping.new('+', ':resize +1<CR>'),
-    '-': Mapping.new('-', ':resize -1<CR>'),
-    '<': Mapping.new('<', ':vertical resize -1<CR>'),
-    '>': Mapping.new('>', ':vertical resize +1<CR>'),
-  }),
-}
 
 # サブモードに切り替える関数
 export def EnterSubmode(modeName: string)
@@ -58,15 +31,12 @@ def SubmodeLoop()
   while true
     var input = getchar()
     if type(input) != 0 # 数値でない場合
-      echo 'exit'
       submode = ''
       break
     endif
     var inputStr = nr2char(input)
-    echo inputStr
-    if has_key(currentSubmode.mappings, inputStr)
-      var mapping = currentSubmode.mappings[inputStr]
-      execute mapping.rhs
+    if has_key(currentSubmode, inputStr)
+      execute currentSubmode[inputStr]
     else
       submode = ''
       break
