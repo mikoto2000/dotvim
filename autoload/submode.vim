@@ -11,7 +11,7 @@ class Mapping
   enddef
 endclass
 
-class Sbmode
+class Submode
   var name: string
   var mappings: dict<Mapping>
   def new(name: string, mappings: dict<Mapping>)
@@ -26,7 +26,7 @@ endclass
 #        key: マッピングキー
 #        value: Mapping オブジェクト
 var submode_mappings = {
-  'winsize': Sbmode.new('winsize', {
+  'winsize': Submode.new('winsize', {
     '+': Mapping.new('+', ':resize +1<CR>'),
     '-': Mapping.new('-', ':resize -1<CR>'),
     '<': Mapping.new('<', ':vertical resize -1<CR>'),
