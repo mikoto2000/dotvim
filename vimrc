@@ -570,6 +570,16 @@ augroup END
 """ }}} カーソル下の単語ハイライト
 
 """ {{{ サブモード
+:vim9 import "./autoload/submode.vim"
+:vim9 g:submode_mappings = {
+      \   'winsize': submode.Submode.new('winsize', {
+      \     '+': submode.Mapping.new('+', ':resize +1<CR>'),
+      \     '-': submode.Mapping.new('-', ':resize -1<CR>'),
+      \     '<': submode.Mapping.new('<', ':vertical resize -1<CR>'),
+      \     '>': submode.Mapping.new('>', ':vertical resize +1<CR>'),
+      \   }),
+      \ }
+
 nnoremap <C-w>+ :call submode#EnterSubmode('winsize')<Enter>+
 nnoremap <C-w>- :call submode#EnterSubmode('winsize')<Enter>-
 nnoremap <C-w>< :call submode#EnterSubmode('winsize')<Enter><

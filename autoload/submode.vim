@@ -1,8 +1,12 @@
 vim9script
 
+if !exists('g:submode_mappings')
+  g:submode_mappings = {}
+endif
+
 var submode = ''
 
-class Mapping
+export class Mapping
   var lhs: string
   var rhs: string
   def new(lhs: string, rhs: string)
@@ -11,7 +15,7 @@ class Mapping
   enddef
 endclass
 
-class Submode
+export class Submode
   var name: string
   var mappings: dict<Mapping>
   def new(name: string, mappings: dict<Mapping>)
@@ -25,7 +29,7 @@ endclass
 # value: マッピング定義の辞書
 #        key: マッピングキー
 #        value: Mapping オブジェクト
-var submode_mappings = {
+g:submode_mappings = {
   'winsize': Submode.new('winsize', {
     '+': Mapping.new('+', ':resize +1<CR>'),
     '-': Mapping.new('-', ':resize -1<CR>'),
@@ -36,7 +40,7 @@ var submode_mappings = {
 
 # サブモードに切り替える関数
 export def EnterSubmode(modeName: string)
-  if has_key(submode_mappings, modeName)
+  if has_key(g:submode_mappings, modeName)
     submode = modeName
   else
     throw 'Submode not defined: ' .. modeName
@@ -50,7 +54,7 @@ def SubmodeLoop()
   if submode == ''
     return
   endif
-  var currentSubmode = submode_mappings[submode]
+  var currentSubmode = g:submode_mappings[submode]
   while true
     var input = getchar()
     if type(input) != 0 # 数値でない場合
