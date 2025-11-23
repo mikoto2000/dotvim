@@ -569,4 +569,11 @@ augroup CursorWordHighlight
 augroup END
 """ }}} カーソル下の単語ハイライト
 
+""" {{{ サブモード
+nnoremap <C-w>+ :call submode#EnterSubmode('winsize')<Enter>+
+nnoremap <C-w>- :call submode#EnterSubmode('winsize')<Enter>-
+nnoremap <C-w>< :call submode#EnterSubmode('winsize')<Enter><
+nnoremap <C-w>> :call submode#EnterSubmode('winsize')<Enter>>
+""" }}} サブモード
+
 highlight CursorWord cterm=bold ctermbg=darkgreen gui=bold guibg=darkgreen
