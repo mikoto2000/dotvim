@@ -563,10 +563,12 @@ command! CodexResetContext call codex#ResetContext()
 """ }}} for codex.vim
 
 """ {{{ カーソル下の単語ハイライト
-augroup CursorWordHighlight
-  autocmd!
-  autocmd CursorMoved,CursorMovedI * call cursorword#HighlightCrsorWord()
-augroup END
+if !has('nvim')
+  augroup CursorWordHighlight
+    autocmd!
+    autocmd CursorMoved,CursorMovedI * call cursorword#HighlightCrsorWord()
+  augroup END
+endif
 """ }}} カーソル下の単語ハイライト
 
 """ {{{ サブモード
