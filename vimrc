@@ -279,6 +279,7 @@ packadd oldfiles_selector.vim
 packadd ctags_selector.vim
 packadd outline.vim
 packadd keyinput-delayer.vim
+packadd helpful.vim
 
 filetype plugin indent on
 

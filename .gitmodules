@@ -82,3 +82,6 @@
 [submodule "pack/b/opt/tiny-submode.vim"]
 	path = pack/b/opt/tiny-submode.vim
 	url = https://github.com/mikoto2000/tiny-submode.vim.git
+[submodule "pack/b/opt/helpful.vim"]
+	path = pack/b/opt/helpful.vim
+	url = https://github.com/tweekmonster/helpful.vim.git
