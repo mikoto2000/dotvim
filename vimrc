@@ -510,6 +510,12 @@ if !executable("node")
 endif
 """ }}} for copilot.vim
 
+""" {{{ for denops.vim
+if !executable("deno")
+  let g:denops#deno = "~/.vim/tools/deno/deno"
+endif
+""" }}} for denops.vim
+
 """ {{{ Vim ゴルファー養成ギプス
 command! ToggleGolfTraining call keyinput_delayer#ToggleKeyInputDelay()
 """ }}} Vim ゴルファー養成ギプス
