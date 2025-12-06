@@ -506,7 +506,7 @@ endif
 
 """ {{{ for copilot.vim
 if !executable("node")
-  let g:copilot_node_command = "~/.vim/tools/node/node-v18.16.0-linux-x64/bin/node"
+  let g:copilot_node_command = "~/.vim/tools/node/node-v24.11.1-linux-x64/bin/node"
 endif
 """ }}} for copilot.vim
 
