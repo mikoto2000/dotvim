@@ -421,21 +421,8 @@ packadd vim-lsp
 packadd vim-lsp-settings
 
 let g:lsp_settings_root_markers = [
-\   'pom.xml', 'Makefile'
+\   'pom.xml', 'Makefile', 'build.gradle', 'build.gradle.kts', '.git', 'go.mod'
 \ ]
-
-"let g:lsp_settings = {
-"\   'lemminx': {
-"\       'workspace_config': {
-"\           'implementation': {
-"\               'completionItem': {
-"\                   'snippetSupport': v:true
-"\               }
-"\           }
-"\       }
-"\   },
-"\  'typeprof': {'disabled': 1},
-"\}
 
 set omnifunc=lsp#complete
 
@@ -518,8 +505,8 @@ endif
 
 
 """ {{{ for copilot.vim
-if executable("node")
-  " TODO: copilot.vim の help を見て設定する
+if !executable("node")
+  let g:copilot_node_command = "~/.vim/tools/node/node-v18.16.0-linux-x64/bin/node"
 endif
 """ }}} for copilot.vim
 
@@ -570,6 +557,7 @@ if !has('nvim')
     autocmd CursorMoved,CursorMovedI * call cursorword#HighlightCrsorWord()
   augroup END
 endif
+highlight CursorWord cterm=bold ctermbg=darkgreen gui=bold guibg=darkgreen
 """ }}} カーソル下の単語ハイライト
 
 """ {{{ サブモード
@@ -590,4 +578,4 @@ nnoremap <C-w>< :call submode#EnterSubmode('winsize')<Enter><
 nnoremap <C-w>> :call submode#EnterSubmode('winsize')<Enter>>
 """ }}} サブモード
 
-highlight CursorWord cterm=bold ctermbg=darkgreen gui=bold guibg=darkgreen
+
