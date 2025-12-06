@@ -2,7 +2,7 @@ vim9script
 
 # カーソル下の単語をアッパーキャメルケースに変換する関数
 # スネークケースの単語を変換できる
-def ToUpperCamelCase()
+export def ToUpperCamelCase()
   var word = expand('<cword>')
   var parts = split(word, '_\|-\| ')
   for i in range(len(parts))
@@ -14,7 +14,7 @@ enddef
 
 # カーソル下の単語をロウワーキャメルケースに変換する関数
 # スネークケースの単語を変換できる
-def ToLowerCamelCase()
+export def ToLowerCamelCase()
   var word = expand('<cword>')
   var parts = split(word, '_\|-\| ')
   for i in range(len(parts))
