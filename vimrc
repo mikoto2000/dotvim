@@ -571,10 +571,11 @@ packadd tiny-submode.vim
 
 let g:submode_mappings = {
       \   'winsize': {
-      \     '+': ':resize +1<CR>',
-      \     '-': ':resize -1<CR>',
-      \     '<': ':vertical resize -1<CR>',
-      \     '>': ':vertical resize +1<CR>',
+      \     '+': ':resize +1',
+      \     '-': ':resize -1',
+      \     '<': ':vertical resize -1',
+      \     '>': ':vertical resize +1',
+      \     'r': ':wincmd r',
       \   },
       \ }
 
@@ -582,6 +583,7 @@ nnoremap <C-w>+ :call submode#EnterSubmode('winsize')<Enter>+
 nnoremap <C-w>- :call submode#EnterSubmode('winsize')<Enter>-
 nnoremap <C-w>< :call submode#EnterSubmode('winsize')<Enter><
 nnoremap <C-w>> :call submode#EnterSubmode('winsize')<Enter>>
+nnoremap <C-w>r :call submode#EnterSubmode('winsize')<Enter>r
 """ }}} サブモード
 
 
