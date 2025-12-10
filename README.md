@@ -28,6 +28,24 @@
 3.  Vim/Neovim を起動します。
 
 
+## 依存ツール
+
+*   **Node.js**: GitHub Copilot 用。環境に `node` が無い場合は後述の簡易インストーラで `~/.vim/tools/node` に配置され、自動でそのパスを使います。
+*   **Deno**: denops 用。`deno` が無い場合は `~/.vim/tools/deno/deno` を利用します（簡易インストーラあり）。
+*   **Simai**: `:MdPreviewStart` / `:MdPreviewStop` に必要です。
+*   **pandoc**: `:M2h` / `:M2hsc` / `:SixelPreview` で Markdown を HTML 変換する際に使用します。
+*   **ctags** (Universal Ctags 推奨): `<C-]>` のタグジャンプや `ctags_selector.vim` の補助に使います。
+
+### Node/Deno の簡易インストール
+
+Node.js や Deno が手元に無い場合は、付属の Vim スクリプトでバイナリをダウンロードできます（`~/.vim/tools/` 配下に展開されるだけなので不要なら削除してください）。
+
+```
+:call node#Install()  " ~/.vim/tools/node に v24.11.1 を配置
+:call deno#Install()  " ~/.vim/tools/deno に v2.5.6 を配置
+```
+
+
 ## ディレクトリ構成
 
 ```
@@ -124,4 +142,3 @@
 | `:ToggleNumbers` | 行番号の相対表示/絶対表示を切り替えます。 |
 | `:SixelPreview` | Sixel 形式の画像をプレビューします。 |
 | `:Convert...` | `ConvertToLowerCamel` など、単語のケースを変換します。 |
-
