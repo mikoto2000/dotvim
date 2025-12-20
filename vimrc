@@ -28,11 +28,17 @@ set breakindent
 set cmdheight=1
 set nofixeol
 set shellslash
-set clipboard=unnamed,unnamedplus
 set autoread
 set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 set mouse=
 
+
+""" {{{ for osc52
+packadd osc52
+let g:osc52_force_avail = v:true
+let g:osc52_disable_paste = v:true
+set clipmethod=osc52,x11,wayland
+""" }}} for osc52
 
 """ {{{ for backup and undo dir
 if has('nvim')
