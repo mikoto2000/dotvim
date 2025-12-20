@@ -33,6 +33,18 @@ set autoread
 set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 set mouse=
 
+packadd osc52
+if !has('win32')
+  set clipmethod=osc52
+  let v:clipproviders["osc52"] = {
+      \  "available": v:true,
+      \  "copy": {
+      \    "*": function('osc52#Copy'),
+      \    "+": function('osc52#Copy')
+      \  },
+      \ }
+endif
+
 """ {{{ for backup and undo dir
 if has('nvim')
   let g:vim_cache_dir = $HOME . "/.cache/nvim"
