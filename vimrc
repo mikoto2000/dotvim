@@ -34,22 +34,6 @@ set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 set mouse=
 
 
-""" {{{ for osc52
-if !has('win32')
-  if has("patch-9.1.1984")
-    packadd osc52
-    set clipmethod=osc52
-    let v:clipproviders["osc52"] = {
-        \  "available": v:true,
-        \  "copy": {
-        \    "*": function('osc52#Copy'),
-        \    "+": function('osc52#Copy')
-        \  },
-        \ }
-  endif
-endif
-""" }}} for osc52
-
 """ {{{ for backup and undo dir
 if has('nvim')
   let g:vim_cache_dir = $HOME . "/.cache/nvim"
