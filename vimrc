@@ -33,17 +33,22 @@ set autoread
 set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 set mouse=
 
-packadd osc52
+
+""" {{{ for osc52
 if !has('win32')
-  set clipmethod=osc52
-  let v:clipproviders["osc52"] = {
-      \  "available": v:true,
-      \  "copy": {
-      \    "*": function('osc52#Copy'),
-      \    "+": function('osc52#Copy')
-      \  },
-      \ }
+  if has("patch-9.1.1984")
+    packadd osc52
+    set clipmethod=osc52
+    let v:clipproviders["osc52"] = {
+        \  "available": v:true,
+        \  "copy": {
+        \    "*": function('osc52#Copy'),
+        \    "+": function('osc52#Copy')
+        \  },
+        \ }
+  endif
 endif
+""" }}} for osc52
 
 """ {{{ for backup and undo dir
 if has('nvim')
