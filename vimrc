@@ -34,10 +34,14 @@ set mouse=
 
 
 """ {{{ for osc52
-packadd osc52
-let g:osc52_force_avail = v:true
-let g:osc52_disable_paste = v:true
-set clipmethod=osc52,x11,wayland
+if !has('win32')
+  if has("patch-9.1.1984")
+    packadd osc52
+    let g:osc52_force_avail = v:true
+    let g:osc52_disable_paste = v:true
+    set clipmethod=osc52,x11,wayland
+  endif
+endif
 """ }}} for osc52
 
 """ {{{ for backup and undo dir
