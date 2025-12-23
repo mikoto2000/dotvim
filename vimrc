@@ -31,15 +31,31 @@ set shellslash
 set autoread
 set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 set mouse=
-
+set clipboard=unnamed,unnamedplus
 
 """ {{{ for osc52
 if !has('win32')
   if has("patch-9.1.1984")
+    function! InitOsc52() abort
+        let v:clipproviders["osc52"] = {
+            \  "available": v:true,
+            \  "copy": {
+            \    "*": function('osc52#Copy'),
+            \    "+": function('osc52#Copy')
+            \  },
+            \ }
+    endfunction
+
+    augroup init_osc52
+      autocmd!
+      autocmd VimEnter * call InitOsc52()
+    augroup END
+
     packadd osc52
     let g:osc52_force_avail = v:true
     let g:osc52_disable_paste = v:true
     set clipmethod=osc52,x11,wayland
+
   endif
 endif
 """ }}} for osc52
