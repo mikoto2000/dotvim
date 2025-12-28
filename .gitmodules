@@ -85,3 +85,6 @@
 [submodule "pack/b/opt/helpful.vim"]
 	path = pack/b/opt/helpful.vim
 	url = https://github.com/tweekmonster/helpful.vim.git
+[submodule "pack/b/opt/autofmt"]
+	path = pack/b/opt/autofmt
+	url = https://github.com/vim-jp/autofmt.git
