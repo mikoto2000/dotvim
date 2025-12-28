@@ -295,6 +295,7 @@ set grepprg=grep\ -rnIH\ --exclude-dir=.git\ --exclude-dir=.hg\ --exclude-dir=.s
 
 filetype plugin indent off
 
+packadd vital.vim
 packadd codex.vim
 packadd comment
 packadd vim-surround
@@ -613,4 +614,6 @@ nnoremap <C-w>> :call submode#EnterSubmode('winsize')<Enter>>
 nnoremap <C-w>r :call submode#EnterSubmode('winsize')<Enter>r
 """ }}} サブモード
 
-
+set formatexpr=autofmt#japanese#formatexpr()
+let autofmt_allow_over_tw = 1
+set formatoptions+=mB
