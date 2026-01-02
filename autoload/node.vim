@@ -1,7 +1,7 @@
 vim9script
 
 export def Install()
-  node#DownloadNodeBinary(GetOS(), GetMachineArchitecture(), 'v24.11.1', '~/.vim/tools/node')
+  DownloadNodeBinary(GetOS(), GetMachineArchitecture(), 'v24.11.1', '~/.vim/tools/node')
 enddef
 
 def GetOS(): string
