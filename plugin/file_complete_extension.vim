@@ -30,3 +30,7 @@ function! file_complete_extension#restore_lcd() abort
     unlet b:_saved_lcd
   endif
 endfunction
+
+inoremap <expr> <C-x><C-f>
+      \ file_complete_extension#start_lcd_for_insert_completion() . "\<C-x>\<C-f>"
+
