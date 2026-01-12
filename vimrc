@@ -617,3 +617,7 @@ nnoremap <C-w>r :call submode#EnterSubmode('winsize')<Enter>r
 set formatexpr=autofmt#japanese#formatexpr()
 let autofmt_allow_over_tw = 1
 set formatoptions+=mB
+
+inoremap <expr> <C-x><C-f>
+      \ file_complete_extension#start_lcd_for_insert_completion() . "\<C-x>\<C-f>"
+
