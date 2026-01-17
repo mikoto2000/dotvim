@@ -246,10 +246,8 @@ tnoremap <C-r> <C-w>"
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
 
-" docker 用プロキシ設定
-tnoremap <Leader><Leader>dproxy export http_proxy=http://host.docker.internal:3142<Return>
-" ターミナルを最小化して次のウィンドウへ
-tnoremap <Leader><Leader>_ <C-w><S-N>1<C-w>_a<C-w><C-w>
+tnoremap sgf :split<Enter>:e <cfile><Enter>"
+noremap sgf :split<Enter>:e <cfile><Enter>"
 
 augroup terminal_ambiwidth
   autocmd!
