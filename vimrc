@@ -246,8 +246,11 @@ tnoremap <C-r> <C-w>"
 " msys64 の bash で日本語入力できるように、 `$LANG` を `ja_JP.UTF-8` にする
 let $LANG = "ja_JP.UTF-8"
 
-tnoremap sgf :split<Enter>:e <cfile><Enter>"
-noremap sgf :split<Enter>:e <cfile><Enter>"
+" split して gf
+tnoremap sgf :split<Enter>:e <cfile><Enter>"<Enter>
+noremap sgf :split<Enter>:e <cfile><Enter>"<Enter>
+tnoremap tgf :vsplit<Enter>:e <cfile><Enter>"<Enter>
+noremap tgf :vsplit<Enter>:e <cfile><Enter>"<Enter>
 
 augroup terminal_ambiwidth
   autocmd!
