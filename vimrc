@@ -247,9 +247,7 @@ tnoremap <C-r> <C-w>"
 let $LANG = "ja_JP.UTF-8"
 
 " split して gf
-tnoremap sgf :split<Enter>:e <cfile><Enter>"<Enter>
 noremap sgf :split<Enter>:e <cfile><Enter>"<Enter>
-tnoremap tgf :vsplit<Enter>:e <cfile><Enter>"<Enter>
 noremap tgf :vsplit<Enter>:e <cfile><Enter>"<Enter>
 
 augroup terminal_ambiwidth
