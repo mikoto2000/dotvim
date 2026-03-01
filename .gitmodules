@@ -88,3 +88,6 @@
 [submodule "pack/b/opt/autofmt"]
 	path = pack/b/opt/autofmt
 	url = https://github.com/vim-jp/autofmt.git
+[submodule "pack/b/opt/ollama-codeassist.vim"]
+	path = pack/b/opt/ollama-codeassist.vim
+	url = https://github.com/mikoto2000/ollama-codeassist.vim.git

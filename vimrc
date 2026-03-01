@@ -619,6 +619,10 @@ nnoremap <C-w>> :call submode#EnterSubmode('winsize')<Enter>>
 nnoremap <C-w>r :call submode#EnterSubmode('winsize')<Enter>r
 """ }}} サブモード
 
+""" {{{ ollama-codeassist
+nnoremap <Leader>oa :call ollama_codeassist#Request()
+""" }}} ollama-codeassist
+
 set formatexpr=autofmt#japanese#formatexpr()
 let autofmt_allow_over_tw = 1
 set formatoptions+=mB
