@@ -36,20 +36,26 @@ set clipboard=unnamed,unnamedplus
 """ {{{ for osc52
 if !has('win32')
   if has("patch-9.1.1984")
-    function! InitOsc52() abort
-        let v:clipproviders["osc52"] = {
-            \  "available": v:true,
-            \  "copy": {
-            \    "*": function('osc52#Copy'),
-            \    "+": function('osc52#Copy')
-            \  },
-            \ }
-    endfunction
 
-    augroup init_osc52
-      autocmd!
-      autocmd VimEnter * call InitOsc52()
-    augroup END
+    " 0.2.0089 で OSC54 の g:disable_paste = false 時に +/- レジスタが必ず空に
+    " なる現象が改善されたので、それ以前の場合は OSC52 の初期化を VimEnter イベ
+    " ントに遅延させる
+    if !has("patch-9.2.89")
+      function! InitOsc52() abort
+          let v:clipproviders["osc52"] = {
+              \  "available": v:true,
+              \  "copy": {
+              \    "*": function('osc52#Copy'),
+              \    "+": function('osc52#Copy')
+              \  },
+              \ }
+      endfunction
+
+      augroup init_osc52
+        autocmd!
+        autocmd VimEnter * call InitOsc52()
+      augroup END
+    endif
 
     packadd osc52
     let g:osc52_force_avail = v:true
