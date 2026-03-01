@@ -620,7 +620,7 @@ nnoremap <C-w>r :call submode#EnterSubmode('winsize')<Enter>r
 """ }}} サブモード
 
 """ {{{ ollama-codeassist
-nnoremap <Leader>oa :call ollama_codeassist#Request()
+command! CodeAssist :call ollama_codeassist#Request()
 """ }}} ollama-codeassist
 
 set formatexpr=autofmt#japanese#formatexpr()
