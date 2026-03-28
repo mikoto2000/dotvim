@@ -461,6 +461,8 @@ set omnifunc=lsp#complete
 
 inoremap <silent> <C-.> <C-o>:LspCodeAction<Enter>
 nnoremap <silent> <C-.> :LspCodeAction<Enter>
+inoremap <silent> <Leader>. <C-o>:LspCodeAction<Enter>
+nnoremap <silent> <Leader>. :LspCodeAction<Enter>
 inoremap <silent> <F2> <C-o>:LspRename<Enter>
 nnoremap <silent> <F2> :LspRename<Enter>
 inoremap <silent> <A-S-f> <C-o>:LspDocumentFormat<Enter>
@@ -620,6 +622,11 @@ nnoremap <C-w>r :call submode#EnterSubmode('winsize')<Enter>r
 """ }}} サブモード
 
 """ {{{ ollama-codeassist
+packadd ollama-codeassist.vim
+if get(g:, "devcontainer_vim", v:false)
+  let g:ollama_codeassist_host = "host.docker.internal"
+endif
+
 command! CodeAssist :call ollama_codeassist#Request()
 """ }}} ollama-codeassist
 
