@@ -36,26 +36,20 @@ set clipboard=unnamed,unnamedplus
 """ {{{ for osc52
 if !has('win32')
   if has("patch-9.1.1984")
+    function! InitOsc52() abort
+        let v:clipproviders["osc52"] = {
+            \  "available": v:true,
+            \  "copy": {
+            \    "*": function('osc52#Copy'),
+            \    "+": function('osc52#Copy')
+            \  },
+            \ }
+    endfunction
 
-    " 0.2.0089 で OSC54 の g:disable_paste = false 時に +/- レジスタが必ず空に
-    " なる現象が改善されたので、それ以前の場合は OSC52 の初期化を VimEnter イベ
-    " ントに遅延させる
-    if !has("patch-9.2.89")
-      function! InitOsc52() abort
-          let v:clipproviders["osc52"] = {
-              \  "available": v:true,
-              \  "copy": {
-              \    "*": function('osc52#Copy'),
-              \    "+": function('osc52#Copy')
-              \  },
-              \ }
-      endfunction
-
-      augroup init_osc52
-        autocmd!
-        autocmd VimEnter * call InitOsc52()
-      augroup END
-    endif
+    augroup init_osc52
+      autocmd!
+      autocmd VimEnter * call InitOsc52()
+    augroup END
 
     packadd osc52
     let g:osc52_force_avail = v:true
@@ -107,7 +101,7 @@ set fileformat=unix
 """ {{{ infomation lines
 """ statusline
 set laststatus=2
-set statusline=%<%f%h%m%r%y%=[%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
+set statusline=%<%f%h%m%r%y%=[%{CharCodeLabel()}][%{&fenc!=''?&fenc:&enc}][%{&ff}][%l,%c%V]\ [%P]
 
 " Windows とそれ以外で vimfiles の場所が違うのでグローバル変数に記録しておく
 if has("win32")
@@ -461,8 +455,6 @@ set omnifunc=lsp#complete
 
 inoremap <silent> <C-.> <C-o>:LspCodeAction<Enter>
 nnoremap <silent> <C-.> :LspCodeAction<Enter>
-inoremap <silent> <Leader>. <C-o>:LspCodeAction<Enter>
-nnoremap <silent> <Leader>. :LspCodeAction<Enter>
 inoremap <silent> <F2> <C-o>:LspRename<Enter>
 nnoremap <silent> <F2> :LspRename<Enter>
 inoremap <silent> <A-S-f> <C-o>:LspDocumentFormat<Enter>
@@ -621,16 +613,20 @@ nnoremap <C-w>> :call submode#EnterSubmode('winsize')<Enter>>
 nnoremap <C-w>r :call submode#EnterSubmode('winsize')<Enter>r
 """ }}} サブモード
 
-""" {{{ ollama-codeassist
-packadd ollama-codeassist.vim
-if get(g:, "devcontainer_vim", v:false)
-  let g:ollama_codeassist_host = "host.docker.internal"
-endif
-
-command! CodeAssist :call ollama_codeassist#Request()
-""" }}} ollama-codeassist
-
 set formatexpr=autofmt#japanese#formatexpr()
 let autofmt_allow_over_tw = 1
 set formatoptions+=mB
+
+" カーソル下の文字の Unicode コードポイントを表示する関数
+function! CharCodeLabel() abort
+  let l:char = matchstr(getline('.'), '\%' . col('.') . 'c.')
+
+  if empty(l:char)
+    return ''
+  endif
+
+  let l:nr = char2nr(l:char)
+
+  return printf('U+%04X', l:nr)
+endfunction
 
